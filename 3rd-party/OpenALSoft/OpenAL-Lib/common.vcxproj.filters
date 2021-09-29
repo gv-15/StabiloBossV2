@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\common\alcomplex.c" />
+    <ClCompile Include="..\common\almalloc.c" />
+    <ClCompile Include="..\common\rwlock.c" />
+    <ClCompile Include="..\common\threads.c" />
+    <ClCompile Include="..\common\uintmap.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\alcomplex.h" />
+    <ClInclude Include="..\common\align.h" />
+    <ClInclude Include="..\common\almalloc.h" />
+    <ClInclude Include="..\common\atomic.h" />
+    <ClInclude Include="..\common\bool.h" />
+    <ClInclude Include="..\common\math_defs.h" />
+    <ClInclude Include="..\common\rwlock.h" />
+    <ClInclude Include="..\common\static_assert.h" />
+    <ClInclude Include="..\common\threads.h" />
+    <ClInclude Include="..\common\uintmap.h" />
+    <ClInclude Include="..\config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4DC5C99C-4C28-3D38-BF81-07F43EE5A5F5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{178C4C27-459E-38A8-BEEF-8E3798DC3C45}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
