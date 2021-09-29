@@ -13,8 +13,14 @@
 
 using namespace std;
 
+
 World::World(std::string nameFile)
 {
+	vector <Player> players;
+	Player player1;
+	Player player2;
+	players.push_back(player1);
+	players.push_back(player2);
 }
 
 
@@ -35,5 +41,18 @@ void World::Draw()
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
 	
+}
+
+int World::GetNumPlayers() 
+{
+
+}
+Player* World::GetPlayer(int id)
+{
+
+}
+int World::GetNumCoinsLeft()
+{
+
 }
 
