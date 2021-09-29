@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "pch.h"
 #include <iostream>
 #include <iostream>
 #include <chrono>
@@ -7,6 +7,7 @@
 #include "System.h"
 #include "World.h"
 #include "Player.h"
+
 
 GameLogic::GameLogic(World* pWorld)
 {
