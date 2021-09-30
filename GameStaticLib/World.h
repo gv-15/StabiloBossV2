@@ -7,7 +7,7 @@ using namespace std;
 
 class World
 {
-	int m_WorldCoins;
+	int m_WorldCoins = 0;
 	vector <Player> m_players;
 
 public:
