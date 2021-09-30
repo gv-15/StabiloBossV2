@@ -9,7 +9,8 @@ class World
 {
 	int m_WorldCoins = 0;
 	vector <Player> m_players;
-
+	int m_Height = 0;
+	int m_Width = 0;
 public:
 
 	World(string nameFile);
@@ -23,4 +24,8 @@ public:
 	Player* GetPlayer(int id);
 
 	int GetNumCoinsLeft();
+
+	int GetHeight();
+
+	int GetWidth();
 };

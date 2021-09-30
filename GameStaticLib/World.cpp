@@ -55,3 +55,12 @@ Player* World::GetPlayer(int id)
 	return &m_players[id];
 }
 
+int World::GetHeight()
+{
+	return m_Height;
+}
+
+int World::GetWidth()
+{
+	return m_Width;
+}
