@@ -52,6 +52,6 @@ int World::GetNumCoinsLeft()
 
 Player* World::GetPlayer(int id)
 {
-
+	return &m_players[id];
 }
 
