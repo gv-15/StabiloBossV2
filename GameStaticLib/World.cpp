@@ -16,11 +16,8 @@ using namespace std;
 
 World::World(std::string nameFile)
 {
-	vector <Player> players;
-	Player player1;
-	Player player2;
-	players.push_back(player1);
-	players.push_back(player2);
+	
+
 }
 
 
@@ -43,15 +40,17 @@ void World::Draw()
 	
 }
 
-int World::GetNumPlayers() 
+int World::GetNumPlayers()
 {
-
+	return m_players.size();
 }
-Player* World::GetPlayer(int id)
-{
 
-}
 int World::GetNumCoinsLeft()
+{
+	return m_WorldCoins;
+}
+
+Player* World::GetPlayer(int id)
 {
 
 }
