@@ -19,12 +19,9 @@ public:
 	
 	void Draw();
 
-<<<<<<< HEAD
 	string Load(string nameFile);
 
 	//Theses are only suggestions...
-=======
->>>>>>> develop
 	int GetNumPlayers();
 
 	Player* GetPlayer(int id);
