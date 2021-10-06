@@ -48,5 +48,7 @@ public:
 
 	void MoveLeft1();
 
+	Player* GetPlayerById(int id);
+
 	
 };

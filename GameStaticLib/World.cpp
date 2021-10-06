@@ -119,3 +119,31 @@ void World::MoveLeft1()
 
 
 }
+
+Player* World::GetPlayerById(int id)
+{
+
+	int max = m_players.size();
+	int i = 0;
+	bool found = false;
+	while (i < max && found == false)
+	{
+		if (m_players[i].GetId() == id)
+		{
+			found = true;
+		}
+		else
+		{
+			i++;
+		}
+
+		if (found)
+		{
+			return &m_players[i];
+		}
+		else
+		{
+			return nullptr;
+		}
+	}
+}
