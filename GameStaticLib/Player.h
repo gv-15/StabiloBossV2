@@ -16,5 +16,8 @@ public:
 	int GetCoins();
 	int GetPlayerX();
 	int GetPLayerY();
+	void SetPlayerX(int i);
+	void SetPLayerY(int i);
+
 };
 

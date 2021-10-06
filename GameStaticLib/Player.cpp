@@ -34,3 +34,11 @@ int Player::GetPLayerY()
 {
 	return m_y;
 }
+void Player::SetPlayerX(int i)
+{
+	m_x = i;
+}
+void Player::SetPLayerY(int i)
+{
+	m_y = i;
+}
