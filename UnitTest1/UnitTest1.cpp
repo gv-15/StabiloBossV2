@@ -15,7 +15,7 @@ namespace UnitTest1
 		TEST_METHOD(Load)
 		{
 			string nameFile = "test.txt";
-			string testText = "texto de prueba";
+			string testText = "textodeprueba";
 			World world = World(nameFile);
 			Assert::AreEqual(world.Load(nameFile), testText);
 			
