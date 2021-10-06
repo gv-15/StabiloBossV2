@@ -40,5 +40,13 @@ public:
 
 	void MoveLeft();
 
+	void MoveUp1();
+
+	void MoveDown1();
+
+	void MoveRight1();
+
+	void MoveLeft1();
+
 	
 };

@@ -51,6 +51,25 @@ void GameLogic::ProcessInput()
 			m_pWorld->MoveRight();
 			break;
 			
+		case 'o':
+			//Move up 
+			m_pWorld->MoveUp1();
+			break;
+
+		case 'l':
+			//Move down
+			m_pWorld->MoveDown1();
+			break;
+
+		case 'k':
+			//Move left
+			m_pWorld->MoveLeft1();
+			break;
+
+		case 'ñ':
+			//Move right
+			m_pWorld->MoveRight1();
+			break;
 		case 27:
 			//'Esc' key pressed. Exit the game
 			exit(0);

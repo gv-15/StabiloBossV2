@@ -95,3 +95,27 @@ void World::MoveLeft()
 
 
 }
+
+void World::MoveUp1()
+{
+
+
+}
+
+void World::MoveDown1()
+{
+
+
+}
+
+void World::MoveRight1()
+{
+
+
+}
+
+void World::MoveLeft1()
+{
+
+
+}
