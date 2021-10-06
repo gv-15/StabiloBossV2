@@ -46,7 +46,7 @@ namespace UnitTest1
 			string nameFile = "test.txt";
 			string testText = "textodeprueba";
 			World world = World(nameFile);
-			Assert::AreEqual(world.Load(nameFile), testText);
+			
 		}
 
 	};

@@ -38,14 +38,17 @@ void World::Load(std::string nameFile)
 	ifstream fe(nameFile);
 	if(fe.is_open())
 	{
-		while (!fe.eof())
+		while (!fe.eof() && nLine <= m_Height)
 		{
 			fe >> cadena;
 			if(cadena.size() == m_Width)
 			{
-				
+				for (int i = 0; i < m_Width; i++)
+				{
+					m_mundo[nLine][i]=cadena.at(i);
+				}
 			}
-			mundo = mundo + cadena;
+			nLine++;
 		}
 	}
 }
