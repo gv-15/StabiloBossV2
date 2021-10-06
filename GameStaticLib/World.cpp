@@ -18,6 +18,8 @@ World::World(std::string nameFile)
 {
 	
 
+
+	vector < vector<char>> m_mundo(this->GetHeight(), vector<char>(this->GetWidth(), 0));
 }
 
 
