@@ -4,9 +4,11 @@
 
 
 
-Player::Player(int id)
+Player::Player(int id, int x , int y)
 {
 	m_id = id;
+	m_x = x;
+	m_y = y;
 }
 
 int Player::GetId() 
@@ -22,4 +24,13 @@ int Player::GetCoins()
 void Player::AddCoin()
 {
 	m_coins = m_coins + 1;
+}
+
+int Player::GetPlayerX()
+{
+	return m_x;
+}
+int Player::GetPLayerY()
+{
+	return m_y;
 }
