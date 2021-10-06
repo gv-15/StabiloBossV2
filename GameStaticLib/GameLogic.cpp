@@ -23,7 +23,7 @@ void GameLogic::ProcessInput()
 {
 
 	if (!System::IsKeyPressed())
-		return; //no keyboard event to be processed
+		return; //No keyboard event to be processed
 
 
 	while (System::IsKeyPressed())
@@ -32,9 +32,25 @@ void GameLogic::ProcessInput()
 		switch (c)
 		{
 		case 'w':
-			//...
+			//Move up 
+			m_pWorld->MoveUp();
 			break;
-			//...
+			
+		case 's':
+			//Move down
+			m_pWorld->MoveDown();
+			break;
+
+		case 'a':
+			//Move left
+			m_pWorld->MoveLeft();
+			break;
+			
+		case 'd':
+			//Move right
+			m_pWorld->MoveRight();
+			break;
+			
 		case 27:
 			//'Esc' key pressed. Exit the game
 			exit(0);
@@ -44,7 +60,7 @@ void GameLogic::ProcessInput()
 
 bool GameLogic::IsGameEnded()
 {
-	//TODO: when will the game end? --> The game will end when the coins in map are 0
+	//When will the game end? --> The game will end when the coins in map are 0
 	if (m_pWorld->GetNumCoinsLeft() == 0)
 	{
 		return true;

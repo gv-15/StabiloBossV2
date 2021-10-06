@@ -11,6 +11,7 @@ class World
 	vector <Player> m_players;
 	int m_Height = 0;
 	int m_Width = 0;
+	vector < vector<char>> m_mundo;
 public:
 
 	World(string nameFile);
@@ -31,4 +32,14 @@ public:
 	int GetHeight();
 
 	int GetWidth();
+
+	vector<vector<char>> getWorld();
+
+	void MoveUp();
+
+	void MoveDown();
+
+	void MoveRight();
+
+	void MoveLeft();
 };
