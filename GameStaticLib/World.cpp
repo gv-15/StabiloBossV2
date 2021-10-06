@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <istream>
 #include <fstream>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -21,6 +23,20 @@ World::World(std::string nameFile)
 World::~World()
 {
 	//Destructor
+}
+
+string World::Load(std::string nameFile)
+{
+	string cadena;
+	ifstream fe(nameFile);
+	if(fe.is_open())
+	{
+		while (!fe.eof())
+		{
+			fe >> cadena;
+		}
+	}
+	return cadena;
 }
 
 

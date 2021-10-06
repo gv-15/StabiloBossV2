@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include "World.h"
-#include "GameLogic.h"
+#include "../GameStaticLib/World.h"
+#include "../GameStaticLib/GameLogic.h"
 
 
 int main()

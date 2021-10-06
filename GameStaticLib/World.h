@@ -13,6 +13,8 @@ public:
 	
 	void Draw();
 
+	string Load(string nameFile);
+
 	//Theses are only suggestions...
 	int GetNumPlayers();
 	Player* GetPlayer(int id);
