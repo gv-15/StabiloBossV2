@@ -28,18 +28,24 @@ World::~World()
 	//Destructor
 }
 
-string World::Load(std::string nameFile)
+void World::Load(std::string nameFile)
 {
-	string cadena;
+	int nLine = 1;
+	vector<vector<char>> resultado;
+	string cadena, mundo;
 	ifstream fe(nameFile);
 	if(fe.is_open())
 	{
 		while (!fe.eof())
 		{
 			fe >> cadena;
+			if(cadena.size() == m_Width)
+			{
+				
+			}
+			mundo = mundo + cadena;
 		}
 	}
-	return cadena;
 }
 
 

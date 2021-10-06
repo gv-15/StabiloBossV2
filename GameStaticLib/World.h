@@ -19,7 +19,7 @@ public:
 	
 	void Draw();
 
-	string Load(string nameFile);
+	void Load(string nameFile);
 
 	//Theses are only suggestions...
 	int GetNumPlayers();

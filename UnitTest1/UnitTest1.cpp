@@ -11,7 +11,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace UnitTest1
 {
 	TEST_CLASS(TestPlayer)
-	TEST_CLASS(WorldGeneration)
 	{
 	public:
 		
@@ -29,18 +28,25 @@ namespace UnitTest1
 		}
 
 		TEST_METHOD(TestAddCoins)
-		TEST_METHOD(Load)
 		{
 			Player player = Player(1);
 			player.AddCoin();
 			player.AddCoin();
 			player.AddCoin();
 			Assert::IsTrue(player.GetCoins() == 3);
+			
+			
+		}
+
+	};
+	TEST_CLASS(WorldGeneration)
+	{
+		TEST_METHOD(Load)
+		{
 			string nameFile = "test.txt";
 			string testText = "textodeprueba";
 			World world = World(nameFile);
 			Assert::AreEqual(world.Load(nameFile), testText);
-			
 		}
 
 	};
