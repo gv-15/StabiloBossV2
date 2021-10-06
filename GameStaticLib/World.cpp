@@ -33,23 +33,21 @@ World::~World()
 void World::Load(std::string nameFile)
 {
 	int nLine = 1;
-	vector<vector<char>> resultado;
-	string cadena, mundo;
+	char buffer[256];
 	ifstream fe(nameFile);
 	if(fe.is_open())
 	{
-		while (!fe.eof() && nLine <= m_Height)
+		while (!fe.eof())
 		{
-			fe >> cadena;
-			if(cadena.size() == m_Width)
+			fe.getline(buffer,256);
+			m_Width = sizeof(buffer);
+			for (int i = 0; i < m_Width; i++)
 			{
-				for (int i = 0; i < m_Width; i++)
-				{
-					m_mundo[nLine][i]=cadena.at(i);
-				}
+				m_mundo[nLine][i]=buffer[i];
 			}
 			nLine++;
 		}
+		m_Height = nLine;
 	}
 }
 
