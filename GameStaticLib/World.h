@@ -9,8 +9,8 @@ class World
 {
 	int m_WorldCoins = 0;
 	vector <Player> m_players;
-	int m_Height = 0;
-	int m_Width = 0;
+	int m_Height = 0; //tablero
+	int m_Width = 0; //tablero
 	vector < vector<char>> m_mundo;
 public:
 
@@ -39,4 +39,5 @@ public:
 	void MoveRight();
 
 	void MoveLeft();
+
 };

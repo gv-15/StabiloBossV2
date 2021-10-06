@@ -29,15 +29,40 @@ World::~World()
 
 void World::Draw()
 {
-	System::Clear();
+	m_mundo = vector<vector<char>>(4);
+	//System::Clear();
 
 	//TODO: -write the points each player has
-	
+
 	//TODO: -draw the maze
 
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
-	
+
+	//vector<vector<char>> m_mundo(this->GetHeight(), vector<char>(this->GetWidth(),0));
+
+	for (int i = 0;i < 4;i++)
+	{
+		m_mundo[i] = vector<char>(4);
+	}
+
+	m_mundo[0][0] = '#';
+	m_mundo[0][1] = 'I';
+	m_mundo[0][2] = '0';
+	m_mundo[1][0] = 'Y';
+	m_mundo[1][1] = '#';
+	m_mundo[1][2] = '0';
+
+
+	for (int i = 0; i < m_mundo.size(); i++)
+	{
+		for (int j = 0; j < m_mundo.size(); j++)
+		{
+			cout << m_mundo[i][j];
+			
+		}
+		
+	}
 }
 
 int World::GetNumPlayers()
