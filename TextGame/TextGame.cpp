@@ -1,6 +1,3 @@
-// TextGame.cpp : Main program entry point
-//
-
 #include "stdafx.h"
 #include "../GameStaticLib/World.h"
 #include "../GameStaticLib/GameLogic.h"

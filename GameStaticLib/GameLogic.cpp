@@ -44,6 +44,13 @@ void GameLogic::ProcessInput()
 
 bool GameLogic::IsGameEnded()
 {
-	//TODO: when will the game end?
-	return false;
+	//TODO: when will the game end? --> The game will end when the coins in map are 0
+	if (m_pWorld->GetNumCoinsLeft() == 0)
+	{
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
 }

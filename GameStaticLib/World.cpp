@@ -15,8 +15,11 @@
 
 using namespace std;
 
+
 World::World(std::string nameFile)
 {
+	
+
 }
 
 
@@ -53,3 +56,27 @@ void World::Draw()
 	
 }
 
+int World::GetNumPlayers()
+{
+	return m_players.size();
+}
+
+int World::GetNumCoinsLeft()
+{
+	return m_WorldCoins;
+}
+
+Player* World::GetPlayer(int id)
+{
+	return &m_players[id];
+}
+
+int World::GetHeight()
+{
+	return m_Height;
+}
+
+int World::GetWidth()
+{
+	return m_Width;
+}
