@@ -46,6 +46,7 @@ namespace UnitTest1
 			string nameFile = "test.txt";
 			string testText = "textodeprueba";
 			World world = World(nameFile);
+			world.Load();
 			
 		}
 

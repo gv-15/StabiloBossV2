@@ -16,10 +16,10 @@
 using namespace std;
 
 
-World::World(std::string nameFile)
+World::World(std::string pNameFile)
 {
 	
-
+	namefile = pNameFile;
 
 	vector < vector<char>> m_mundo(this->GetHeight(), vector<char>(this->GetWidth(), 0));
 }
@@ -30,11 +30,11 @@ World::~World()
 	//Destructor
 }
 
-void World::Load(std::string nameFile)
+void World::Load()
 {
 	int nLine = 1;
 	char buffer[256];
-	ifstream fe(nameFile);
+	ifstream fe(namefile);
 	if(fe.is_open())
 	{
 		while (!fe.eof())

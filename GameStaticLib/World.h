@@ -7,6 +7,7 @@ using namespace std;
 
 class World
 {
+	string namefile;
 	int m_WorldCoins = 0;
 	vector <Player> m_players;
 	int m_Height = 0;
@@ -20,7 +21,7 @@ public:
 	
 	void Draw();
 
-	void Load(string nameFile);
+	void Load();
 
 	//Theses are only suggestions...
 	int GetNumPlayers();
