@@ -2,6 +2,9 @@
 #include "CppUnitTest.h"
 #include "../GameStaticLib/Player.h"
 #include "../GameStaticLib/Player.cpp"
+#include "../GameStaticLib/World.h"
+#include <iostream>
+using namespace std;
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -31,6 +34,19 @@ namespace UnitTest1
 			player.AddCoin();
 			player.AddCoin();
 			Assert::IsTrue(player.GetCoins() == 3);
+			
+			
+		}
+
+	};
+	TEST_CLASS(WorldGeneration)
+	{
+		TEST_METHOD(Load)
+		{
+			string nameFile = "test.txt";
+			string testText = "textodeprueba";
+			World world = World(nameFile);
+			
 		}
 
 	};

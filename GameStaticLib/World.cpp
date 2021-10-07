@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <istream>
 #include <fstream>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -26,6 +28,27 @@ World::World(std::string nameFile)
 World::~World()
 {
 	//Destructor
+}
+
+void World::Load(std::string nameFile)
+{
+	int nLine = 1;
+	char buffer[256];
+	ifstream fe(nameFile);
+	if(fe.is_open())
+	{
+		while (!fe.eof())
+		{
+			fe.getline(buffer,256);
+			m_Width = sizeof(buffer);
+			for (int i = 0; i < m_Width; i++)
+			{
+				m_mundo[nLine][i]=buffer[i];
+			}
+			nLine++;
+		}
+		m_Height = nLine;
+	}
 }
 
 
