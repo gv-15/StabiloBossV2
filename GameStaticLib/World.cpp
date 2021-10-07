@@ -40,10 +40,30 @@ void World::Load(std::string nameFile)
 		while (!fe.eof())
 		{
 			fe.getline(buffer,256);
-			m_Width = sizeof(buffer);
+			m_Width = fe.gcount();
 			for (int i = 0; i < m_Width; i++)
 			{
 				m_mundo[nLine][i]=buffer[i];
+
+				if(buffer[i] == 'Y' || buffer[i] == 'I')
+				{
+					if(buffer[i] == 'I')
+					{
+						Player p = Player(0, i, nLine);
+						m_players.push_back(p);
+					}
+
+					if (buffer[i] == 'Y')
+					{
+						Player p = Player(1, i, nLine);
+						m_players.push_back(p);
+					}
+				}
+				
+				if(buffer[i] == '0')
+				{
+					m_WorldCoins++;
+				}
 			}
 			nLine++;
 		}
