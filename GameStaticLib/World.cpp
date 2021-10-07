@@ -72,49 +72,49 @@ vector<vector<char>> World::getWorld()
 	return m_mundo;
 }
 
-void World::MoveUp()
+void World::MoveUp(int i)
 {
 	
 
 }
 
-void World::MoveDown()
+void World::MoveDown(int i)
 {
 
 
 }
 
-void World::MoveRight()
+void World::MoveRight(int i)
 {
 
 
 }
 
-void World::MoveLeft()
+void World::MoveLeft(int i)
 {
 
 
 }
 
-void World::MoveUp1()
+void World::MoveUp1(int i)
 {
 
 
 }
 
-void World::MoveDown1()
+void World::MoveDown1(int i)
 {
 
 
 }
 
-void World::MoveRight1()
+void World::MoveRight1(int i)
 {
 
 
 }
 
-void World::MoveLeft1()
+void World::MoveLeft1(int i)
 {
 
 

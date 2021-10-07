@@ -32,21 +32,21 @@ public:
 
 	vector<vector<char>> getWorld();
 
-	void MoveUp();
+	void MoveUp(int i);
 
-	void MoveDown();
+	void MoveDown(int i);
 
-	void MoveRight();
+	void MoveRight(int i);
 
-	void MoveLeft();
+	void MoveLeft(int i);
 
-	void MoveUp1();
+	void MoveUp1(int i);
 
-	void MoveDown1();
+	void MoveDown1(int i);
 
-	void MoveRight1();
+	void MoveRight1(int i);
 
-	void MoveLeft1();
+	void MoveLeft1(int i);
 
 	Player* GetPlayerById(int id);
 

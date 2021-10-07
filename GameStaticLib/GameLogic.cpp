@@ -32,43 +32,43 @@ void GameLogic::ProcessInput()
 		switch (c)
 		{
 		case 'w':
-			//Move up 
-			m_pWorld->MoveUp();
+			//Move up player 1
+			m_pWorld->MoveUp(0);
 			break;
 			
 		case 's':
-			//Move down
-			m_pWorld->MoveDown();
+			//Move down player 1
+			m_pWorld->MoveDown(0);
 			break;
 
 		case 'a':
-			//Move left
-			m_pWorld->MoveLeft();
+			//Move left player 1
+			m_pWorld->MoveLeft(0);
 			break;
 			
 		case 'd':
-			//Move right
-			m_pWorld->MoveRight();
+			//Move right player 1
+			m_pWorld->MoveRight(0);
 			break;
 			
 		case 'o':
-			//Move up 
-			m_pWorld->MoveUp1();
+			//Move up player 2
+			m_pWorld->MoveUp1(1);
 			break;
 
 		case 'l':
-			//Move down
-			m_pWorld->MoveDown1();
+			//Move down player 2
+			m_pWorld->MoveDown1(1);
 			break;
 
 		case 'k':
-			//Move left
-			m_pWorld->MoveLeft1();
+			//Move left player 2
+			m_pWorld->MoveLeft1(1);
 			break;
 
 		case 'ñ':
-			//Move right
-			m_pWorld->MoveRight1();
+			//Move right player 2
+			m_pWorld->MoveRight1(1);
 			break;
 		case 27:
 			//'Esc' key pressed. Exit the game
