@@ -16,20 +16,20 @@ namespace UnitTest1
 		
 		TEST_METHOD(TestGetId)
 		{
-			Player player = Player(2);
+			Player player = Player(2,2,2);
 			Assert::IsTrue(player.GetId() == 2);
 		}
 
 		TEST_METHOD(TestGetCoins)
 		{
-			Player player = Player(1);
+			Player player = Player(1,2,2);
 			player.AddCoin();
 			Assert::IsTrue(player.GetCoins() == 1);
 		}
 
 		TEST_METHOD(TestAddCoins)
 		{
-			Player player = Player(1);
+			Player player = Player(1,2,2);
 			player.AddCoin();
 			player.AddCoin();
 			player.AddCoin();
