@@ -20,6 +20,9 @@ public:
 	
 	void Draw();
 
+	void Load(string nameFile);
+
+	//Theses are only suggestions...
 	int GetNumPlayers();
 
 	Player* GetPlayer(int id);
