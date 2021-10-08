@@ -16,7 +16,7 @@ using namespace std;
 
 World::World(std::string nameFile)
 {
-	
+
 
 }
 
@@ -30,6 +30,7 @@ World::~World()
 void World::Draw()
 {
 	m_mundo = vector<vector<char>>(4);
+
 	//System::Clear();
 
 	//TODO: -write the points each player has
@@ -46,19 +47,41 @@ void World::Draw()
 		m_mundo[i] = vector<char>(4);
 	}
 
+	char espacio = ' ';
+	char caracter = ' ';
+
 	m_mundo[0][0] = '#';
 	m_mundo[0][1] = 'I';
-	m_mundo[0][2] = '0';
-	m_mundo[1][0] = 'Y';
-	m_mundo[1][1] = '#';
-	m_mundo[1][2] = '0';
+	m_mundo[0][2] = '#';
+	m_mundo[0][3] = ' ';
+	m_mundo[1][0] = '#';
+	m_mundo[1][1] = 'Y';
+	m_mundo[1][2] = '#';
+	m_mundo[1][3] = ' ';
+	m_mundo[2][0] = '#';
+	m_mundo[2][1] = '0';
+	m_mundo[2][2] = '#';
+	m_mundo[2][3] = ' ';
 
 
 	for (int i = 0; i < m_mundo.size(); i++)
 	{
 		for (int j = 0; j < m_mundo.size(); j++)
 		{
-			cout << m_mundo[i][j];
+			caracter = m_mundo[i][j];
+
+			if (caracter == espacio)
+			{
+				cout << '\n';
+				
+
+			}	
+
+			else 
+			{
+				cout << m_mundo[i][j];
+			}
+			
 			
 		}
 		
