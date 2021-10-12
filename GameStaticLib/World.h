@@ -7,10 +7,11 @@ using namespace std;
 
 class World
 {
+	string namefile;
 	int m_WorldCoins = 0;
 	vector <Player> m_players;
-	int m_Height = 0; //tablero
-	int m_Width = 0; //tablero
+	int m_Height = 0;
+	int m_Width = 0;
 	vector < vector<char>> m_mundo;
 public:
 
@@ -20,6 +21,9 @@ public:
 	
 	void Draw();
 
+	void Load();
+
+	//Theses are only suggestions...
 	int GetNumPlayers();
 
 	Player* GetPlayer(int id);
@@ -32,12 +36,23 @@ public:
 
 	vector<vector<char>> getWorld();
 
-	void MoveUp();
+	void MoveUp(int i);
 
-	void MoveDown();
+	void MoveDown(int i);
 
-	void MoveRight();
+	void MoveRight(int i);
 
-	void MoveLeft();
+	void MoveLeft(int i);
 
+	void MoveUp1(int i);
+
+	void MoveDown1(int i);
+
+	void MoveRight1(int i);
+
+	void MoveLeft1(int i);
+
+	Player* GetPlayerById(int id);
+
+	
 };
