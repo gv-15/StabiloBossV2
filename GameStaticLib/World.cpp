@@ -42,6 +42,8 @@ void World::Draw()
 
 	//vector<vector<char>> m_mundo(this->GetHeight(), vector<char>(this->GetWidth(),0));
 
+	
+
 	for (int i = 0;i < 4;i++)
 	{
 		m_mundo[i] = vector<char>(4);
