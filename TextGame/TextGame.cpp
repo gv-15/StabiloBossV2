@@ -5,10 +5,11 @@
 
 int main()
 {
-	World world("file.csv");
+	World world("C:/Users/esanj/source/repos/TheStabiloBoss/prueba.txt");
 
 	GameLogic gameLogic(&world);
 
+	world.Load();
 	do
 	{
 		world.Draw();

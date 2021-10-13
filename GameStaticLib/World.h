@@ -12,7 +12,7 @@ class World
 	vector <Player> m_players;
 	int m_Height = 0;
 	int m_Width = 0;
-	vector < vector<char>> m_mundo;
+	vector < vector<char>> m_mundo = vector<vector<char>>(0);
 public:
 
 	World(string nameFile);
