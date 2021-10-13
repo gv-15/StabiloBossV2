@@ -371,15 +371,15 @@ Player* World::GetPlayerById(int id)
 		else
 		{
 			i++;
-		}
+		}	
+	}
 
-		if (found)
-		{
-			return &m_players[i];
-		}
-		else
-		{
-			return nullptr;
-		}
+	if (found)
+	{
+		return &m_players[i];
+	}
+	else
+	{
+		return nullptr;
 	}
 }
