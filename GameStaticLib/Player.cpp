@@ -38,7 +38,7 @@ void Player::SetPlayerX(int i)
 {
 	m_x = i;
 }
-void Player::SetPLayerY(int i)
+void Player::SetPlayerY(int i)
 {
 	m_y = i;
 }

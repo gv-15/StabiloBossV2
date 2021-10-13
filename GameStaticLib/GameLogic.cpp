@@ -51,22 +51,22 @@ void GameLogic::ProcessInput()
 			m_pWorld->MoveRight(0);
 			break;
 			
-		case 'o':
+		case 72:
 			//Move up player 2
 			m_pWorld->MoveUp1(1);
 			break;
 
-		case 'l':
+		case 80:
 			//Move down player 2
 			m_pWorld->MoveDown1(1);
 			break;
 
-		case 'k':
+		case 75:
 			//Move left player 2
 			m_pWorld->MoveLeft1(1);
 			break;
 
-		case 'ñ':
+		case 77:
 			//Move right player 2
 			m_pWorld->MoveRight1(1);
 			break;

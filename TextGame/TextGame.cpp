@@ -5,7 +5,7 @@
 
 int main()
 {
-	World world("C:/Users/esanj/source/repos/TheStabiloBoss/prueba.txt");
+	World world("../game.txt");
 
 	GameLogic gameLogic(&world);
 

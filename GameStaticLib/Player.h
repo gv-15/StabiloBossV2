@@ -17,7 +17,7 @@ public:
 	int GetPlayerX();
 	int GetPLayerY();
 	void SetPlayerX(int i);
-	void SetPLayerY(int i);
+	void SetPlayerY(int i);
 
 };
 

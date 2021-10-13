@@ -57,13 +57,13 @@ void World::Load()
 				{
 					if(buffer[i] == 'I')
 					{
-						Player p = Player(0, i, nLine);
+						Player p = Player(1, i, nLine);
 						m_players.push_back(p);
 					}
 
 					if (buffer[i] == 'Y')
 					{
-						Player p = Player(1, i, nLine);
+						Player p = Player(0, i, nLine);
 						m_players.push_back(p);
 					}
 				}
@@ -75,7 +75,8 @@ void World::Load()
 			}
 			nLine++;
 		}
-		//m_mundo[nLine-1].push_back(buffer[m_Width]);
+		
+
 		m_Height = nLine; //sumatorio de líneas que ha leído
 	}
 }
@@ -93,7 +94,7 @@ void World::Draw()
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
 
-	//vector<vector<char>> m_mundo(this->GetHeight(), vector<char>(this->GetWidth(),0));
+	
 
 	char espacio = '\0';
 	char caracter = ' ';
@@ -104,9 +105,16 @@ void World::Draw()
 		for (int j = 0; j < m_Width; j++)
 		{
 			caracter = m_mundo[i][j];
+			if (caracter == 'T')
+			{
+				cout << ' ';
 
+			}
+			else
+			{
+				cout << m_mundo[i][j];
+			}
 			
-			cout << m_mundo[i][j];
 			
 
 		}
@@ -151,9 +159,10 @@ void World::MoveUp(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPLayerY(y - 1);
+	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{ 
+	GetPlayerById(i)->SetPlayerY(y - 1);
 	m_mundo[y][x] = 'T';
 	m_mundo[y-1][x] = 'Y';
 	}
@@ -163,6 +172,7 @@ void World::MoveUp(int i)
 	m_mundo[y - 1][x] = 'Y';
 	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
+	GetPlayerById(i)->SetPlayerY(y - 1);
 	}
 
 }
@@ -171,10 +181,10 @@ void World::MoveDown(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPLayerY(y + 1);
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
+		GetPlayerById(i)->SetPlayerY(y + 1);
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
 	}
@@ -184,6 +194,7 @@ void World::MoveDown(int i)
 		m_mundo[y + 1][x] = 'Y';
 		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
+		GetPlayerById(i)->SetPlayerY(y + 1);
 	}
 }
 
@@ -191,10 +202,10 @@ void World::MoveRight(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPlayerX(x + 1);
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
+		GetPlayerById(i)->SetPlayerX(x + 1);
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
 	}
@@ -204,6 +215,7 @@ void World::MoveRight(int i)
 		m_mundo[y][x + 1] = 'Y';
 		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
+		GetPlayerById(i)->SetPlayerX(x + 1);
 	}
 }
 
@@ -211,10 +223,10 @@ void World::MoveLeft(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPlayerX(x - 1);
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
+		GetPlayerById(i)->SetPlayerX(x - 1);
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
 	}
@@ -224,6 +236,7 @@ void World::MoveLeft(int i)
 		m_mundo[y][x - 1] = 'Y';
 		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
+		GetPlayerById(i)->SetPlayerX(x - 1);
 	}
 }
 
@@ -231,12 +244,12 @@ void World::MoveUp1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPLayerY(y - 1);
 
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y - 1][x] = 'I';
+		GetPlayerById(i)->SetPlayerY(y - 1);
 	}
 	else if (m_mundo[y][x] != '0')
 	{
@@ -244,6 +257,7 @@ void World::MoveUp1(int i)
 		m_mundo[y - 1][x] = 'I';
 		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
+		GetPlayerById(i)->SetPlayerY(y - 1);
 	}
 }
 
@@ -251,12 +265,12 @@ void World::MoveDown1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPLayerY(y + 1);
 
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'I';
+		GetPlayerById(i)->SetPlayerY(y + 1);
 	}
 	else if (m_mundo[y][x] != '0')
 	{
@@ -264,6 +278,7 @@ void World::MoveDown1(int i)
 		m_mundo[y + 1][x] = 'I';
 		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
+		GetPlayerById(i)->SetPlayerY(y + 1);
 	}
 }
 
@@ -271,12 +286,12 @@ void World::MoveRight1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPlayerX(x + 1);
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'I';
+		GetPlayerById(i)->SetPlayerX(x + 1);
 	}
 	else if (m_mundo[y][x] != '0')
 	{
@@ -284,6 +299,7 @@ void World::MoveRight1(int i)
 	m_mundo[y][x + 1] = 'I';
 	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
+	GetPlayerById(i)->SetPlayerX(x + 1);
 	}
 }
 
@@ -291,12 +307,12 @@ void World::MoveLeft1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPLayerY();
-	GetPlayerById(i)->SetPlayerX(x - 1);
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'I';
+		GetPlayerById(i)->SetPlayerX(x - 1);
 	}
 	else if (m_mundo[y][x] != '0')
 	{
@@ -304,6 +320,7 @@ void World::MoveLeft1(int i)
 	m_mundo[y][x - 1] = 'I';
 	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
+	GetPlayerById(i)->SetPlayerX(x - 1);
 	}
 }
 
