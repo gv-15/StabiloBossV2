@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "../GameStaticLib/World.h"
 #include "../GameStaticLib/GameLogic.h"
-
+#include <thread>  
 
 int main()
 {
@@ -9,12 +9,18 @@ int main()
 
 	GameLogic gameLogic(&world);
 
-	world.Load();
+	
 	do
 	{
+		
+		world.Load();	
+		
 		world.Draw();
+		std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
 		gameLogic.ProcessInput();
+
+		
 	}
 	while (!gameLogic.IsGameEnded());
 

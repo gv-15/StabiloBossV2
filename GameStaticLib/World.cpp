@@ -84,7 +84,7 @@ void World::Load()
 void World::Draw()
 {
 	
-	//System::Clear();
+	System::Clear();
 
 	//TODO: -write the points each player has
 
