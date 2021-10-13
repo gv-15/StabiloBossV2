@@ -15,7 +15,7 @@ public:
 	void AddCoin();
 	int GetCoins();
 	int GetPlayerX();
-	int GetPLayerY();
+	int GetPlayerY();
 	void SetPlayerX(int i);
 	void SetPlayerY(int i);
 

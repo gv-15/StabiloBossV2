@@ -30,7 +30,7 @@ int Player::GetPlayerX()
 {
 	return m_x;
 }
-int Player::GetPLayerY()
+int Player::GetPlayerY()
 {
 	return m_y;
 }

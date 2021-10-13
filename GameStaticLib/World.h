@@ -23,7 +23,6 @@ public:
 
 	void Load();
 
-	//Theses are only suggestions...
 	int GetNumPlayers();
 
 	Player* GetPlayer(int id);

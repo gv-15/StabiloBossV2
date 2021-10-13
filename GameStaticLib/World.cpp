@@ -158,7 +158,7 @@ vector<vector<char>> World::getWorld()
 void World::MoveUp(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{ 
@@ -170,9 +170,13 @@ void World::MoveUp(int i)
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y - 1][x] = 'Y';
-	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
 	GetPlayerById(i)->SetPlayerY(y - 1);
+	m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 
 }
@@ -180,7 +184,7 @@ void World::MoveUp(int i)
 void World::MoveDown(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
@@ -192,16 +196,20 @@ void World::MoveDown(int i)
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
-		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerY(y + 1);
+		m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
 void World::MoveRight(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
@@ -213,16 +221,20 @@ void World::MoveRight(int i)
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
-		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerX(x + 1);
+		m_WorldCoins = m_WorldCoins - 1;
+	}
+	else 
+	{
+
 	}
 }
 
 void World::MoveLeft(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'I')
 	{
@@ -234,16 +246,20 @@ void World::MoveLeft(int i)
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
-		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerX(x - 1);
+		m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
 void World::MoveUp1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
@@ -255,16 +271,20 @@ void World::MoveUp1(int i)
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y - 1][x] = 'I';
-		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerY(y - 1);
+		m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
 void World::MoveDown1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
@@ -276,16 +296,20 @@ void World::MoveDown1(int i)
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'I';
-		m_WorldCoins = m_WorldCoins - 1;
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerY(y + 1);
+		m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
 void World::MoveRight1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
@@ -297,16 +321,20 @@ void World::MoveRight1(int i)
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x + 1] = 'I';
-	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
 	GetPlayerById(i)->SetPlayerX(x + 1);
+	m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
 void World::MoveLeft1(int i)
 {
 	int x = GetPlayerById(i)->GetPlayerX();
-	int y = GetPlayerById(i)->GetPLayerY();
+	int y = GetPlayerById(i)->GetPlayerY();
 	
 	if (m_mundo[y][x] != '#' || m_mundo[y][x] != 'Y')
 	{
@@ -318,9 +346,13 @@ void World::MoveLeft1(int i)
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x - 1] = 'I';
-	m_WorldCoins = m_WorldCoins - 1;
 	GetPlayerById(i)->AddCoin();
 	GetPlayerById(i)->SetPlayerX(x - 1);
+	m_WorldCoins = m_WorldCoins - 1;
+	}
+	else
+	{
+
 	}
 }
 
