@@ -10,6 +10,7 @@ int main()
 	GameLogic gameLogic(&world);
 
 	world.Load();
+
 	do
 	{
 		
