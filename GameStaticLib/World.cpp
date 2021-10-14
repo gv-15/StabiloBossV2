@@ -166,7 +166,7 @@ void World::MoveUp(int i)
 	m_mundo[y][x] = 'T';
 	m_mundo[y-1][x] = 'Y';
 	}
-	else if(m_mundo[y][x] != '0')
+	 if(m_mundo[y][x] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y - 1][x] = 'Y';
@@ -183,6 +183,7 @@ void World::MoveUp(int i)
 
 void World::MoveDown(int i)
 {
+
 	int x = GetPlayerById(i)->GetPlayerX();
 	int y = GetPlayerById(i)->GetPlayerY();
 	
@@ -192,13 +193,13 @@ void World::MoveDown(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
 	}
-	else if (m_mundo[y][x] != '0')
+	if (m_mundo[y][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerY(y + 1);
-		m_WorldCoins = m_WorldCoins - 1;
+		m_WorldCoins--;
 	}
 	else
 	{
@@ -217,7 +218,7 @@ void World::MoveRight(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
 	}
-	else if (m_mundo[y][x] != '0')
+ if (m_mundo[y][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
@@ -242,7 +243,7 @@ void World::MoveLeft(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
 	}
-	else if (m_mundo[y][x] != '0')
+	 if (m_mundo[y][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
@@ -267,7 +268,7 @@ void World::MoveUp1(int i)
 		m_mundo[y - 1][x] = 'I';
 		GetPlayerById(i)->SetPlayerY(y - 1);
 	}
-	else if (m_mundo[y][x] != '0')
+	if (m_mundo[y][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y - 1][x] = 'I';
@@ -292,7 +293,7 @@ void World::MoveDown1(int i)
 		m_mundo[y + 1][x] = 'I';
 		GetPlayerById(i)->SetPlayerY(y + 1);
 	}
-	else if (m_mundo[y][x] != '0')
+	if (m_mundo[y][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'I';
@@ -317,7 +318,7 @@ void World::MoveRight1(int i)
 		m_mundo[y][x + 1] = 'I';
 		GetPlayerById(i)->SetPlayerX(x + 1);
 	}
-	else if (m_mundo[y][x] != '0')
+	if (m_mundo[y][x] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x + 1] = 'I';
@@ -342,7 +343,7 @@ void World::MoveLeft1(int i)
 		m_mundo[y][x - 1] = 'I';
 		GetPlayerById(i)->SetPlayerX(x - 1);
 	}
-	else if (m_mundo[y][x] != '0')
+	if (m_mundo[y][x] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x - 1] = 'I';
