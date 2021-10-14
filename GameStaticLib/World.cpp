@@ -95,7 +95,7 @@ void World::Draw()
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
 
-	cout << "Jugador 1: " << m_players[0].GetCoins()  << "\t" << "Monedas restantes: " << m_WorldCoins - m_players[0].GetCoins() - m_players[1].GetCoins() 
+	cout << "Jugador 1: " << m_players[0].GetCoins()  << "\t" << "Monedas restantes: " << m_WorldCoins 
 		<<"\t" << "Jugador 2: " << m_players[1].GetCoins() << "\n\n";
 
 	char espacio = '\0';
