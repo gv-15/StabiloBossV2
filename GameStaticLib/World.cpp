@@ -99,6 +99,7 @@ void World::Draw()
 	ConsoleColor foregroundColorInterfez = Green;
 	System::SetTextColor(foregroundColorInterfez, backgroundColor);
 
+	
 	cout << "Jugador 1: " << m_players[0].GetCoins()  << "\t" << "Monedas restantes: " << m_WorldCoins 
 		<<"\t" << "Jugador 2: " << m_players[1].GetCoins() << "\n\n";
 

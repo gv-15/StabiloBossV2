@@ -13,5 +13,6 @@ public:
 
 	void ProcessInput();
 	bool IsGameEnded();
+	bool IsGameStarted();
 };
 

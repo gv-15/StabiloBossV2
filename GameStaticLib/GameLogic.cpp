@@ -84,8 +84,22 @@ bool GameLogic::IsGameEnded()
 	{
 		return true;
 	}
-	else 
+	else
 	{
 		return false;
 	}
 }
+	bool GameLogic::IsGameStarted()
+	{
+		char c = System::GetNextPressedKey();
+		if (c == ' ')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+		
+		
