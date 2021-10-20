@@ -32,7 +32,7 @@ int main()
 
 	GameLogic gameLogic(&world);
 
-	cout << "Bienvenido al Gran Laberinto de Stabillo, donde viviras una experiencia llena de color SUERTE!! " << "\n\n" << "Pulsa el boton espacio para empezar";
+	cout << "Bienvenido al Gran Laberinto de Stabillo, donde viviras una experiencia llena de color ¡¡SUERTE!! " << "\n\n" << "Pulsa el boton espacio para empezar";
 
 	while (!gameLogic.IsGameStarted());
 	System::Clear();
