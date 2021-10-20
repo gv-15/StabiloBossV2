@@ -95,18 +95,23 @@ void World::Draw()
 	//TODO: -write the time elapsed since the beginning
 	//		-set the proper position/color
 
+	ConsoleColor backgroundColor = Black;
+	ConsoleColor foregroundColorInterfez = Green;
+	System::SetTextColor(foregroundColorInterfez, backgroundColor);
+
 	cout << "Jugador 1: " << m_players[0].GetCoins()  << "\t" << "Monedas restantes: " << m_WorldCoins 
 		<<"\t" << "Jugador 2: " << m_players[1].GetCoins() << "\n\n";
 
 	char espacio = '\0';
-	char caracter = ' ';
-
+	char caracter = ' ';	
+	
 
 	for (int i = 0; i < m_Height; i++)
 	{
 		for (int j = 0; j < m_Width; j++)
 		{
 			caracter = m_mundo[i][j];
+			
 			if (caracter == 'T')
 			{
 				cout << ' ';
@@ -114,7 +119,34 @@ void World::Draw()
 			}
 			else
 			{
-				cout << m_mundo[i][j];
+				if (caracter == '0') {
+					ConsoleColor foregroundColorCoin = Yellow;
+					System::SetTextColor(foregroundColorCoin, backgroundColor);
+					cout << m_mundo[i][j];
+				}
+
+				if (caracter == 'Y') {
+					ConsoleColor foregroundColorP1 = Blue;
+					System::SetTextColor(foregroundColorP1, backgroundColor);
+					cout << m_mundo[i][j];
+				}
+
+				if (caracter == 'I') {
+					
+					ConsoleColor foregroundColorP2 = Red;
+					System::SetTextColor(foregroundColorP2, backgroundColor);
+					cout << m_mundo[i][j];
+				}
+
+				if (caracter == '#') {
+					
+					ConsoleColor foregroundColorPared = White;
+					System::SetTextColor(foregroundColorPared, backgroundColor);
+					cout << m_mundo[i][j];
+				}
+				
+
+				
 			}
 			
 			
