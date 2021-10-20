@@ -2,6 +2,7 @@
 #include "../GameStaticLib/World.h"
 #include "../GameStaticLib/GameLogic.h"
 #include <thread>  
+#include "../GameStaticLib/System.h"
 
 int main()
 {
@@ -12,11 +13,11 @@ int main()
 	world.Load();
 
 	do
-	{
-		
-		
+	{ 
+		System::SetCursorPos(0,0);
+		System::HideCursor(); 
+
 		world.Draw();
-		std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
 		gameLogic.ProcessInput();
 
