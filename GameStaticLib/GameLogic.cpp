@@ -102,15 +102,4 @@ bool GameLogic::IsGameEnded()
 		}
 	}
 		
-	bool GameLogic::IsGameStarted()
-	{
-		char c = System::GetNextPressedKey();
-		if (c == ' ')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	
