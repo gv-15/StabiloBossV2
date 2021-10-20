@@ -231,7 +231,7 @@ void World::MoveDown(int i)
 		m_mundo[y + 1][x] = 'Y';
 		GetPlayerById(i)->AddCoin();
 		GetPlayerById(i)->SetPlayerY(y + 1);
-		m_WorldCoins--;
+		m_WorldCoins = m_WorldCoins - 1;;
 	}
 	
 }

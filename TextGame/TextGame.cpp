@@ -3,6 +3,7 @@
 #include "../GameStaticLib/GameLogic.h"
 #include <thread>  
 #include "../GameStaticLib/System.h"
+#include <iostream>
 
 int main()
 {
@@ -30,6 +31,11 @@ int main()
 	World world(filename);
 
 	GameLogic gameLogic(&world);
+
+	cout << "Bienvenido al Gran Laberinto de Stabillo, donde viviras una experiencia llena de color ¡¡SUERTE!! " << "\n\n" << "Pulsa el boton espacio para empezar";
+
+	while (!gameLogic.IsGameStarted());
+	System::Clear();
 
 	world.Load();
 
