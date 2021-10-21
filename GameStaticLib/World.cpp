@@ -14,7 +14,9 @@
 
 
 using namespace std;
+using namespace chrono;
 
+Timer timer;
 
 World::World(std::string pNameFile)
 {
@@ -24,6 +26,7 @@ World::World(std::string pNameFile)
 
 	vector<vector<char>> m_mundo;
 
+	timer.Start();
 
 }
 
@@ -156,6 +159,9 @@ void World::Draw()
 
 		cout << '\n';
 	}
+
+	cout << "\n" << "Timer:" << timer.ElapsedSeconds();
+
 }
 	
 
