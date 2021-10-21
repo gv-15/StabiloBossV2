@@ -126,20 +126,20 @@ void World::Draw()
 					cout << m_mundo[i][j];
 				}
 
-				if (caracter == 'Y') {
+				else if (caracter == 'Y') {
 					ConsoleColor foregroundColorP1 = Blue;
 					System::SetTextColor(foregroundColorP1, backgroundColor);
 					cout << m_mundo[i][j];
 				}
 
-				if (caracter == 'I') {
+				else if (caracter == 'I') {
 					
 					ConsoleColor foregroundColorP2 = Red;
 					System::SetTextColor(foregroundColorP2, backgroundColor);
 					cout << m_mundo[i][j];
 				}
 
-				if (caracter == '#') {
+				else if (caracter == '#') {
 					
 					ConsoleColor foregroundColorPared = White;
 					System::SetTextColor(foregroundColorPared, backgroundColor);
@@ -201,7 +201,7 @@ void World::MoveUp(int i)
 	m_mundo[y][x] = 'T';
 	m_mundo[y-1][x] = 'Y';
 	}
-	 if(m_mundo[y-1][x] == '0')
+	else if(m_mundo[y-1][x] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y - 1][x] = 'Y';
@@ -225,7 +225,7 @@ void World::MoveDown(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
 	}
-	if (m_mundo[y+1][x] == '0')
+	else if (m_mundo[y+1][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'Y';
@@ -247,7 +247,7 @@ void World::MoveRight(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
 	}
- if (m_mundo[y][x+1] == '0')
+	else if (m_mundo[y][x+1] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x + 1] = 'Y';
@@ -269,7 +269,7 @@ void World::MoveLeft(int i)
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
 	}
-	 if (m_mundo[y][x-1] == '0')
+	else if (m_mundo[y][x-1] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y][x - 1] = 'Y';
@@ -291,7 +291,7 @@ void World::MoveUp1(int i)
 		m_mundo[y - 1][x] = 'I';
 		GetPlayerById(i)->SetPlayerY(y - 1);
 	}
-	if (m_mundo[y-1][x] == '0')
+	else if (m_mundo[y-1][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y - 1][x] = 'I';
@@ -313,7 +313,7 @@ void World::MoveDown1(int i)
 		m_mundo[y + 1][x] = 'I';
 		GetPlayerById(i)->SetPlayerY(y + 1);
 	}
-	if (m_mundo[y+1][x] == '0')
+	else if (m_mundo[y+1][x] == '0')
 	{
 		m_mundo[y][x] = 'T';
 		m_mundo[y + 1][x] = 'I';
@@ -335,7 +335,7 @@ void World::MoveRight1(int i)
 		m_mundo[y][x + 1] = 'I';
 		GetPlayerById(i)->SetPlayerX(x + 1);
 	}
-	if (m_mundo[y][x+1] == '0')
+	else if (m_mundo[y][x+1] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x + 1] = 'I';
@@ -357,7 +357,7 @@ void World::MoveLeft1(int i)
 		m_mundo[y][x - 1] = 'I';
 		GetPlayerById(i)->SetPlayerX(x - 1);
 	}
-	if (m_mundo[y][x-1] == '0')
+	else if (m_mundo[y][x-1] == '0')
 	{
 	m_mundo[y][x] = 'T';
 	m_mundo[y][x - 1] = 'I';
