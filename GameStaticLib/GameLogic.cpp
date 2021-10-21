@@ -76,6 +76,12 @@ void GameLogic::ProcessInput()
 		}
 	}
 }
+float roundoff(float value, unsigned char prec)
+{
+	float pow_10 = pow(10.0f, (float)prec);
+	return round(value * pow_10) / pow_10;
+}
+
 
 bool GameLogic::IsGameEnded()
 {
@@ -95,8 +101,9 @@ bool GameLogic::IsGameEnded()
 			Timer t;
 			m_pWorld->GetTimer().ElapsedSeconds(true);
 			t = m_pWorld->GetTimer();
+			auto rounded = roundoff(100.123456, 3);
 			cout << "\n";
-			cout << "\n\n" << " El jugador 1 ha ganado con " << mplayers[0].GetCoins() << " monedas" << " en" << t.ElapsedSeconds(true) << " seg" << "\n\n";
+			cout << "\n\n" << "El jugador 1 ha ganado con " << mplayers[0].GetCoins() << " monedas" << " en " << roundoff(t.ElapsedSeconds(true),2) << " seg." << "\n\n";
 			cout << "\n";
 		}
 		else {
@@ -107,7 +114,7 @@ bool GameLogic::IsGameEnded()
 			m_pWorld->GetTimer().ElapsedSeconds(true);
 			t = m_pWorld->GetTimer();
 			cout << "\n";
-			cout << "\n\n" " El jugador 2 ha ganado con " << mplayers[1].GetCoins() << " monedas" << " en " << t.ElapsedSeconds(true) <<  " seg"<< "\n\n";
+			cout << "\n\n" "El jugador 2 ha ganado con " << mplayers[1].GetCoins() << " monedas" << " en " << roundoff(t.ElapsedSeconds(true),2) <<  " seg."<< "\n\n";
 			cout << "\n";
 		}
 
