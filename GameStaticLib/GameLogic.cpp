@@ -82,12 +82,34 @@ bool GameLogic::IsGameEnded()
 	//When will the game end? --> The game will end when the coins in map are 0
 	if (m_pWorld->GetNumCoinsLeft() == 0)
 	{
+
+		vector <Player> mplayers;
+		Player* mplayer1;
+		Player* mplayer2;
+		mplayers = m_pWorld->GetmPlayers();
+
+		if (mplayers[0].GetCoins() > mplayers[1].GetCoins())
+		{
+			System::Clear();
+			m_pWorld->Draw();
+			cout << " El jugador 1 ha ganado con "  << mplayers[0].GetCoins() << " monedas";
+			cout << "\n";
+		}
+		else {
+
+			System::Clear();
+			m_pWorld->Draw();
+			cout << " El jugador 2 ha ganado con " << mplayers[1].GetCoins() << " monedas";
+			cout << "\n";
+		}
+
 		return true;
 	}
 	else
 	{
 		return false;
 	}
+
 }
 	bool GameLogic::IsGameStarted()
 	{

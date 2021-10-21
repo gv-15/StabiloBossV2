@@ -174,6 +174,16 @@ Player* World::GetPlayer(int id)
 {
 	return &m_players[id];
 }
+vector <Player> World::GetmPlayers()
+{
+	return m_players;
+}
+
+vector < vector<char>> World::GetmMundo()
+{
+	return m_mundo;
+}
+
 
 int World::GetHeight()
 {

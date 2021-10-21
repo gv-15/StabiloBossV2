@@ -27,6 +27,10 @@ public:
 
 	Player* GetPlayer(int id);
 
+	vector<Player> GetmPlayers();
+
+	vector<vector<char>> GetmMundo();
+
 	int GetNumCoinsLeft();
 
 	int GetHeight();
