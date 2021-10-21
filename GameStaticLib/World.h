@@ -61,5 +61,7 @@ public:
 
 	Player* GetPlayerById(int id);
 
+	float roundoff1(float value, unsigned char prec);
+
 	
 };

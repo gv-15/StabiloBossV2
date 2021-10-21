@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 #include "Player.h"
+#include "GameLogic.h"
 
 
 using namespace std;
@@ -103,7 +104,7 @@ void World::Draw()
 	System::SetTextColor(foregroundColorInterfez, backgroundColor);
 
 	
-	cout << "Jugador 1: " << m_players[0].GetCoins() << "\t" << "Monedas restantes: " << m_WorldCoins
+	cout << "Jugador 1: " << m_players[0].GetCoins() << "\t" << "Tiempo de juego:" << roundoff1(timer.ElapsedSeconds(), 2)
 		<<"\t" << "Jugador 2: " << m_players[1].GetCoins() << "\n\n";
 
 	char espacio = '\0';
@@ -160,11 +161,13 @@ void World::Draw()
 		cout << '\n';
 	}
 
-	
-	cout << "\n" << "Timer:" << timer.ElapsedSeconds();
-
 }
-	
+
+float World::roundoff1(float value, unsigned char prec)
+{
+	float pow_10 = pow(10.0f, (float)prec);
+	return round(value * pow_10) / pow_10;
+}
 
 
 int World::GetNumPlayers()
@@ -418,3 +421,5 @@ Player* World::GetPlayerById(int id)
 		return nullptr;
 	}
 }
+
+
