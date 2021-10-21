@@ -31,7 +31,7 @@ int main()
 	World world1(filename);
 	GameLogic gameLogic1(&world1);
 
-	cout << "Bienvenido al Gran Laberinto de Stabilo, donde viviras una experiencia llena de color ¡¡SUERTE!! " << "\n\n" << "                               Pulsa el boton espacio para empezar"; //El espacio es para que salga en medio
+	cout  << "Bienvenido al Gran Laberinto de Stabilo, donde viviras una experiencia llena de color ¡¡SUERTE!! " << "\n\n" << "                               Pulsa el boton espacio para empezar"; //El espacio es para que salga en medio
 
 	while (!gameLogic1.IsGameStarted());
 	System::Clear();
@@ -56,6 +56,21 @@ int main()
 	}
 	while (!gameLogic.IsGameEnded());
 
-    return 0;
+	cout << "\n"
+		 << "Pulsa el boton espacio para salir !!"
+	     << "\n"
+	    	<< "Pulsa cualquier otro boton para jugar de nuevo !!";
+	char c = System::GetNextPressedKey();
+	if (c == ' ')
+	{	
+		return 0;
+	}
+	else
+	{
+	System::Clear();
+    return main();
+	}
+
+	
 }
 

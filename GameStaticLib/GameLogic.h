@@ -14,5 +14,6 @@ public:
 	void ProcessInput();
 	bool IsGameEnded();
 	bool IsGameStarted();
+	void restart();
 };
 
