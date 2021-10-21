@@ -185,9 +185,15 @@ vector <Player> World::GetmPlayers()
 	return m_players;
 }
 
+
 vector < vector<char>> World::GetmMundo()
 {
 	return m_mundo;
+}
+
+Timer World::GetTimer() 
+{
+	return timer;
 }
 
 

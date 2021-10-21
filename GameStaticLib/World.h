@@ -31,6 +31,8 @@ public:
 
 	vector<vector<char>> GetmMundo();
 
+	Timer GetTimer();
+
 	int GetNumCoinsLeft();
 
 	int GetHeight();

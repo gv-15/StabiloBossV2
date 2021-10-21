@@ -92,6 +92,9 @@ bool GameLogic::IsGameEnded()
 		{
 			System::Clear();
 			m_pWorld->Draw();
+			Timer t;
+			m_pWorld->GetTimer().ElapsedSeconds(true);
+			t = m_pWorld->GetTimer();
 			cout << "\n";
 			cout << " El jugador 1 ha ganado con "  << mplayers[0].GetCoins() << " monedas";
 			cout << "\n";
@@ -100,8 +103,11 @@ bool GameLogic::IsGameEnded()
 
 			System::Clear();
 			m_pWorld->Draw();
+			Timer t;
+			m_pWorld->GetTimer().ElapsedSeconds(true);
+			t = m_pWorld->GetTimer();
 			cout << "\n";
-			cout << " El jugador 2 ha ganado con " << mplayers[1].GetCoins() << " monedas";
+			cout << " El jugador 2 ha ganado con " << mplayers[1].GetCoins() << " monedas" ;
 			cout << "\n";
 		}
 
