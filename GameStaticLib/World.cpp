@@ -154,7 +154,7 @@ void World::Draw()
 
 		}
 
-		cout << '\n';ç
+		cout << '\n';
 	}
 }
 	
