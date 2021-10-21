@@ -15,8 +15,8 @@
 
 using namespace std;
 using namespace chrono;
-
 Timer timer;
+
 
 World::World(std::string pNameFile)
 {
@@ -160,6 +160,7 @@ void World::Draw()
 		cout << '\n';
 	}
 
+	
 	cout << "\n" << "Timer:" << timer.ElapsedSeconds();
 
 }

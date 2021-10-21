@@ -12,6 +12,7 @@ class World
 	vector <Player> m_players;
 	int m_Height = 0;
 	int m_Width = 0;
+	Timer timer;
 	vector < vector<char>> m_mundo = vector<vector<char>>(0);
 public:
 
@@ -32,6 +33,7 @@ public:
 	vector<vector<char>> GetmMundo();
 
 	Timer GetTimer();
+
 
 	int GetNumCoinsLeft();
 
