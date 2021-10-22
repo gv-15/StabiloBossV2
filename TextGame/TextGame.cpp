@@ -12,11 +12,11 @@ int main()
 
 	srand(time(NULL));
 	
-	int rnd1= rand() % 15 + 1;
-	int rnd = 15;
+	int rnd= rand() % 15 + 1;
+	
 	if(rnd == 15)
 	{
-		filename = "../game15txt"; //falla
+		filename = "../game15.txt"; 
 	}
 	else if (rnd  == 14)
 	{
@@ -32,7 +32,7 @@ int main()
 	}
 	else if (rnd == 11)
 	{
-	filename = "../game11.txt"; //Falla
+	filename = "../game11.txt"; 
 	}
 	else if (rnd == 10)
 	{
@@ -40,7 +40,7 @@ int main()
 	}
 	else if (rnd == 9)
 	{
-		filename = "../game9.txt"; //Falla
+		filename = "../game9.txt"; 
 	}
     else if (rnd  == 8)
 	{
@@ -48,7 +48,7 @@ int main()
 	}
 	else if (rnd == 7)
 	{
-		filename = "../game7.txt"; //Falla
+		filename = "../game7.txt"; 
 	}
 	else if (rnd == 6)
 	{
@@ -108,7 +108,7 @@ int main()
 
 	cout << "\n"
 		 << "Pulsa el boton espacio para salir !!"
-	     << "\n"
+	     << "\n\n"
 	    	<< "Pulsa cualquier otro boton para jugar de nuevo !!";
 	char c = System::GetNextPressedKey();
 	if (c == ' ')
