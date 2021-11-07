@@ -27,8 +27,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "UnitTest1\Unit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameStaticLib", "GameStaticLib\GameStaticLib.vcxproj", "{16597822-E855-4A6C-A007-732174B26832}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pruebas", "Pruebas\Pruebas.vcxproj", "{3AEDD048-1814-489F-9ACF-F346C0A2C171}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -125,14 +123,6 @@ Global
 		{16597822-E855-4A6C-A007-732174B26832}.Release|x64.Build.0 = Release|x64
 		{16597822-E855-4A6C-A007-732174B26832}.Release|x86.ActiveCfg = Release|Win32
 		{16597822-E855-4A6C-A007-732174B26832}.Release|x86.Build.0 = Release|Win32
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Debug|x64.ActiveCfg = Debug|x64
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Debug|x64.Build.0 = Debug|x64
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Debug|x86.ActiveCfg = Debug|Win32
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Debug|x86.Build.0 = Debug|Win32
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Release|x64.ActiveCfg = Release|x64
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Release|x64.Build.0 = Release|x64
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Release|x86.ActiveCfg = Release|Win32
-		{3AEDD048-1814-489F-9ACF-F346C0A2C171}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
