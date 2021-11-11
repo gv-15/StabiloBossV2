@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include "Sprite.h"
 #include "TextureManager.h"
+#include "../3rd-party/SOIL/src/SOIL.h"
 
 
-Sprite::Sprite(string img)
+Sprite::Sprite(string img, double x, double y)
 {
-	//TODO
+	m_imageFilename = img;
+	m_x = x;
+	m_y = y;
 }
 
 
@@ -64,24 +67,40 @@ double Sprite::GetSize()
 
 void Sprite::Draw(double dt)
 {
-	//TODO:
 
 	//1. Pass the object's color to OpenGL
-
-
 	//2. Save the current transformation matrix
-
-	glPushMatrix();
-
 	//3. Set the transformation matrix of the quad using position, size and angle
-
-	//TODO
-
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-
-	//TODO
-
 	//5. Restore the transformation matrix
-
+	//gl.scale
+	
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glTranslatef(m_x, m_y, -1.0);
+	//glRotatef(45, 0, 0, 1);
+	glScaled(m_x, m_y, 0);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glBegin(GL_QUADS);
+	
+	//glColor3f(1, 0, 0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex2f(0.5, 0.5);
+	//glColor3f(0, 1, 0);
+	glTexCoord2f(1.0, 1.0);
+	glVertex2f(0.5, -0.5);
+	//glColor3f(1, 0, 1);
+	glTexCoord2f(0.0, 1.0);
+	glVertex2f(-0.5, -0.5);
+	//glColor3f(1, 1, 0);
+	glTexCoord2f(0.0, 0.0);
+	glVertex2f(-0.5, 0.5);
+	glEnd();
 	glPopMatrix();
+}
+
+void Sprite::initializeImage()
+{
+	 textureId = SOIL_load_OGL_texture("img/alien-01.png", 0, 0, 0);
 }

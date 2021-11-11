@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "World.h"
+#include "Sprite.h"
 
 Player::Player(string dirimg)
-:Sprite(dirimg)
+:Sprite(dirimg, m_posx, m_posy)
 {
 	score = 0;
 }

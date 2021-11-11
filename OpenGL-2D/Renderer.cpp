@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "Drawable.h"
 #include "Projectile.h"
+#include "Sprite.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "../3rd-party/glew-2.0.0/src/glew.h"
 #include <algorithm>
@@ -9,6 +10,7 @@
 #include <chrono>
 
 Renderer* Renderer::m_pRenderer = nullptr;
+Sprite sprite = Sprite("alien-01", 4, 4);
 
 Renderer::Renderer()
 {
@@ -38,6 +40,7 @@ void Renderer::Initialize(int argc, char** argv)
 	glutInitWindowSize(800, 800);
 	glutCreateWindow(argv[0]);
 	
+	sprite.initializeImage();
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);
 
@@ -104,7 +107,8 @@ void Renderer::DrawScene()
 
 	for (auto it = m_objects2D.begin(); it != m_objects2D.end();)
 	{
-		(*it)->draw(m_frameDuration);
+
+		(*it)->Draw(m_frameDuration);
 		it++;
 	}
 

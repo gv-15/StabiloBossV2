@@ -4,9 +4,11 @@
 #include <thread>  
 #include "../GameStaticLib/System.h"
 #include <iostream>
+#include "../OpenGL-2D/Sprite.h"
 
 int main()
 {
+	
 
 	string filename;
 

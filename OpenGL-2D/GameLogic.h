@@ -8,9 +8,9 @@ class GameLogic
 {
 	static GameLogic* m_pInstance;
 	Renderer* m_pRenderer;
-
-	Player* player2;
-	Player* player1;
+	 	
+	Player* player2 = &Player("alien-01");
+	Player* player1 = &Player("alien-02");
 
 	static void __processKeyboard(unsigned char key, int x, int y);
 	static void __processUpKeyboard(unsigned char key, int x, int y);

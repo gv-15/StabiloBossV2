@@ -15,12 +15,20 @@ protected:
 
 	double m_angle= 0.0; //rotation angle
 
-	string m_imageFilename = nullptr; //Path to the file where the texture is
+	string m_imageFilename = ""; //Path to the file where the texture is
+	
+	int m_posx = 0;
+	
+	int m_posy = 0;
+
+	int textureId = 0;
+	
+	
 
 public:
-	Sprite(string img);
+	Sprite(string img, double x, double y);
 	~Sprite();
-
+	void initializeImage();
 	virtual void Draw(double dt);
 	void SetColor(float r, float g, float b);
 	void SetPosition(double x, double y);

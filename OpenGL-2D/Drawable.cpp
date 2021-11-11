@@ -4,7 +4,8 @@
 string Drawable::GetName()
 {
 	//TODO
-	return nullptr;
+	//return nullptr;
+	return "";
 }
 
 void Drawable::SetName(string pName)

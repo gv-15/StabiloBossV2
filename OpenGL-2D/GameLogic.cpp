@@ -5,12 +5,14 @@
 #include "Renderer.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "AnimatedSprite.h"
+#include "Player.h"
 
 GameLogic* GameLogic::m_pInstance = nullptr;
 
 GameLogic::GameLogic(Renderer* pRenderer)
 {
 	m_pRenderer = pRenderer;
+	
 }
 
 

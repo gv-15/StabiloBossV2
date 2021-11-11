@@ -169,8 +169,14 @@
     <ClCompile Include="TextGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\3rd-party\freeglut3\freeglut3.vcxproj">
+      <Project>{5a98782e-7027-46f9-91e1-e1ede1e14bf4}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\GameStaticLib\GameStaticLib.vcxproj">
       <Project>{16597822-e855-4a6c-a007-732174b26832}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGL-2D\OpenGL-2D.vcxproj">
+      <Project>{a1629dd3-6274-42fd-8f6d-75918d1bb1ec}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
