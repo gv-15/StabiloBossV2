@@ -10,7 +10,7 @@
 #include <chrono>
 
 Renderer* Renderer::m_pRenderer = nullptr;
-Sprite sprite = Sprite("alien-01", 4, 4);
+Sprite sprite = Sprite("/img/PLAYER1 ROSA SMALL", 0.5, 0.5);
 
 Renderer::Renderer()
 {
@@ -40,7 +40,6 @@ void Renderer::Initialize(int argc, char** argv)
 	glutInitWindowSize(800, 800);
 	glutCreateWindow(argv[0]);
 	
-	sprite.initializeImage();
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);
 

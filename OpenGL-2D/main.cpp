@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 {
 	Renderer renderer;
 	TextureManager textureManager;
-	Sprite sprite = Sprite("alien-01", 0.5, 0.5);
+	Sprite sprite = Sprite("/img/PLAYER1 ROSA SMALL", 0.5, 0.5);
 
 #ifdef _DEBUG
 	textureManager.SetVerbose(true);
@@ -31,7 +31,6 @@ int main(int argc, char** argv)
 	renderer.Initialize(argc, argv);
 
 	gameLogic.Initialize();
-	sprite.initializeImage();
 	renderer.AddObject(&sprite);
 
 	//TODO: create players and add them to the renderer

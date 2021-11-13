@@ -81,7 +81,22 @@ void Sprite::Draw(double dt)
 	//glRotatef(45, 0, 0, 1);
 	glScaled(m_x, m_y, 0);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, textureId);
+
+	//------------------------------------------------------------------
+	//Split "/img/PLAYER1 ROSA SMALL" to "img/PLAYER1 ROSA SMALL"
+	std::string str = m_imageFilename;
+	std::size_t pos = str.find("img");      // position of "img" in str
+	std::string str3 = str.substr(pos);     // get from "img" to the end
+	//------------------------------------------------------------------
+
+	//-----------------------------------------------------
+	//Add .png 
+	string filename = str3 + ".png";
+	//-----------------------------------------------------
+
+	t.Create2DTexture(filename);
+	t.UseTexture(filename);
+	glBindTexture(GL_TEXTURE_2D, t.Create2DTexture(filename));
 	glBegin(GL_QUADS);
 	
 	//glColor3f(1, 0, 0);
@@ -98,9 +113,4 @@ void Sprite::Draw(double dt)
 	glVertex2f(-0.5, 0.5);
 	glEnd();
 	glPopMatrix();
-}
-
-void Sprite::initializeImage()
-{
-	 textureId = SOIL_load_OGL_texture("img/alien-01.png", 0, 0, 0);
 }

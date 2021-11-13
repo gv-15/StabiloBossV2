@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Drawable.h"
+#include "TextureManager.h"
 
 class Sprite: public Drawable
 {
@@ -21,6 +22,8 @@ protected:
 	
 	int m_posy = 0;
 
+	TextureManager t;
+
 	int textureId = 0;
 	
 	
@@ -28,7 +31,6 @@ protected:
 public:
 	Sprite(string img, double x, double y);
 	~Sprite();
-	void initializeImage();
 	virtual void Draw(double dt);
 	void SetColor(float r, float g, float b);
 	void SetPosition(double x, double y);
