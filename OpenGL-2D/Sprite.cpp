@@ -83,7 +83,7 @@ void Sprite::Draw(double dt)
 	glEnable(GL_TEXTURE_2D);
 
 	//------------------------------------------------------------------
-	//Split "/img/PLAYER1 ROSA SMALL" to "img/PLAYER1 ROSA SMALL"
+	//Split "/img/PLAYER1 ROSA SMALL" into "img/PLAYER1 ROSA SMALL"
 	std::string str = m_imageFilename;
 	std::size_t pos = str.find("img");      // position of "img" in str
 	std::string str3 = str.substr(pos);     // get from "img" to the end
