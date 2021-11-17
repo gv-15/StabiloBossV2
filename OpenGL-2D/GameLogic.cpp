@@ -86,7 +86,6 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 		break;
 	case 27:
 		esc = true;
-		exit(0);
 	}
 }
 
