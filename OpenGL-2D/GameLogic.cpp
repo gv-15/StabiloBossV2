@@ -59,30 +59,38 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'w':
 		w = true;
+		player1->SetRotation(90);
 		break;
 	case 'a':
 		a = true;
+		player1->SetRotation(-90);
 		break;
 	case 'd':
 		d = true;
+		player1->SetRotation(0);
 		break;
 	case 's':
 		s = true;
+		player1->SetRotation(180);
 		break;
 	case 72:
 		ar2 = true;
+		player2->SetRotation(90);
 		break;
 
 	case 80:
 		ab2 = true;
+		player2->SetRotation(180);
 		break;
 
 	case 75:
 		izq2 = true;
+		player2->SetRotation(-90);
 		break;
 
 	case 77:
 		der2 = true;
+		player2->SetRotation(0);
 		break;
 	case 27:
 		esc = true;
