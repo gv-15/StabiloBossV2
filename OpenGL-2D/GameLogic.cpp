@@ -21,6 +21,7 @@ bool esc = false;
 GameLogic::GameLogic(Renderer* pRenderer)
 {
 	m_pRenderer = pRenderer;
+	m_pInstance = this;
 	
 }
 
