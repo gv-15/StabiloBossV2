@@ -31,6 +31,7 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PowerUps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -62,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
