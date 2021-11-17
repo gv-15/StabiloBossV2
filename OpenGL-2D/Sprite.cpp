@@ -27,6 +27,9 @@ void Sprite::SetPosition(double x, double y)
 {
 	//This method only updates internally the object's position. It still needs to be passed to OpenGL before drawing it
 	//TODO
+	m_x = x;
+	m_y = y;
+
 }
 
 double Sprite::GetX()
