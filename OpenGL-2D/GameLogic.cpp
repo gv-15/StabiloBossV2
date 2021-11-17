@@ -8,6 +8,7 @@
 #include "Player.h"
 
 GameLogic* GameLogic::m_pInstance = nullptr;
+bool w, a, s, d, ar2, ab2, der2, izq2, esc;
 
 GameLogic::GameLogic(Renderer* pRenderer)
 {
@@ -46,11 +47,37 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	switch (key)
 	{
-		//TODO: save the state of the key
-	case '8':
-		//...
+
+	case 'w':
+		w = true;
 		break;
-		//...
+	case 'a':
+		a = true;
+		break;
+	case 'd':
+		d = true;
+		break;
+	case 's':
+		s = true;
+		break;
+	case 72:
+		ar2 = true;
+		break;
+
+	case 80:
+		ab2 = true;
+		break;
+
+	case 75:
+		izq2 = true;
+		break;
+
+	case 77:
+		der2 = true;
+		break;
+	case 27:
+		esc = true;
+		exit(0);
 	}
 }
 
@@ -62,16 +89,78 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 		//TODO: save the state of the key
-	case '8':
-		//...
+	case 'w':
+		w = false;
 		break;
-		//...
+	case 'a':
+		a = false;
+		break;
+	case 'd':
+		d = false;
+		break;
+	case 's':
+		s = false;
+		break;
+	case 72:
+		ar2 = false;
+		break;
+
+	case 80:
+		ab2 = false;
+		break;
+
+	case 75:
+		izq2 = false;
+		break;
+
+	case 77:
+		der2 = false;
+		break;
+	case 27:
+		esc = false;
 	}
 }
 
-void GameLogic::ProcessEvents()
+void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que no de errores de compilacion y poco mas
 {
-	//TODO: update the game objects according to stored key states
+	
+	if (w = true)
+	{
+		player1->moveUp(1 / 30);
+	}
+	if (a = true)
+	{
+		player1->moveLeft(1 / 30);
+	}
+	if (d = true)
+	{
+		player1->moveRight(1 / 30);
+	}
+	if (s = true)
+	{
+		player1->moveDown(1 / 30);
+	}
+	if (ar2 = true)
+	{
+		player2->moveUp(1 / 30);
+	}
+	if (ab2 = true)
+	{
+		player2->moveDown(1 / 30);
+	}
+	if (izq2 = true)
+	{
+		player2->moveLeft(1 / 30);
+	}
+	if (der2)
+	{
+		player2->moveRight(1 / 30);
+	}
+	if (esc = true)
+	{
+		//'Esc' key pressed. Exit the game
+		exit(0);
+	}
 }
 
 bool GameLogic::IsGameEnded()
