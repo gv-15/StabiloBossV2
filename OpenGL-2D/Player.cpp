@@ -32,6 +32,22 @@ void Player::moveDown(double dt)
 	}
 }
 
+void Player::moveLeft(double dt) 
+{
+	if (m_x > limitLeft) {
+		m_x = m_x + PLAYER_SPEED * dt;
+		SetPosition(m_x, m_y);
+	}
+}
+
+void Player::moveRight(double dt) 
+{
+	if (m_x < limitRight) {
+		m_x = m_x - PLAYER_SPEED * dt;
+		SetPosition(m_x, m_y);
+	}
+}
+
 void Player::addScore()
 {
 	score++;
