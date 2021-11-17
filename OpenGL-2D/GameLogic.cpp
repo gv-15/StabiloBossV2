@@ -8,7 +8,15 @@
 #include "Player.h"
 
 GameLogic* GameLogic::m_pInstance = nullptr;
-bool w, a, s, d, ar2, ab2, der2, izq2, esc;
+bool w = false;
+bool a = false; 
+bool s = false; 
+bool d = false;
+bool ar2 = false;
+bool ab2 = false;
+bool der2 = false; 
+bool izq2 = false; 
+bool esc = false;
 
 GameLogic::GameLogic(Renderer* pRenderer)
 {
@@ -123,45 +131,46 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 
 void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que no de errores de compilacion y poco mas
 {
-/*
-	if (w = true)
+
+	if (w == true)
 	{
 		player1->moveUp(1 / 30);
 	}
-	if (a = true)
+	if (a == true)
 	{
 		player1->moveLeft(1 / 30);
 	}
-	if (d = true)
+	if (d == true)
 	{
 		player1->moveRight(1 / 30);
 	}
-	if (s = true)
+	if (s == true)
 	{
 		player1->moveDown(1 / 30);
 	}
-	if (ar2 = true)
+	if (ar2 == true)
 	{
 		player2->moveUp(1 / 30);
 	}
-	if (ab2 = true)
+	if (ab2 == true)
 	{
 		player2->moveDown(1 / 30);
 	}
-	if (izq2 = true)
+	if (izq2 == true)
 	{
 		player2->moveLeft(1 / 30);
 	}
-	if (der2)
+	if (der2 == true)
 	{
 		player2->moveRight(1 / 30);
 	}
-	if (esc = true)
+	if (esc == true)
 	{
 		//'Esc' key pressed. Exit the game
 		exit(0);
 	}
-	*/
+	
+	
 }
 
 bool GameLogic::IsGameEnded()
