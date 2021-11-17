@@ -123,7 +123,7 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 
 void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que no de errores de compilacion y poco mas
 {
-	
+/*
 	if (w = true)
 	{
 		player1->moveUp(1 / 30);
@@ -161,6 +161,7 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 		//'Esc' key pressed. Exit the game
 		exit(0);
 	}
+	*/
 }
 
 bool GameLogic::IsGameEnded()
