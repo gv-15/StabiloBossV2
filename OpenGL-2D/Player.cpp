@@ -6,8 +6,7 @@
 Player::Player(string dirimg, double m_posx1, double m_posy1)
 :Sprite(dirimg, m_posx1, m_posy1)
 {
-	m_posx = m_posx1;
-	m_posy = m_posy1;
+	
 	score = 0;
 	limitDown = -0.99;
 	limitUp = 0.99;
@@ -24,33 +23,33 @@ Player::~Player()
 
 void Player::moveUp(double dt)
 {
-		if (m_posy < limitUp) {
-			m_posy = m_posy + PLAYER_SPEED * dt;
-			SetPosition(m_posx, m_posy);
+		if (m_y < limitUp) {
+			m_y = m_y + PLAYER_SPEED * dt;
+			SetPosition(m_x, m_y);
 		}
 }
 
 void Player::moveDown(double dt)
 {
-	if (m_posy > limitDown) {
-		m_posy = m_posy - PLAYER_SPEED * dt;
-		SetPosition(m_posx, m_posy);
+	if (m_y > limitDown) {
+		m_y = m_y - PLAYER_SPEED * dt;
+		SetPosition(m_x, m_y);
 	}
 }
 
 void Player::moveLeft(double dt) 
 {
-	if (m_posx > limitLeft) {
-		m_posx = m_posx + PLAYER_SPEED * dt;
-		SetPosition(m_posx, m_posy);
+	if (m_x > limitLeft) {
+		m_x = m_x + PLAYER_SPEED * dt;
+		SetPosition(m_x, m_y);
 	}
 }
 
 void Player::moveRight(double dt) 
 {
-	if (m_posx < limitRight) {
-		m_posx = m_posx - PLAYER_SPEED * dt;
-		SetPosition(m_posx, m_posy);
+	if (m_x < limitRight) {
+		m_x = m_x - PLAYER_SPEED * dt;
+		SetPosition(m_x, m_y);
 	}
 }
 

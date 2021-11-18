@@ -3,8 +3,7 @@
 #include "Sprite.h"
 class Player : public Sprite
 {	
-	double m_posx = 0;
-	double m_posy = 0;
+	
 	double limitDown = 0, limitUp = 0, limitLeft = 0, limitRight = 0;
 	int score;
 public:
