@@ -2,11 +2,13 @@
 
 #include "Sprite.h"
 class Player : public Sprite
-{
-	double limitDown = -0.99, limitUp = 0.99, limitLeft = -0.99, limitRight = 0.99;
+{	
+	double m_posx = 0;
+	double m_posy = 0;
+	double limitDown = 0, limitUp = 0, limitLeft = 0, limitRight = 0;
 	int score;
 public:
-	Player(string img);
+	Player(string img, double m_posx, double m_posy);
 	~Player();
 	void setcoord(int q, int w);
 	void setlimit(int q, int w);
