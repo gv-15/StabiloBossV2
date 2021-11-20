@@ -35,37 +35,39 @@ void Sprite::SetPosition(double x, double y)
 double Sprite::GetX()
 {
 	//TODO
+	//return m_x;
 	return 0.0;
 }
 
 double Sprite::GetY()
 {
 	//TODO
+	//return m_y;
 	return 0.0;
 }
 
 void Sprite::SetDepth(double depth)
 {
-	//This method only updates internally the object's depth. It still needs to be passed to OpenGL before drawing it
-		//TODO
+	//m_depth = depth;
 }
 
 void Sprite::SetRotation(double angle)
 {
-	//This method only updates internally the object's rotation. It still needs to be passed to OpenGL before drawing it
-		//TODO
+	//m_angle = angle;
 }
 
 void Sprite::SetSize(double size)
 {
 	//This method only updates internally the object's size. It still needs to be passed to OpenGL before drawing it
 		//TODO
+	//m_size = size;
 }
 
 double Sprite::GetSize()
 {
 	//TODO
 	return 0.0;
+	//returb m_size;
 }
 
 void Sprite::Draw(double dt)

@@ -22,9 +22,9 @@ int main(int argc, char** argv)
 {
 	Renderer renderer;
 	TextureManager textureManager;
-	Player player1 = Player("/img/PLAYER1 ROSA SMALL",0.5,0.5);
+	Player player1 = Player("/img/PLAYER1 ROSA SMALL",0.2,0.2);
 	player1.SetName("Player1");
-	//player1.SetPosition(0.5, 0.5);
+	//player1.SetPosition(0.2, 0.2);
 	
 
 #ifdef _DEBUG
