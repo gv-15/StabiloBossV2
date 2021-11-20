@@ -67,7 +67,7 @@ double Sprite::GetSize()
 {
 	//TODO
 	return 0.0;
-	//returb m_size;
+	//return m_size;
 }
 
 void Sprite::Draw(double dt)
