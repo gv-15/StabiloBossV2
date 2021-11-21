@@ -18,9 +18,6 @@ protected:
 
 	string m_imageFilename = ""; //Path to the file where the texture is
 	
-	int m_posx = 0;
-	
-	int m_posy = 0;
 
 	TextureManager t;
 

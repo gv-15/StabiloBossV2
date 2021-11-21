@@ -10,7 +10,7 @@
 #include <chrono>
 
 Renderer* Renderer::m_pRenderer = nullptr;
-Sprite sprite = Sprite("/img/PLAYER1 ROSA SMALL", 0.5, 0.5);
+
 
 Renderer::Renderer()
 {
