@@ -17,6 +17,8 @@ class World : public Sprite
 	int lifeP1, lifeP2;
 	Player *pPlayer1, *pPlayer2;
 
+	//vector<PowerUp>  PowerUps;
+
 	struct point2D {
 		double x, y;
 	};

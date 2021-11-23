@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "../3rd-party/SoundManager/SoundManager.h" 
+#include "PowerUp.h"
 
 class Renderer;
 
@@ -17,6 +18,8 @@ class GameLogic
 	void ProcessKeyboard(unsigned char key, int x, int y);
 	void ProcessUpKeyboard(unsigned char key, int x, int y);
 
+	vector<PowerUp>  PowerUps;
+
 public:
 
 	GameLogic(Renderer* pRenderer);
@@ -27,5 +30,11 @@ public:
 	void ProcessEvents();
 
 	bool IsGameEnded();
+
+	bool CheckCollision(Sprite& s1, Sprite& s2);
+
+	void PickupPowerup(PowerUp p);
+
+	void ActivatePowerUp(PowerUp pu);
 };
 

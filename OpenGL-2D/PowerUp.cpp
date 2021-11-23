@@ -1,20 +1,29 @@
 #include "stdafx.h"
-#include "PowerUps.h"
+#include "PowerUp.h"
 #include "World.h"
 #include "Sprite.h"
 
-PowerUps::PowerUps(string imgagedir)
-:Sprite(imgagedir, m_posx, m_posy)
+PowerUp::PowerUp(string dirimg, double m_posx1, double m_posy1)
+:Sprite(dirimg, m_posx1, m_posy1)
 {
 	tipo = nullptr;
 }
 
-PowerUps::~PowerUps()
+PowerUp::~PowerUp()
 {
 }
 
+string PowerUp::GetType()
+{
+    return tipo;
+};
 
-void PowerUps::setType(string tipo)
+void PowerUp::setActivated(bool b)
+{
+    Activated = b;
+};
+
+void PowerUp::Activate(string tipo)
 {
     if (tipo._Equal ("fast"))
     {
@@ -39,31 +48,31 @@ void PowerUps::setType(string tipo)
 };
 
 
-void PowerUps::movefaster()
+void PowerUp::movefaster()
+{
+    //Player->Velocidad *= 1.2;
+}
+
+
+void PowerUp::moveslower()
 {
 
 }
 
 
-void PowerUps::moveslower()
+void PowerUp::youdie()
 {
 
 }
 
 
-void PowerUps::youdie()
+void PowerUp::teleport()
 {
 
 }
 
 
-void PowerUps::teleport()
-{
-
-}
-
-
-void PowerUps::ignoreObstacle()
+void PowerUp::ignoreObstacle()
 {
 
 }
