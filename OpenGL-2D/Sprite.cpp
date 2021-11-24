@@ -89,6 +89,11 @@ void Sprite::Draw(double dt)
 	glScaled(x_scale, y_scale, 1);
 	glEnable(GL_TEXTURE_2D);
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+	
 	//------------------------------------------------------------------
 	//Split "/img/PLAYER1 ROSA SMALL" into "img/PLAYER1 ROSA SMALL"
 	std::string str = m_imageFilename;
@@ -104,7 +109,10 @@ void Sprite::Draw(double dt)
 	t.Create2DTexture(filename);
 	t.UseTexture(filename);
 	glBindTexture(GL_TEXTURE_2D, t.Create2DTexture(filename));
+	
+
 	glBegin(GL_QUADS);
+	
 	
 	//glColor3f(1, 0, 0);
 	glTexCoord2f(1.0, 0.0);

@@ -68,6 +68,7 @@ unsigned int TextureManager::Create2DTexture(string filename)
 	if (m_bVerbose)
 		cout << "Loading texture " << filename.c_str();
 	unsigned int id = SOIL_load_OGL_texture(filename.c_str(), 0, 0, 0);
+	
 
 	if (m_bVerbose)
 	{
@@ -168,3 +169,5 @@ unsigned int TextureManager::Create3DTexture(string filename, int numSubImagesX,
 	m_textureObjects[filename] = TextureObject(GL_TEXTURE_3D, textureId);
 	return textureId;
 }
+
+
