@@ -67,3 +67,13 @@ int Player::getScore()
 void Player::setScore(int pScore) {
 	score = pScore;
 }
+
+int Player::getLifes()
+{
+	return m_lifes;
+}
+
+void Player::ReduceLifes()
+{
+	m_lifes--;
+}

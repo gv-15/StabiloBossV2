@@ -231,6 +231,16 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 
 bool GameLogic::IsGameEnded()
 {
-	//TODO
-	return false;
+	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+    if (player1->getLifes() > 0 && player2->getLifes() > 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+	
+
 }
