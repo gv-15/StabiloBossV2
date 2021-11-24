@@ -9,8 +9,7 @@ class GameLogic
 	static GameLogic* m_pInstance;
 	Renderer* m_pRenderer;
 	 	
-	Player* player2 = &Player("/img/PLAYER2 VERDEAZUL SMALL", 0.5, 0.5);
-	Player* player1 = &Player("/img/PLAYER1 ROSA SMALL", 0.2, 0.2);
+	
 	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	
 

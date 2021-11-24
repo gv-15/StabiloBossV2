@@ -139,38 +139,40 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 
 void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que no de errores de compilacion y poco mas
 {
+	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 
 	if (w == true)
 	{
-		player1->moveUp(1 / 30);
+		player1->moveUp(0.034);
 	}
 	if (a == true)
 	{
-		player1->moveLeft(1 / 30);
+		player1->moveLeft(0.034);
 	}
 	if (d == true)
 	{
-		player1->moveRight(1 / 30);
+		player1->moveRight(0.034);
 	}
 	if (s == true)
 	{
-		player1->moveDown(1 / 30);
+		player1->moveDown(0.034);
 	}
 	if (ar2 == true)
 	{
-		player2->moveUp(1 / 30);
+		player2->moveUp(1/30);
 	}
 	if (ab2 == true)
 	{
-		player2->moveDown(1 / 30);
+		player2->moveDown(1/30);
 	}
 	if (izq2 == true)
 	{
-		player2->moveLeft(1 / 30);
+		player2->moveLeft(1/30);
 	}
 	if (der2 == true)
 	{
-		player2->moveRight(1 / 30);
+		player2->moveRight(1/30);
 	}
 	if (esc == true)
 	{

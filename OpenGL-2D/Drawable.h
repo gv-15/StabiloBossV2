@@ -4,6 +4,8 @@ using namespace std;
 
 class Drawable
 {
+protected:
+	string m_imageFilename = "";
 public:
 	virtual void Draw(double dt) = 0;
 	string GetName();
