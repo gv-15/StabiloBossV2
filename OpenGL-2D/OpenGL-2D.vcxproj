@@ -59,6 +59,7 @@
   <ItemGroup>
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="main.cpp" />
@@ -70,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="GameLogic.h" />
