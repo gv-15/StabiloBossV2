@@ -121,7 +121,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 		break;
 	case 'i':
 		ar2 = true;
-		player2->SetRotation(90);
+		player2->SetRotation(0);
 		break;
 
 	case 'k':
@@ -131,12 +131,12 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'j':
 		izq2 = true;
-		player2->SetRotation(-90);
+		player2->SetRotation(90);
 		break;
 
 	case 'l':
 		der2 = true;
-		player2->SetRotation(0);
+		player2->SetRotation(-90);
 		break;
 	case 27:
 		esc = true;
