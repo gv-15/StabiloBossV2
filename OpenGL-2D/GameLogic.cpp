@@ -105,15 +105,15 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'w':
 		w = true;
-		player1->SetRotation(90);
+		player1->SetRotation(0);
 		break;
 	case 'a':
 		a = true;
-		player1->SetRotation(-90);
+		player1->SetRotation(90);
 		break;
 	case 'd':
 		d = true;
-		player1->SetRotation(0);
+		player1->SetRotation(-90);
 		break;
 	case 's':
 		s = true;

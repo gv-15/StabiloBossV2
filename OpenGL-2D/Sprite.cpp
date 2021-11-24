@@ -85,7 +85,7 @@ void Sprite::Draw(double dt)
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glTranslatef(m_x, m_y, -1.0);
-	//glRotatef(45, 0, 0, 1);
+	glRotatef(m_angle, 0, 0, 1);
 	glScaled(x_scale, y_scale, 1);
 	glEnable(GL_TEXTURE_2D);
 
