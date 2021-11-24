@@ -59,7 +59,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'w':
 		w = true;
-		player1->SetRotation(90);
+		   player1->SetRotation(90);
 		break;
 	case 'a':
 		a = true;
