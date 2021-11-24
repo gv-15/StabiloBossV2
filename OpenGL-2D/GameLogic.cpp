@@ -119,22 +119,22 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 		s = true;
 		player1->SetRotation(180);
 		break;
-	case 72:
+	case 'i':
 		ar2 = true;
 		player2->SetRotation(90);
 		break;
 
-	case 80:
+	case 'k':
 		ab2 = true;
 		player2->SetRotation(180);
 		break;
 
-	case 75:
+	case 'j':
 		izq2 = true;
 		player2->SetRotation(-90);
 		break;
 
-	case 77:
+	case 'l':
 		der2 = true;
 		player2->SetRotation(0);
 		break;
@@ -163,19 +163,19 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 	case 's':
 		s = false;
 		break;
-	case 72:
+	case 'i':
 		ar2 = false;
 		break;
 
-	case 80:
+	case 'k':
 		ab2 = false;
 		break;
 
-	case 75:
+	case 'j':
 		izq2 = false;
 		break;
 
-	case 77:
+	case 'l':
 		der2 = false;
 		break;
 	case 27:
