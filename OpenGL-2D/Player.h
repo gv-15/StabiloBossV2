@@ -7,7 +7,7 @@ class Player : public Sprite
 	double limitDown = 0, limitUp = 0, limitLeft = 0, limitRight = 0;
 	int score;
 public:
-	Player(string img, double m_posx, double m_posy);
+	Player(string img, double m_posx, double m_posy, double x1, double y2);
 	~Player();
 	void setcoord(int q, int w);
 	void setlimit(int q, int w);

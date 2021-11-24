@@ -4,11 +4,13 @@
 #include "../3rd-party/SOIL/src/SOIL.h"
 
 
-Sprite::Sprite(string img, double x, double y)
+Sprite::Sprite(string img, double x, double y, double x1, double y2)
 {
 	m_imageFilename = img;
 	m_x = x;
 	m_y = y;
+	x_scale = x1;
+	y_scale = y2;
 }
 
 
@@ -84,7 +86,7 @@ void Sprite::Draw(double dt)
 	glPushMatrix();
 	glTranslatef(m_x, m_y, -1.0);
 	//glRotatef(45, 0, 0, 1);
-	glScaled(m_x, m_y, 0);
+	glScaled(x_scale, y_scale, 1);
 	glEnable(GL_TEXTURE_2D);
 
 	//------------------------------------------------------------------

@@ -9,7 +9,7 @@ class PowerUp : public Sprite
 	bool   Activated;
 
 public:
-	PowerUp(string imgagedir, double m_posx1, double m_posy1);
+	PowerUp(string imgagedir, double m_posx1, double m_posy1, double x1, double y2);
 	~PowerUp();
 	
 	void Activate(string s);

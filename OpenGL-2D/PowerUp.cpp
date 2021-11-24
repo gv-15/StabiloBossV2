@@ -3,8 +3,8 @@
 #include "World.h"
 #include "Sprite.h"
 
-PowerUp::PowerUp(string dirimg, double m_posx1, double m_posy1)
-:Sprite(dirimg, m_posx1, m_posy1)
+PowerUp::PowerUp(string dirimg, double m_posx1, double m_posy1, double x1, double y2)
+:Sprite(dirimg, m_posx1, m_posy1, x1, y2)
 {
 	tipo = nullptr;
 }

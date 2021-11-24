@@ -9,6 +9,8 @@ protected:
 	float m_r, m_g, m_b;
 	
 	double m_x= 0.0, m_y= 0.0; //position around which the quad is drawn
+
+	double x_scale = 0.0, y_scale = 0.0;
 	
 	double m_depth = 1.0; // the renderer draws depths in range [1.0,20.0]
 
@@ -25,7 +27,7 @@ protected:
 	
 
 public:
-	Sprite(string img, double x, double y);
+	Sprite(string img, double x, double y, double x1, double y2);
 	~Sprite();
 	virtual void Draw(double dt);
 	void SetColor(float r, float g, float b);

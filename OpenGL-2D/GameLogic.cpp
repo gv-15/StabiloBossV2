@@ -206,19 +206,19 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (ar2 == true)
 	{
-		player2->moveUp(1/30);
+		player2->moveUp(0.034);
 	}
 	if (ab2 == true)
 	{
-		player2->moveDown(1/30);
+		player2->moveDown(0.034);
 	}
 	if (izq2 == true)
 	{
-		player2->moveLeft(1/30);
+		player2->moveLeft(0.034);
 	}
 	if (der2 == true)
 	{
-		player2->moveRight(1/30);
+		player2->moveRight(0.034);
 	}
 	if (esc == true)
 	{
