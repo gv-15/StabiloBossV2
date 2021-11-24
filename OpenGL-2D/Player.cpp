@@ -3,15 +3,15 @@
 #include "World.h"
 #include "Sprite.h"
 
-Player::Player(string dirimg, double m_posx1, double m_posy1)
-:Sprite(dirimg, m_posx1, m_posy1)
+Player::Player(string dirimg, double m_posx1, double m_posy1, double x1, double y2)
+:Sprite(dirimg, m_posx1, m_posy1, x1, y2)
 {
 	
 	score = 0;
-	limitDown = -0.99;
-	limitUp = 0.99;
-	limitLeft = -0.99; 
-	limitRight = 0.99;
+	limitDown = -0.9;
+	limitUp = 0.9;
+	limitLeft = -0.9; 
+	limitRight = 0.9;
 	
 }
 
@@ -41,7 +41,7 @@ void Player::moveDown(double dt)
 void Player::moveLeft(double dt) 
 {
 	if (m_x > limitLeft) {
-		m_x = m_x + PLAYER_SPEED * dt;
+		m_x = m_x - PLAYER_SPEED * dt;
 		SetPosition(m_x, m_y);
 	}
 }
@@ -49,7 +49,7 @@ void Player::moveLeft(double dt)
 void Player::moveRight(double dt) 
 {
 	if (m_x < limitRight) {
-		m_x = m_x - PLAYER_SPEED * dt;
+		m_x = m_x + PLAYER_SPEED * dt;
 		SetPosition(m_x, m_y);
 	}
 }
