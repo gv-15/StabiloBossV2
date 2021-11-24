@@ -12,6 +12,7 @@ Player::Player(string dirimg, double m_posx1, double m_posy1)
 	limitUp = 0.99;
 	limitLeft = -0.99; 
 	limitRight = 0.99;
+	
 }
 
 

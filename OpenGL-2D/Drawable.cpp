@@ -5,10 +5,10 @@ string Drawable::GetName()
 {
 	//TODO
 	//return nullptr;
-	return "";
+	return m_imageFilename;
 }
 
 void Drawable::SetName(string pName)
 {
-	//TODO
+	m_imageFilename = pName;
 }

@@ -18,7 +18,6 @@ protected:
 
 	string m_imageFilename = ""; //Path to the file where the texture is
 	
-
 	TextureManager t;
 
 	int textureId = 0;
