@@ -33,6 +33,7 @@ int main(int argc, char** argv)
 	GameLogic gameLogic(&renderer);
 	renderer.Initialize(argc, argv);
 	Sprite sprite = Sprite("/img/notebook", 0, 0, 10, 10);
+	sprite.SetName("background");
 	Player player1 = Player("/img/PLAYER1 ROSA SMALL", 0.9, 0, 0.084, 0.2);
 	player1.SetName("Player1");
 	Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);

@@ -6,6 +6,7 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "AnimatedSprite.h"
 #include "Player.h"
+#include "Wall.h"
 
 
 
@@ -41,6 +42,33 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 		two.GetY() + two.GetSize() >= one.GetY();
 	// collision only if on both axes
 	return collisionX && collisionY;
+}
+
+bool GameLogic::CanMove(Player* p) {
+	bool obstacle = false;
+	int n = 1;
+	Wall* wall;
+	std::string wallname;
+
+
+	while (n < 4 && obstacle == false) {
+		wallname = "wall";
+		wallname += std::to_string(n);
+		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
+
+		// collision x-axis
+		bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
+			wall->GetX() + wall->GetSize() >= p->GetX();
+		// collision y-axis?
+		bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
+			wall->GetY() + wall->GetSize() >= p->GetY();
+		// collision only if on both axes
+
+		obstacle = collisionX && collisionY;
+		n++;
+	}
+
+	return !obstacle;
 }
 
 void GameLogic::PickupPowerup(PowerUp powerUp)
@@ -190,23 +218,34 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 
 	if (w == true)
 	{
-		player1->moveUp(0.034);
+		if(CanMove(player1)){
+			player1->moveUp(0.034);
+		}
 	}
 	if (a == true)
 	{
-		player1->moveLeft(0.034);
+		if (CanMove(player1)) {
+			player1->moveLeft(0.034);
+		}
 	}
 	if (d == true)
 	{
-		player1->moveRight(0.034);
+		if (CanMove(player1)) {
+			player1->moveRight(0.034);
+		}
 	}
 	if (s == true)
 	{
-		player1->moveDown(0.034);
+		if (CanMove(player1)) {
+			player1->moveDown(0.034);
+		}
 	}
 	if (ar2 == true)
 	{
-		player2->moveUp(0.034);
+		if (CanMove(player2)) {
+
+			player2->moveUp(0.034);
+		}
 	}
 	if (ab2 == true)
 	{
