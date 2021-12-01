@@ -8,10 +8,10 @@ Player::Player(string dirimg, double m_posx1, double m_posy1, double x1, double 
 {
 	
 	score = 0;
-	limitDown = -0.9;
-	limitUp = 0.9;
-	limitLeft = -0.9; 
-	limitRight = 0.9;
+	limitDown = -0.75;
+	limitUp = 0.75;
+	limitLeft = -0.75; 
+	limitRight = 0.75;
 	
 }
 
@@ -68,12 +68,12 @@ void Player::setScore(int pScore) {
 	score = pScore;
 }
 
-int Player::getLifes()
+int Player::getLives()
 {
-	return m_lifes;
+	return m_lives;
 }
 
-void Player::ReduceLifes()
+void Player::ReduceLives()
 {
-	m_lifes--;
+	m_lives--;
 }
