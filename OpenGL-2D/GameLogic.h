@@ -36,7 +36,7 @@ public:
 
 	bool CanMove(Player* p);
 
-	void PickupPowerup(PowerUp p);
+	//void PickupPowerup(PowerUp p);
 
 	//void ActivatePowerUp(PowerUp pu);
 };

@@ -38,5 +38,7 @@ public:
 	double GetSize();
 	double GetX();
 	double GetY();
+	double GetXScale();
+	double GetYScale();
 };
 
