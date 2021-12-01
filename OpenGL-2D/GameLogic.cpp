@@ -81,7 +81,7 @@ void GameLogic::PickupPowerup(PowerUp powerUp)
 	//}
 };
 
-void GameLogic::ActivatePowerUp(PowerUp p)
+/*void GameLogic::ActivatePowerUp(PowerUp p)
 {
 	//Eliminar del tablero la foto
 
@@ -101,8 +101,8 @@ void GameLogic::ActivatePowerUp(PowerUp p)
 	//PowerUps.erase(i); Eliminar del array del mapa
 
 	p.Activate(t);
-
-};
+	
+}; */
 
 void GameLogic::__processKeyboard(unsigned char key, int x, int y)
 {

@@ -38,6 +38,6 @@ public:
 
 	void PickupPowerup(PowerUp p);
 
-	void ActivatePowerUp(PowerUp pu);
+	//void ActivatePowerUp(PowerUp pu);
 };
 
