@@ -32,10 +32,18 @@ public:
 
 	bool IsGameEnded();
 
+	float roundoff(float value, unsigned char prec);
+
+	void PantallaFinal();
+
 	bool CheckCollision(Sprite& s1, Sprite& s2);
 
 	void PickupPowerup(PowerUp p);
 
 	void ActivatePowerUp(PowerUp pu);
+
+	void restart();
+
+	char GetNextPressedKey();
 };
 

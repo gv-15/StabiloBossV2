@@ -43,6 +43,7 @@ int main(int argc, char** argv)
 	wall2.SetName("wall2");
 	Wall wall3 = Wall("/img/wall3", 0.7, 0.3, 0.6, 0.4);
 	wall3.SetName("wall3");
+	//Timer timer = Timer("/img/timer", 0.2, 0.2, 0.6, 0.4);
 	gameLogic.Initialize();
 
 	
@@ -52,6 +53,9 @@ int main(int argc, char** argv)
 	renderer.AddObject(&wall2);
 	renderer.AddObject(&wall3);
 	renderer.AddObject(&sprite);
+	//renderer.AddObject(&timer);
+
+	renderer.GetFrameTimer().Start(); 
 
 
 	while (!gameLogic.IsGameEnded())
@@ -67,6 +71,21 @@ int main(int argc, char** argv)
 		////////////////////////////
 		glutPostRedisplay();
 		glutSwapBuffers();
+	}
+
+	cout << "\n"
+		<< "Pulsa el boton espacio para salir !!"
+		<< "\n"
+		<< "Pulsa cualquier otro boton para jugar de nuevo !!";
+	char c = gameLogic.GetNextPressedKey();
+	if (c == ' ')
+	{
+		return 0;
+	}
+	else
+	{
+		//System::Clear();
+		//return main(int argc, char** argv);
 	}
 	
 }

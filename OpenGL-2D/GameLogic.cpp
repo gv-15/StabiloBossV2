@@ -6,8 +6,11 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "AnimatedSprite.h"
 #include "Player.h"
+#include <iostream>
+#include <stdio.h>   
+#include <conio.h> 
 
-
+using namespace std;
 
 GameLogic* GameLogic::m_pInstance = nullptr;
 bool w = false;
@@ -233,14 +236,56 @@ bool GameLogic::IsGameEnded()
 {
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
-    if (player1->getLifes() > 0 && player2->getLifes() > 0)
+	
+    if (player1->getLifes() == 0 || player2->getLifes() == 0)
 	{
-		return false;
+		Timer t; 
+		m_pRenderer->GetFrameTimer().ElapsedSeconds(true);
+		t = m_pRenderer->GetFrameTimer();
+		
+
+		if (player1->getLifes() > player2->getLifes())
+		{
+			auto rounded = roundoff(100.123456, 3);
+			cout << "\n";
+			cout << "\n\n" << "El jugador 1 ha ganado con " << player1->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
+			cout << "\n";
+		}
+		else
+		{
+			cout << "\n";
+			cout << "\n\n" << "El jugador 2 ha ganado con " << player2->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
+			cout << "\n";
+		}
+		return true;
 	}
 	else
 	{
-		return true;
+		return false;
 	}
 	
 
 }
+
+
+
+float GameLogic::roundoff(float value, unsigned char prec)
+{
+	float pow_10 = pow(10.0f, (float)prec);
+	return round(value * pow_10) / pow_10;
+}
+
+
+char GameLogic::GetNextPressedKey()
+{
+	//hold the output screen for some time until the user passes a key from the keyboard to exit the console screen
+	return _getch(); //
+}
+
+	
+
+
+	
+		
+
+
