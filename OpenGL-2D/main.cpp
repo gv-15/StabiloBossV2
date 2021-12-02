@@ -34,6 +34,12 @@ int main(int argc, char** argv)
 	renderer.Initialize(argc, argv);
 	Sprite sprite = Sprite("/img/notebook", 0, 0, 10, 10);
 	sprite.SetName("background");
+	Sprite live1P1 = Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+	Sprite live2P1 = Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+	Sprite live3P1 = Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+	Sprite live1P2 = Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+	Sprite live2P2 = Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+	Sprite live3P2 = Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
 	Player player1 = Player("/img/PLAYER1 ROSA SMALL", 0.9, 0, 0.084, 0.2);
 	player1.SetName("Player1");
 	Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);
@@ -46,7 +52,12 @@ int main(int argc, char** argv)
 	wall3.SetName("wall3");
 	gameLogic.Initialize();
 
-	
+	renderer.AddObject(&live1P1);
+	renderer.AddObject(&live2P1);
+	renderer.AddObject(&live3P1);
+	renderer.AddObject(&live1P2);
+	renderer.AddObject(&live2P2);
+	renderer.AddObject(&live3P2);
 	renderer.AddObject(&player1);
 	renderer.AddObject(&player2);
 	renderer.AddObject(&wall1);
