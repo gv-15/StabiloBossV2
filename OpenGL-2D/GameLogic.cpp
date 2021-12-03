@@ -7,6 +7,7 @@
 #include "AnimatedSprite.h"
 #include "Player.h"
 #include "Wall.h"
+#include <iostream>
 
 
 
@@ -45,30 +46,31 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 }
 
 bool GameLogic::CanMove(Player* p) {
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
+	//bool obstacle = false;
+	//int n = 1;
+	//Wall* wall;
+	//std::string wallname;
 
 
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
+	//while (n < 4 && obstacle == false) {
+	//	wallname = "wall";
+	//	wallname += std::to_string(n);
+	//	wall = (Wall*)m_pRenderer->ObjectByName(wallname);
 
-		// collision x-axis
-		bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
+	//	// collision x-axis
+	//	bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
+	//		wall->GetX() + wall->GetSize() >= p->GetX();
+	//	// collision y-axis?
+	//	bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
+	//		wall->GetY() + wall->GetSize() >= p->GetY();
+	//	// collision only if on both axes
 
-		obstacle = collisionX && collisionY;
-		n++;
-	}
-	
-	return !obstacle;
+	//	obstacle = collisionX && collisionY;
+	//	n++;
+	//}
+	//
+	return false;
+	//return !obstacle;
 }
 
 void GameLogic::PickupPowerup(PowerUp powerUp)
@@ -218,34 +220,42 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 
 	if (w == true)
 	{
-		if(CanMove(player1)){
+		//if(CanMove(player1)){
+			
 			player1->moveUp(0.034);
-		}
+			//player1->ReduceLives();aa
+		//}
 	}
 	if (a == true)
 	{
-		if (CanMove(player1)) {
+		//if (CanMove(player1)) {
+		    int p0 = player1->getLives();
+			player1->ReduceLives();
+			int p = player1->getLives() ;
+			m_pRenderer->DrawScene();
 			player1->moveLeft(0.034);
-		}
+		
+		
+		//}
 	}
 	if (d == true)
 	{
-		if (CanMove(player1)) {
+		//if (CanMove(player1)) {
 			player1->moveRight(0.034);
-		}
+		//}
 	}
 	if (s == true)
 	{
-		if (CanMove(player1)) {
+		//if (CanMove(player1)) {
 			player1->moveDown(0.034);
-		}
+		//}
 	}
 	if (ar2 == true)
 	{
-		if (CanMove(player2)) {
+		//if (CanMove(player2)) {
 
 			player2->moveUp(0.034);
-		}
+		//}
 	}
 	if (ab2 == true)
 	{
