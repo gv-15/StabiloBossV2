@@ -9,6 +9,8 @@
 #include <iostream>
 #include <stdio.h>   
 #include <conio.h> 
+#include "Wall.h" 
+
 
 using namespace std;
 
@@ -280,7 +282,7 @@ bool GameLogic::IsGameEnded()
 	}
 	else
 	{
-		if (player1 != nullptr && player1->getLifes() == 0 || player2 != nullptr && player2->getLifes() == 0)
+		if (player1 != nullptr && player1->getLives() == 0 || player2 != nullptr && player2->getLives() == 0)
 		{
 			//	/*Timer t; 
 			//	m_pRenderer->GetFrameTimer().ElapsedSeconds(true);
@@ -313,19 +315,19 @@ bool GameLogic::IsGameEnded()
 
 
 
+//
+//float GameLogic::roundoff(float value, unsigned char prec)
+//{
+//	float pow_10 = pow(10.0f, (float)prec);
+//	return round(value * pow_10) / pow_10;
+//}
 
-float GameLogic::roundoff(float value, unsigned char prec)
-{
-	float pow_10 = pow(10.0f, (float)prec);
-	return round(value * pow_10) / pow_10;
-}
 
-
-char GameLogic::GetNextPressedKey()
-{
-	//hold the output screen for some time until the user passes a key from the keyboard to exit the console screen
-	return _getch(); //
-}
+//char GameLogic::GetNextPressedKey()
+//{
+//	//hold the output screen for some time until the user passes a key from the keyboard to exit the console screen
+//	return _getch(); //
+//}
 //
 //void GameLogic::Clear()
 //{

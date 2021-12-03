@@ -11,7 +11,7 @@ class Renderer
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
 	double m_frameDuration = 0.0;
-	//Timer m_frameTimer;
+	Timer m_frameTimer;
 	vector <Drawable*> m_objects2D;
 
 	void set2DMatrix();

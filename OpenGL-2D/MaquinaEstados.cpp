@@ -16,9 +16,10 @@ void MaquinaEstados::DefinirEstado(Estado e)
 
     if (e == Inicio)
     { 
-        Sprite* PantallaI = new Sprite("/img/inicio", 0, 0, 10, 10);
+        Sprite* PantallaI = new Sprite("/img/PantallaInicialStart", 0, 0, 10, 10);
         PantallaI->SetName("PantallaI");
         m_Renderer->AddObject(PantallaI);
+        
     }
     
     else if (e == Juego)
@@ -30,13 +31,21 @@ void MaquinaEstados::DefinirEstado(Estado e)
         player1->SetName("Player1");
         Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);
         player2->SetName("Player2");
+
+        Sprite live1P1 = Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+        Sprite live2P1 = Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+        Sprite live3P1 = Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+        Sprite live1P2 = Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+        Sprite live2P2 = Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+        Sprite live3P2 = Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+
         Wall* wall1 = new Wall("/img/wall1", 0, 0, 1, 1);
         wall1->SetName("wall1");
         Wall* wall2 = new Wall("/img/wall2", -0.6, 0.4, 0.5, 0.3);
         wall2->SetName("wall2");
         Wall* wall3 = new Wall("/img/wall3", 0.7, 0.3, 0.6, 0.4);
         wall3->SetName("wall3");
-        Timer* timer = new Timer("/img/timer", 0.2, 0.2, 0.6, 0.4);
+        //Timer* timer = new Timer("/img/timer", 0.2, 0.2, 0.6, 0.4);
 
         m_Renderer->AddObject(PantallaJ);
         m_Renderer->AddObject(player1);
@@ -44,9 +53,15 @@ void MaquinaEstados::DefinirEstado(Estado e)
         m_Renderer->AddObject(wall1);
         m_Renderer->AddObject(wall2);
         m_Renderer->AddObject(wall3);
+        m_Renderer->AddObject(&live1P1);
+        m_Renderer->AddObject(&live2P1);
+        m_Renderer->AddObject(&live3P1);
+        m_Renderer->AddObject(&live1P2);
+        m_Renderer->AddObject(&live2P2);
+        m_Renderer->AddObject(&live3P2);
         ////renderer.AddObject(&timer);
 
-        timer->Start();
+        //timer->Start();
     }
 
     else if (e == Final)
@@ -60,7 +75,7 @@ void MaquinaEstados::DefinirEstado(Estado e)
     else if (e == Instrucciones)
     {
       
-        Sprite* PantallaInst = new Sprite("/img/inicio", 0, 0, 10, 10);
+        Sprite* PantallaInst = new Sprite("/img/Controls", 0, 0, 10, 10);
         PantallaInst->SetName("PantallaInstrucciones");
         m_Renderer->AddObject(PantallaInst);
     }

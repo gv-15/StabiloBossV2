@@ -2,11 +2,11 @@
 #include "Timer.h"
 
 
-Timer::Timer(string dirimg, double x, double y, double x1, double y2)
-:Sprite(dirimg, x, y, x1, y2)
-{
-}
 
+Timer::Timer()
+{
+
+}
 
 Timer::~Timer()
 {
