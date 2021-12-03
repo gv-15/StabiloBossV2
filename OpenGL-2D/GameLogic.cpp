@@ -66,7 +66,7 @@ bool GameLogic::CanMove(Player* p) {
 		obstacle = collisionX && collisionY;
 		n++;
 	}
-
+	
 	return !obstacle;
 }
 
@@ -271,7 +271,7 @@ bool GameLogic::IsGameEnded()
 {
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
-    if (player1->getLifes() > 0 && player2->getLifes() > 0)
+    if (player1->getLives() > 0 && player2->getLives() > 0)
 	{
 		return false;
 	}
