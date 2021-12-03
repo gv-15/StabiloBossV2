@@ -46,15 +46,7 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 	return collisionX && collisionY;
 }
 
-void GameLogic::PickupPowerup(PowerUp powerUp)
-{
-	//if (CheckCollision(*Player, powerUp)) //misma posición
-	//{	
-	//	ActivatePowerUp(powerUp);
-	//	powerUp.setActivated(true);
 
-	//}
-};
 
 void GameLogic::ActivatePowerUp(PowerUp p)
 {
@@ -237,35 +229,43 @@ bool GameLogic::IsGameEnded()
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 	
-    if (player1->getLifes() == 0 || player2->getLifes() == 0)
-	{
-		Timer t; 
-		m_pRenderer->GetFrameTimer().ElapsedSeconds(true);
-		t = m_pRenderer->GetFrameTimer();
-		
-
-		if (player1->getLifes() > player2->getLifes())
-		{
-			auto rounded = roundoff(100.123456, 3);
-			cout << "\n";
-			cout << "\n\n" << "El jugador 1 ha ganado con " << player1->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
-			cout << "\n";
-		}
-		else
-		{
-			cout << "\n";
-			cout << "\n\n" << "El jugador 2 ha ganado con " << player2->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
-			cout << "\n";
-		}
-		return true;
-	}
-	else
+	if (player1 == nullptr || player2 == nullptr) 
 	{
 		return false;
 	}
-	
+	else
+	{
+		if (player1 != nullptr && player1->getLifes() == 0 || player2 != nullptr && player2->getLifes() == 0)
+		{
+			//	/*Timer t; 
+			//	m_pRenderer->GetFrameTimer().ElapsedSeconds(true);
+			//	t = m_pRenderer->GetFrameTimer();*/
+			//	
+
+			//	if (player1->getLifes() > player2->getLifes())
+			//	{
+			//		auto rounded = roundoff(100.123456, 3);
+			//		cout << "\n";
+			//		cout << "\n\n" << "El jugador 1 ha ganado con " << player1->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
+			//		cout << "\n";
+			//	}
+			//	else
+			//	{
+			//		cout << "\n";
+			//		cout << "\n\n" << "El jugador 2 ha ganado con " << player2->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
+			//		cout << "\n";
+			//}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	 
 
 }
+
 
 
 
@@ -281,7 +281,43 @@ char GameLogic::GetNextPressedKey()
 	//hold the output screen for some time until the user passes a key from the keyboard to exit the console screen
 	return _getch(); //
 }
-
+//
+//void GameLogic::Clear()
+//{
+//
+//	// Get the Win32 handle representing standard output.
+//	// This generally only has to be done once, so we make it static.
+//	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+//
+//	CONSOLE_SCREEN_BUFFER_INFO csbi;
+//	COORD topLeft = { 0, 0 };
+//
+//	// std::cout uses a buffer to batch writes to the underlying console.
+//	// We need to flush that to the console because we're circumventing
+//	// std::cout entirely; after we clear the console, we don't want
+//	// stale buffered text to randomly be written out.
+//	std::cout.flush();
+//
+//	// Figure out the current width and height of the console window
+//	if (!GetConsoleScreenBufferInfo(hOut, &csbi))
+//	{
+//		// TODO: Handle failure!
+//		abort();
+//	}
+//	DWORD length = csbi.dwSize.X * csbi.dwSize.Y;
+//
+//	DWORD written;
+//
+//	// Flood-fill the console with spaces to clear it
+//	FillConsoleOutputCharacter(hOut, TEXT(' '), length, topLeft, &written);
+//
+//	// Reset the attributes of every character to the default.
+//	// This clears all background colour formatting, if any.
+//	FillConsoleOutputAttribute(hOut, csbi.wAttributes, length, topLeft, &written);
+//
+//	// Move the cursor back to the top left for the next sequence of writes
+//	SetConsoleCursorPosition(hOut, topLeft);
+//}
 	
 
 

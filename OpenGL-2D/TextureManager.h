@@ -37,5 +37,6 @@ public:
 	unsigned int Create3DTexture(string filename, int numSubImagesX, int numSubImagesY, bool loop);
 
 	static TextureManager* GetInstance() { return m_pInstance; }
+
 };
 

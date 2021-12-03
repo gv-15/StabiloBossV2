@@ -15,7 +15,7 @@ Renderer* Renderer::m_pRenderer = nullptr;
 Renderer::Renderer()
 {
 	m_pRenderer = this;
-	m_frameTimer.Start();
+	
 }
 
 
@@ -39,7 +39,7 @@ void Renderer::Initialize(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
 	glutCreateWindow(argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
 	
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);
@@ -112,12 +112,12 @@ void Renderer::DrawScene()
 		it++;
 	}
 
-	double elapsedTime = m_frameTimer.ElapsedSeconds(true);
-	if (elapsedTime < m_frameDuration)
-	{
-		double timeAsleep = m_frameDuration - elapsedTime;
-		std::this_thread::sleep_for(chrono::duration<double, std::ratio<1>>(timeAsleep)); //sleep until m_frameDuration seconds passed since last frame
-	}
+	//double elapsedTime = m_frameTimer.ElapsedSeconds(true);
+	//if (elapsedTime < m_frameDuration)
+	//{
+	//	double timeAsleep = m_frameDuration - elapsedTime;
+	//	std::this_thread::sleep_for(chrono::duration<double, std::ratio<1>>(timeAsleep)); //sleep until m_frameDuration seconds passed since last frame
+	//}
 }
 
 

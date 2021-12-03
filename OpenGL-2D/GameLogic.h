@@ -45,5 +45,7 @@ public:
 	void restart();
 
 	char GetNextPressedKey();
+
+	void Clear();
 };
 
