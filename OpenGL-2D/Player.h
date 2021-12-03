@@ -5,7 +5,7 @@ class Player : public Sprite
 {	
 	
 	double limitDown = 0, limitUp = 0, limitLeft = 0, limitRight = 0;
-	int score, m_lifes = 3;
+	int score, m_lives = 3;
 public:
 	Player(string img, double m_posx, double m_posy, double x1, double y2);
 	~Player();
@@ -19,7 +19,7 @@ public:
 	int getScore();
 	void addScore();
 	void setScore(int pScore);
-	int getLifes();
-	void ReduceLifes(); //No se si falta mas pero tiene buena pinta
+	int getLives();
+	void ReduceLives(); //No se si falta mas pero tiene buena pinta
 };
 

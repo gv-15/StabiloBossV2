@@ -72,6 +72,19 @@ double Sprite::GetSize()
 	return m_size;
 }
 
+double Sprite::GetXScale()
+{
+
+	return x_scale;
+}
+
+double Sprite::GetYScale()
+{
+
+	return y_scale;
+}
+
+
 void Sprite::Draw(double dt)
 {
 

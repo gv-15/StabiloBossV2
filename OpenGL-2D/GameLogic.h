@@ -38,7 +38,9 @@ public:
 
 	bool CheckCollision(Sprite& s1, Sprite& s2);
 
-	void PickupPowerup(PowerUp p);
+	bool CanMove(Player* p);
+
+	//void PickupPowerup(PowerUp p);
 
 	void ActivatePowerUp(PowerUp pu);
 
