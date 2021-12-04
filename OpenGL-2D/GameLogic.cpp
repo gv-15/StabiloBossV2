@@ -124,10 +124,11 @@ bool GameLogic::CanMoveUp(Player* p) {
 	std::string wallname;
 
 
-	while (n < 4 && obstacle == false) {
+	while(n < 4 && obstacle == false){
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
+		//wall = (Wall*)m_pRenderer->ObjectByName("wall1");
 		// collision x-axis
 		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
 			//wall->GetX() + wall->GetSize() >= p->GetX();
@@ -142,19 +143,21 @@ bool GameLogic::CanMoveUp(Player* p) {
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pyArrIzq < wyArrIzq - wallH) && 
+		if ((pyArrIzq < wyArrIzq - wallH)  &&
 			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW))) {
 
 			obstacle = false;
 
 		}
-		else if (pyArrIzq > wyArrIzq - wallW &&
-			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW)))  {
+		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
+			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)))  {
 			obstacle = true;
 		}
 
 		n++;
+
 	}
+	
 
 	return !obstacle;
 }
