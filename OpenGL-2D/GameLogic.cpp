@@ -146,12 +146,13 @@ bool GameLogic::CanMoveUp(Player* p) {
 		if ((pyArrIzq < wyArrIzq - wallH)  &&
 			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW))) {
 
-			obstacle = false;
+			 obstacle = false;
 
 		}
 		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
-			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)))  {
-			obstacle = true;
+			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq))  {
+			
+			 obstacle = true;
 		}
 
 		n++;
