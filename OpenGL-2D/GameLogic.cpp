@@ -229,13 +229,12 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	if (a == true)
 	{
 		//if (CanMove(player1)) {
+	
 		    int p0 = player1->getLives();
 			player1->ReduceLives();
 			int p = player1->getLives() ;
 			m_pRenderer->DrawScene();
 			player1->moveLeft(0.034);
-		
-		
 		//}
 	}
 	if (d == true)
