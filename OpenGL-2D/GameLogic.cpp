@@ -111,12 +111,6 @@ bool GameLogic::CanMove(Player* p) {
 bool GameLogic::CanMoveUp(Player* p) {
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
 	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
 	double playerW = p->GetXScale();
 	double playerH = p->GetYScale();
 
@@ -145,24 +139,17 @@ bool GameLogic::CanMoveUp(Player* p) {
 
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
+		if ((pyArrIzq < wyArrIzq - wallH) && 
+			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW))) {
 
 			obstacle = false;
 
 		}
-		else {
+		else if (pyArrIzq > wyArrIzq - wallW &&
+			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW)))  {
 			obstacle = true;
 		}
 
@@ -770,31 +757,31 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 
 	if (w == true)
 	{
-		if(CanMove(player1)){
+		if(CanMoveUp(player1)){
 			player1->moveUp(0.034);
 		}
 	}
 	if (a == true)
 	{
-		if (CanMove(player1)) {
+		if (true) {
 			player1->moveLeft(0.034);
 		}
 	}
 	if (d == true)
 	{
-		if (CanMove(player1)) {
+		if (true) {
 			player1->moveRight(0.034);
 		}
 	}
 	if (s == true)
 	{
-		if (CanMove(player1)) {
+		if (true) {
 			player1->moveDown(0.034);
 		}
 	}
 	if (ar2 == true)
 	{
-		if (CanMove(player2)) {
+		if (CanMoveUp(player2)) {
 
 			player2->moveUp(0.034);
 		}
