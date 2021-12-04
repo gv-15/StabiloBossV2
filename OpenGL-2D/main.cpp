@@ -46,9 +46,11 @@ int main(int argc, char** argv)
 	player2.SetName("Player2");
 	Wall wall1 = Wall("/img/wall1", 0, 0, 1, 1);
 	wall1.SetName("wall1");
-	Wall wall2 = Wall("/img/wall2", -0.6, 0.4, 0.5, 0.3);
+	Wall wall2 = Wall("/img/wall2", -0.6, 0.6, 0.5, 0.3);
+	wall2.SetRotation(-25);
 	wall2.SetName("wall2");
-	Wall wall3 = Wall("/img/wall3", 0.7, 0.3, 0.6, 0.4);
+	Wall wall3 = Wall("/img/wall2", 0.5, -0.6, 0.5, 0.3);
+	wall3.SetRotation(-25);
 	wall3.SetName("wall3");
 	gameLogic.Initialize();
 
