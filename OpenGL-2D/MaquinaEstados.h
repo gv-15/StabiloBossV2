@@ -6,15 +6,26 @@ class Renderer;
 
 class MaquinaEstados
 {
-    Renderer* m_Renderer;
+    static MaquinaEstados* m_pInstance;
+
+    Renderer* m_pRenderer;
+
+    static void __processKeyboard(unsigned char key, int x, int y);
+    static void __processUpKeyboard(unsigned char key, int x, int y);
+    void ProcessKeyboard(unsigned char key, int x, int y);
+    void ProcessUpKeyboard(unsigned char key, int x, int y);
 
     Estado estado;
 
     public:
 
-    MaquinaEstados(Renderer* pRenderer);
+    MaquinaEstados();
+
+    void Initialize();
 
     void DefinirEstado(Estado estado);
+
+    Estado GetEstado();
    
 };
 

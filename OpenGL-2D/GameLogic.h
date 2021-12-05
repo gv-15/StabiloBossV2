@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "../3rd-party/SoundManager/SoundManager.h" 
 #include "PowerUp.h"
+#include "MaquinaEstados.h"
 
 class Renderer;
 
@@ -9,6 +10,7 @@ class GameLogic
 {
 	static GameLogic* m_pInstance;
 	Renderer* m_pRenderer;
+	MaquinaEstados maquina;
 	 	
 	
 	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
@@ -48,6 +50,8 @@ public:
 
 	bool CanMoveLeft(Player* p);
 
+	void cambiarEstado(Estado e);
+
 	
 	//void PickupPowerup(PowerUp p);
 
@@ -57,6 +61,6 @@ public:
 
 	//char GetNextPressedKey();
 
-	//void Clear();
+	void Clear();
 };
 

@@ -29,6 +29,7 @@ GameLogic::GameLogic(Renderer* pRenderer)
 {
 	m_pRenderer = pRenderer;
 	m_pInstance = this;
+	maquina = MaquinaEstados();
 	
 }
 
@@ -259,11 +260,29 @@ void GameLogic::Initialize()
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
 
+	if (maquina.GetEstado() == Inicio)
+	{
+		Sprite* PantallaI = new Sprite("/img/PantallaInicialStart", 0, 0, 2, 2);
+		PantallaI->SetName("PantallaI");
+		m_pRenderer->AddObject(PantallaI);
+	}
 }
+
 
 
 void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 {
+
+	switch (key)
+	{
+
+	case 'g':
+
+		maquina.DefinirEstado(Instrucciones);
+		cambiarEstado(Instrucciones);
+		break;
+	}
+
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 
@@ -332,6 +351,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 	case 27:
 		esc = true;
 	}
+	
 }
 
 void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
@@ -371,6 +391,74 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 		break;
 	case 27:
 		esc = false;
+	}
+}
+
+void GameLogic::cambiarEstado(Estado e)
+{
+	if (e == Inicio)
+	{
+
+
+	}
+
+	else if (e == Juego)
+	{
+		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 10, 10);
+		PantallaJ->SetName("PantallaJ");
+
+		Player player1 = Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
+		player1.SetName("Player1");
+		Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
+		player2.SetName("Player2");
+		Wall wall1 = Wall("/img/wall1", 0, 0, 0.1, 1);
+		wall1.SetName("wall1");
+		Wall wall2 = Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
+		wall2.SetName("wall2");
+		Wall wall3 = Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
+		wall3.SetName("wall3");
+
+
+		Sprite live1P1 = Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+		Sprite live2P1 = Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+		Sprite live3P1 = Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+		Sprite live1P2 = Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+		Sprite live2P2 = Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+		Sprite live3P2 = Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+
+
+		m_pRenderer->AddObject(PantallaJ);
+		m_pRenderer->AddObject(&player1);
+		m_pRenderer->AddObject(&player2);
+		m_pRenderer->AddObject(&wall1);
+		m_pRenderer->AddObject(&wall2);
+		m_pRenderer->AddObject(&wall3);
+		m_pRenderer->AddObject(&live1P1);
+		m_pRenderer->AddObject(&live2P1);
+		m_pRenderer->AddObject(&live3P1);
+		m_pRenderer->AddObject(&live1P2);
+		m_pRenderer->AddObject(&live2P2);
+		m_pRenderer->AddObject(&live3P2);
+
+
+		//timer->Start();
+	}
+
+	else if (e == Final)
+	{
+		Sprite* PantallaF = new Sprite("/img/inicio", 0, 0, 10, 10);
+		PantallaF->SetName("PantallaF");
+		m_pRenderer->AddObject(PantallaF);
+
+	}
+
+	else if (e == Instrucciones)
+	{
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaInst = new Sprite("/img/PantallaInicialControls", 0, 0, 2, 2);
+		PantallaInst->SetName("PantallaInst");
+		m_pRenderer->AddObject(PantallaInst);
 	}
 }
 
@@ -500,42 +588,42 @@ bool GameLogic::IsGameEnded()
 //	return _getch(); //
 //}
 //
-//void GameLogic::Clear()
-//{
-//
-//	// Get the Win32 handle representing standard output.
-//	// This generally only has to be done once, so we make it static.
-//	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-//
-//	CONSOLE_SCREEN_BUFFER_INFO csbi;
-//	COORD topLeft = { 0, 0 };
-//
-//	// std::cout uses a buffer to batch writes to the underlying console.
-//	// We need to flush that to the console because we're circumventing
-//	// std::cout entirely; after we clear the console, we don't want
-//	// stale buffered text to randomly be written out.
-//	std::cout.flush();
-//
-//	// Figure out the current width and height of the console window
-//	if (!GetConsoleScreenBufferInfo(hOut, &csbi))
-//	{
-//		// TODO: Handle failure!
-//		abort();
-//	}
-//	DWORD length = csbi.dwSize.X * csbi.dwSize.Y;
-//
-//	DWORD written;
-//
-//	// Flood-fill the console with spaces to clear it
-//	FillConsoleOutputCharacter(hOut, TEXT(' '), length, topLeft, &written);
-//
-//	// Reset the attributes of every character to the default.
-//	// This clears all background colour formatting, if any.
-//	FillConsoleOutputAttribute(hOut, csbi.wAttributes, length, topLeft, &written);
-//
-//	// Move the cursor back to the top left for the next sequence of writes
-//	SetConsoleCursorPosition(hOut, topLeft);
-//}
+void GameLogic::Clear()
+{
+
+	// Get the Win32 handle representing standard output.
+	// This generally only has to be done once, so we make it static.
+	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	COORD topLeft = { 0, 0 };
+
+	// std::cout uses a buffer to batch writes to the underlying console.
+	// We need to flush that to the console because we're circumventing
+	// std::cout entirely; after we clear the console, we don't want
+	// stale buffered text to randomly be written out.
+	std::cout.flush();
+
+	// Figure out the current width and height of the console window
+	if (!GetConsoleScreenBufferInfo(hOut, &csbi))
+	{
+		// TODO: Handle failure!
+		abort();
+	}
+	DWORD length = csbi.dwSize.X * csbi.dwSize.Y;
+
+	DWORD written;
+
+	// Flood-fill the console with spaces to clear it
+	FillConsoleOutputCharacter(hOut, TEXT(' '), length, topLeft, &written);
+
+	// Reset the attributes of every character to the default.
+	// This clears all background colour formatting, if any.
+	FillConsoleOutputAttribute(hOut, csbi.wAttributes, length, topLeft, &written);
+
+	// Move the cursor back to the top left for the next sequence of writes
+	SetConsoleCursorPosition(hOut, topLeft);
+}
 	
 
 
