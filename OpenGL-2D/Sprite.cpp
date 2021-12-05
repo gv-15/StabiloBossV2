@@ -84,6 +84,12 @@ double Sprite::GetYScale()
 	return y_scale;
 }
 
+double Sprite::GetRotation()
+{
+
+	return m_angle;
+}
+
 
 void Sprite::Draw(double dt)
 {

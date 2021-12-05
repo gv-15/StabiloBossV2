@@ -40,6 +40,15 @@ public:
 
 	bool CanMove(Player* p);
 
+	bool CanMoveUp(Player* p);
+
+	bool CanMoveDown(Player* p);
+
+	bool CanMoveRight(Player* p);
+
+	bool CanMoveLeft(Player* p);
+
+	
 	//void PickupPowerup(PowerUp p);
 
 	//void ActivatePowerUp(PowerUp pu);
