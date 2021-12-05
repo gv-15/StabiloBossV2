@@ -115,14 +115,10 @@ bool GameLogic::CanMoveUp(Player* p) {
 	double playerH = p->GetYScale();
 
 
-
-
-
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
 	std::string wallname;
-
 
 	while(n < 4 && obstacle == false){
 		wallname = "wall";
@@ -152,6 +148,11 @@ bool GameLogic::CanMoveUp(Player* p) {
 		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
 			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq))  {
 			
+			Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+			Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+			
+			player1->ReduceLives();
+			//m_pRenderer->DrawScene();
 			 obstacle = true;
 		}
 
