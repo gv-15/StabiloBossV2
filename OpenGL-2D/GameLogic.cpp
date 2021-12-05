@@ -229,6 +229,12 @@ bool GameLogic::CanMoveDown(Player* p) {
 				obstacle = false;
 
 		}
+		else if ((pyArrIzq < wyArrIzq) &&
+			((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + wallW)))
+		{
+			obstacle = false;
+
+		}
 		else if (((pyArrIzq >= wyArrIzq - wallH) &&
 				 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq)) && p->GetRotation() == 180) {
 
