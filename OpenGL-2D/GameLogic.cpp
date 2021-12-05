@@ -46,10 +46,10 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 }
 
 bool GameLogic::CanMove(Player* p) {
-	//bool obstacle = false;
-	//int n = 1;
-	//Wall* wall;
-	//std::string wallname;
+	bool obstacle = false;
+	int n = 1;
+	Wall* wall;
+	std::string wallname;
 
 
 	while (n < 4 && obstacle == false) {
@@ -64,14 +64,12 @@ bool GameLogic::CanMove(Player* p) {
 			wall->GetY() + wall->GetSize() >= p->GetY();
 		// collision only if on both axes
 
-	//	obstacle = collisionX && collisionY;
-	//	n++;
-	//}
-	//
-	return false;
-	//return !obstacle;
+	obstacle = collisionX && collisionY;
+	n++;
+		
+		return !obstacle;
+	}
 }
-
 //void GameLogic::PickupPowerup(PowerUp powerUp)
 //{
 	//if (CheckCollision(*Player, powerUp)) //misma posición
@@ -209,6 +207,7 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 		break;
 	case 27:
 		esc = false;
+		
 	}
 }
 
