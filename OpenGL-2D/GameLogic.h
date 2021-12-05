@@ -44,13 +44,6 @@ public:
 
 	bool CanMoveLeft(Player* p);
 
-	bool CanTurnUp(Player* p);
-
-	bool CanTurnDown(Player* p);
-
-	bool CanTurnRight(Player* p);
-
-	bool CanTurnLeft(Player* p);
 	
 	//void PickupPowerup(PowerUp p);
 

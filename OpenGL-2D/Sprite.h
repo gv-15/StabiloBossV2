@@ -40,5 +40,6 @@ public:
 	double GetY();
 	double GetXScale();
 	double GetYScale();
+	double GetRotation();
 };
 
