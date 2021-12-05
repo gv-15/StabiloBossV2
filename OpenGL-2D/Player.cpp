@@ -8,10 +8,10 @@ Player::Player(string dirimg, double m_posx1, double m_posy1, double x1, double 
 {
 	
 	score = 0;
-	limitDown = -0.75;
+	limitDown = -0.9;
 	limitUp = 0.75;
-	limitLeft = -0.75; 
-	limitRight = 0.75;
+	limitLeft = -0.9; 
+	limitRight = 0.9;
 	
 }
 

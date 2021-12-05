@@ -38,11 +38,11 @@ int main(int argc, char** argv)
 	player1.SetName("Player1");
 	Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);
 	player2.SetName("Player2");
-	Wall wall1 = Wall("/img/wall1", 0, 0, 1, 1);
+	Wall wall1 = Wall("/img/wall1", 0, 0, 0.1, 1);
 	wall1.SetName("wall1");
-	Wall wall2 = Wall("/img/wall2", -0.6, 0.4, 0.5, 0.3);
+	Wall wall2 = Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
 	wall2.SetName("wall2");
-	Wall wall3 = Wall("/img/wall3", 0.7, 0.3, 0.6, 0.4);
+	Wall wall3 = Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
 	wall3.SetName("wall3");
 
 	int livesJ1 = player1.getLives();
