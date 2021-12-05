@@ -15,7 +15,8 @@ class GameLogic
 	
 	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	
-
+	void ProcessSpecialFunc(int key, int x, int y);
+	static void __processSpecialFunc(int key, int x, int y);
 	static void __processKeyboard(unsigned char key, int x, int y);
 	static void __processUpKeyboard(unsigned char key, int x, int y);
 	void ProcessKeyboard(unsigned char key, int x, int y);

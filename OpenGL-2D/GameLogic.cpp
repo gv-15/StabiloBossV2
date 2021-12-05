@@ -30,6 +30,7 @@ GameLogic::GameLogic(Renderer* pRenderer)
 	m_pRenderer = pRenderer;
 	m_pInstance = this;
 	maquina = MaquinaEstados();
+	maquina.DefinirEstado(Inicio);
 	
 }
 
@@ -255,8 +256,14 @@ void GameLogic::__processUpKeyboard(unsigned char key, int x, int y) {
 		m_pInstance->ProcessUpKeyboard(key, x, y);
 }
 
+void GameLogic::__processSpecialFunc(int key, int x, int y) {
+	if (m_pInstance)
+		m_pInstance->ProcessSpecialFunc(key, x, y);
+}
+
 void GameLogic::Initialize()
 {
+	glutSpecialFunc(__processSpecialFunc);
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
 
@@ -269,19 +276,62 @@ void GameLogic::Initialize()
 }
 
 
+void GameLogic::ProcessSpecialFunc(int key, int x, int y)
+{
+
+	if (key = GLUT_KEY_DOWN)
+	{
+		maquina.DefinirEstado(Instrucciones);
+		cambiarEstado(Instrucciones);
+	}
+
+	else if (key = (char)10)
+	{
+		maquina.DefinirEstado(Juego);
+		cambiarEstado(Juego);
+	}
+}
 
 void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 {
+	
+	/*if (key = GLUT_KEY_INSERT)
+	{
+		maquina.DefinirEstado(Instrucciones);
+		cambiarEstado(Instrucciones);*/
 
-	switch (key)
+		/*if (key = 'q')
+		{
+			maquina.DefinirEstado(Salir);
+			cambiarEstado(Salir);
+		}
+		else if (key = 'q')
+		{
+
+		}*/
+	//}
+	/*else if (key = GLUT_KEY_INSERT)
+	{
+		maquina.DefinirEstado(Juego);
+		cambiarEstado(Juego);
+	}*/
+
+	/*switch (key)
 	{
 
-	case 'g':
+	case 'c':
 
 		maquina.DefinirEstado(Instrucciones);
 		cambiarEstado(Instrucciones);
 		break;
-	}
+	
+
+	case 'q':
+
+		maquina.DefinirEstado(Salir);
+		cambiarEstado(Salir);
+		break;
+	}*/
 
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
@@ -404,8 +454,12 @@ void GameLogic::cambiarEstado(Estado e)
 
 	else if (e == Juego)
 	{
-		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 10, 10);
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 		PantallaJ->SetName("PantallaJ");
+
+		
 
 		Player player1 = Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
 		player1.SetName("Player1");
@@ -459,6 +513,15 @@ void GameLogic::cambiarEstado(Estado e)
 		Sprite* PantallaInst = new Sprite("/img/PantallaInicialControls", 0, 0, 2, 2);
 		PantallaInst->SetName("PantallaInst");
 		m_pRenderer->AddObject(PantallaInst);
+	}
+
+	else if (e == Salir)
+	{
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaInst");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaIQuit = new Sprite("/img/PantallaInicialQuitGame", 0, 0, 2, 2);
+		PantallaIQuit->SetName("PantallaIQuit");
+		m_pRenderer->AddObject(PantallaIQuit);
 	}
 }
 
