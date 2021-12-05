@@ -44,79 +44,12 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 	return collisionX && collisionY;
 }
 
-bool GameLogic::CanMove(Player* p) {
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
-
-
-
-
-
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
-
-
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
-		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
-		double wallW = wall->GetXScale();
-		double wallH = wall->GetYScale();
-
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
-
-			obstacle = false;
-
-		}
-		else {
-			obstacle = true;
-		}
-
-		n++;
-	}
-
-	return !obstacle;
-}
-
 bool GameLogic::CanMoveUp(Player* p) {
+
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
 	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
 	double playerW = p->GetXScale();
 	double playerH = p->GetYScale();
-
-
-
-
 
 	bool obstacle = false;
 	int n = 1;
@@ -125,18 +58,10 @@ bool GameLogic::CanMoveUp(Player* p) {
 
 
 	while(n < 4 && obstacle == false){
+	
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		//wall = (Wall*)m_pRenderer->ObjectByName("wall1");
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
 
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
@@ -149,11 +74,18 @@ bool GameLogic::CanMoveUp(Player* p) {
 			 obstacle = false;
 
 		}
-		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
-			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq))  {
-			
-			 obstacle = true;
+		else if ((pyArrIzq > wyArrIzq ) &&
+					((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + wallW)))
+		{
+			obstacle = false;
+
 		}
+		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
+			     ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH < wyArrIzq)) 
+			 {
+			
+					obstacle = true;
+			 }
 
 		n++;
 
@@ -162,7 +94,9 @@ bool GameLogic::CanMoveUp(Player* p) {
 
 	return !obstacle;
 }
+
 bool GameLogic::CanMoveRight(Player* p) {
+
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
 	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
 	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
@@ -174,10 +108,6 @@ bool GameLogic::CanMoveRight(Player* p) {
 	double playerW = p->GetXScale();
 	double playerH = p->GetYScale();
 
-
-
-
-
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
@@ -188,14 +118,6 @@ bool GameLogic::CanMoveRight(Player* p) {
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
 
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
@@ -227,6 +149,7 @@ bool GameLogic::CanMoveRight(Player* p) {
 }
 
 bool GameLogic::CanMoveLeft(Player* p) {
+
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
 	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
 	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
@@ -238,10 +161,6 @@ bool GameLogic::CanMoveLeft(Player* p) {
 	double playerW = p->GetXScale();
 	double playerH = p->GetYScale();
 
-
-
-
-
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
@@ -252,15 +171,7 @@ bool GameLogic::CanMoveLeft(Player* p) {
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
+		
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
 		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
@@ -291,329 +202,48 @@ bool GameLogic::CanMoveLeft(Player* p) {
 }
 
 bool GameLogic::CanMoveDown(Player* p) {
+	
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
 	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
 	double playerW = p->GetXScale();
 	double playerH = p->GetYScale();
-
-
-
-
 
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
 	std::string wallname;
 
-
 	while (n < 4 && obstacle == false) {
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
 
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
+		if ((pyArrIzq < wyArrIzq - wallH) &&
+			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + wallW))) {
 
-			obstacle = false;
+				obstacle = false;
 
 		}
-		else {
-			obstacle = true;
-		}
+		else if (((pyArrIzq >= wyArrIzq - wallH) &&
+				 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq)) && p->GetRotation() == 180) {
 
+				obstacle = true;
+			 }
+		 
 		n++;
+
 	}
+
 
 	return !obstacle;
 }
 
-bool GameLogic::CanTurnUp(Player* p)
-{
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
 
-
-
-
-
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
-
-
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
-		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
-		double wallW = wall->GetXScale();
-		double wallH = wall->GetYScale();
-
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
-
-			obstacle = false;
-
-		}
-		else {
-			obstacle = true;
-		}
-
-		n++;
-	}
-
-	return !obstacle;
-
-}
-
-bool GameLogic::CanTurnDown(Player* p)
-{
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
-
-
-
-
-
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
-
-
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
-		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
-		double wallW = wall->GetXScale();
-		double wallH = wall->GetYScale();
-
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
-
-			obstacle = false;
-
-		}
-		else {
-			obstacle = true;
-		}
-
-		n++;
-	}
-
-	return !obstacle;
-}
-
-bool GameLogic::CanTurnRight(Player* p)
-{
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
-
-
-
-
-
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
-
-
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
-		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
-		double wallW = wall->GetXScale();
-		double wallH = wall->GetYScale();
-
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
-
-			obstacle = false;
-
-		}
-		else {
-			obstacle = true;
-		}
-
-		n++;
-	}
-
-	return !obstacle;
-}
-
-bool GameLogic::CanTurnLeft(Player* p)
-{
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
-
-
-
-
-
-	bool obstacle = false;
-	int n = 1;
-	Wall* wall;
-	std::string wallname;
-
-
-	while (n < 4 && obstacle == false) {
-		wallname = "wall";
-		wallname += std::to_string(n);
-		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		// collision x-axis
-		//bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-			//wall->GetX() + wall->GetSize() >= p->GetX();
-		// collision y-axis?
-		//bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-			//wall->GetY() + wall->GetSize() >= p->GetY();
-		// collision only if on both axes
-
-
-		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
-		double wallW = wall->GetXScale();
-		double wallH = wall->GetYScale();
-
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
-
-			obstacle = false;
-
-		}
-		else {
-			obstacle = true;
-		}
-
-		n++;
-	}
-
-	return !obstacle;
-}
 //void GameLogic::PickupPowerup(PowerUp powerUp)
 //{
 	//if (CheckCollision(*Player, powerUp)) //misma posición
@@ -761,9 +391,10 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 
 	if (w == true)
 	{
-		if(CanMoveUp(player1)){
+		  if(CanMoveUp(player1))
+		  {
 			player1->moveUp(0.034);
-		}
+		  }
 	}
 	if (a == true)
 	{
@@ -779,7 +410,8 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (s == true)
 	{
-		if (true) {
+		if (CanMoveDown(player1))
+		{
 			player1->moveDown(0.034);
 		}
 	}
@@ -792,7 +424,10 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (ab2 == true)
 	{
-		player2->moveDown(0.034);
+		if (CanMoveDown(player2))
+		{
+			player2->moveDown(0.034);
+		}
 	}
 	if (izq2 == true)
 	{

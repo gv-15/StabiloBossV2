@@ -40,9 +40,9 @@ int main(int argc, char** argv)
 	Sprite live1P2 = Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
 	Sprite live2P2 = Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
 	Sprite live3P2 = Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
-	Player player1 = Player("/img/PLAYER1 ROSA SMALL", 0.9, 0, 0.084, 0.2);
+	Player player1 = Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
 	player1.SetName("Player1");
-	Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);
+	Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
 	player2.SetName("Player2");
 	Wall wall1 = Wall("/img/wall1", 0, 0, 0.1, 1);
 	wall1.SetName("wall1");
