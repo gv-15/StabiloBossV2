@@ -117,23 +117,23 @@ bool GameLogic::CanMoveRight(Player* p) {
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pxArrIzq > wxArrIzq + wallW) &&
+		if ((pxArrIzq + playerW < wxArrIzq) &&
 			((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + wallH))) {
 
-			obstacle = false;
+				obstacle = false;
 
 		}
-		else if ((pxArrIzq > wxArrIzq + wallW) &&
-			((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + wallH)))
-		{
-			obstacle = false;
+		else if ((pxArrIzq + playerW < wxArrIzq) &&
+				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + wallH)))
+			 {
+					obstacle = false;
 
-		}
-		else if ((pxArrIzq <= wxArrIzq + wallW) &&
-			((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH))) { // && (pxArrIzq <= wxArrIzq + )
+			 }
+		else if ((pxArrIzq + playerW >= wxArrIzq) &&
+				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH)) && (pxArrIzq < wxArrIzq - wallW )) { 
 
-			obstacle = true;
-		}
+					obstacle = true;
+			 }
 
 		n++;
 
@@ -178,7 +178,7 @@ bool GameLogic::CanMoveLeft(Player* p) {
 
 			 }
 		else if ((pxArrIzq <= wxArrIzq + wallW) &&
-					((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH))) { // && (pxArrIzq <= wxArrIzq + )
+					((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH)) && (pxArrIzq  > wxArrIzq )) { 
 
 						obstacle = true;
 			 }
@@ -268,38 +268,62 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'w':
 		w = true;
-		player1->SetRotation(0);
+		if (CanMoveUp(player1)) 
+		{
+			player1->SetRotation(0);
+		}
 		break;
 	case 'a':
 		a = true;
-		player1->SetRotation(90);
+		if (CanMoveLeft(player1))
+		{
+			player1->SetRotation(90);
+		}
 		break;
 	case 'd':
 		d = true;
-		player1->SetRotation(-90);
+		if (CanMoveRight(player1))
+		{
+			player1->SetRotation(-90);
+		}
 		break;
 	case 's':
 		s = true;
-		player1->SetRotation(180);
+		if (CanMoveDown(player1))
+		{
+			player1->SetRotation(180);
+		}
 		break;
 	case 'i':
 		ar2 = true;
-		player2->SetRotation(0);
+		if (CanMoveUp(player2))
+		{
+			player2->SetRotation(0);
+		}
 		break;
 
 	case 'k':
 		ab2 = true;
-		player2->SetRotation(180);
+		if (CanMoveDown(player2))
+		{
+			player2->SetRotation(180);
+		}
 		break;
 
 	case 'j':
 		izq2 = true;
-		player2->SetRotation(90);
+		if (CanMoveLeft(player2))
+		{
+			player2->SetRotation(90);
+		}
 		break;
 
 	case 'l':
 		der2 = true;
-		player2->SetRotation(-90);
+		if (CanMoveRight(player2))
+		{
+			player2->SetRotation(-90);
+		}
 		break;
 	case 27:
 		esc = true;
@@ -366,7 +390,7 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (d == true)
 	{
-		if (true) {
+		if (CanMoveRight(player1)) {
 			player1->moveRight(0.034);
 		}
 	}
@@ -400,7 +424,10 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (der2 == true)
 	{
-		player2->moveRight(0.034);
+		if (CanMoveRight(player2))
+		{
+			player2->moveRight(0.034);
+		}
 	}
 	if (esc == true)
 	{
