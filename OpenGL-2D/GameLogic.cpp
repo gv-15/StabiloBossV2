@@ -52,18 +52,17 @@ bool GameLogic::CanMove(Player* p) {
 	//std::string wallname;
 
 
-	//while (n < 4 && obstacle == false) {
-	//	wallname = "wall";
-	//	wallname += std::to_string(n);
-	//	wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-
-	//	// collision x-axis
-	//	bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
-	//		wall->GetX() + wall->GetSize() >= p->GetX();
-	//	// collision y-axis?
-	//	bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
-	//		wall->GetY() + wall->GetSize() >= p->GetY();
-	//	// collision only if on both axes
+	while (n < 4 && obstacle == false) {
+		wallname = "wall";
+		wallname += std::to_string(n);
+		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
+		// collision x-axis
+		bool collisionX = p->GetX() + p->GetSize() >= wall->GetX() &&
+			wall->GetX() + wall->GetSize() >= p->GetX();
+		// collision y-axis?
+		bool collisionY = p->GetY() + p->GetSize() >= wall->GetY() &&
+			wall->GetY() + wall->GetSize() >= p->GetY();
+		// collision only if on both axes
 
 	//	obstacle = collisionX && collisionY;
 	//	n++;
@@ -73,15 +72,15 @@ bool GameLogic::CanMove(Player* p) {
 	//return !obstacle;
 }
 
-void GameLogic::PickupPowerup(PowerUp powerUp)
-{
+//void GameLogic::PickupPowerup(PowerUp powerUp)
+//{
 	//if (CheckCollision(*Player, powerUp)) //misma posición
 	//{	
 	//	ActivatePowerUp(powerUp);
 	//	powerUp.setActivated(true);
 
 	//}
-};
+//};
 
 /*void GameLogic::ActivatePowerUp(PowerUp p)
 {
