@@ -97,22 +97,15 @@ bool GameLogic::CanMoveUp(Player* p) {
 
 bool GameLogic::CanMoveRight(Player* p) {
 
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
+	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetXScale() / 2);
+	double playerW = p->GetYScale();
+	double playerH = p->GetXScale();
 
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
 	std::string wallname;
-
 
 	while (n < 4 && obstacle == false) {
 		wallname = "wall";
@@ -121,82 +114,79 @@ bool GameLogic::CanMoveRight(Player* p) {
 
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
+		if ((pxArrIzq > wxArrIzq + wallW) &&
+			((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + wallH))) {
 
 			obstacle = false;
 
 		}
-		else {
+		else if ((pxArrIzq > wxArrIzq + wallW) &&
+			((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + wallH)))
+		{
+			obstacle = false;
+
+		}
+		else if ((pxArrIzq <= wxArrIzq + wallW) &&
+			((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH))) { // && (pxArrIzq <= wxArrIzq + )
+
 			obstacle = true;
 		}
 
 		n++;
+
 	}
+
 
 	return !obstacle;
 }
 
 bool GameLogic::CanMoveLeft(Player* p) {
 
-	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
-	double pxArrDer = p->GetX() + (p->GetXScale() / 2);
-	double pyArrDer = p->GetY() + (p->GetYScale() / 2);
-	double pxAbDer = p->GetX() + (p->GetXScale() / 2);
-	double pyAbDer = p->GetY() - (p->GetYScale() / 2);
-	double pxAbIzq = p->GetX() - (p->GetXScale() / 2);
-	double pyAbIzq = p->GetY() - (p->GetYScale() / 2);
-	double playerW = p->GetXScale();
-	double playerH = p->GetYScale();
+	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetXScale() / 2);
+	double playerW = p->GetYScale();
+	double playerH = p->GetXScale();
 
 	bool obstacle = false;
 	int n = 1;
 	Wall* wall;
 	std::string wallname;
 
-
 	while (n < 4 && obstacle == false) {
 		wallname = "wall";
 		wallname += std::to_string(n);
 		wall = (Wall*)m_pRenderer->ObjectByName(wallname);
-		
+
 		double wxArrIzq = wall->GetX() - (wall->GetXScale() / 2);
 		double wyArrIzq = wall->GetY() + (wall->GetYScale() / 2);
-		double wxArrDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyArrDer = wall->GetY() + (wall->GetYScale() / 2);
-		double wxAbDer = wall->GetX() + (wall->GetXScale() / 2);
-		double wyAbDer = wall->GetY() - (wall->GetYScale() / 2);
-		double wxAbIzq = wall->GetX() - (wall->GetXScale() / 2);
-		double wyAbIzq = wall->GetY() - (wall->GetYScale() / 2);
 		double wallW = wall->GetXScale();
 		double wallH = wall->GetYScale();
 
-		if ((pxArrIzq > wxArrIzq + wallW) ||
-			(pxArrIzq + playerW < wxArrIzq) ||
-			(pyArrIzq > wyArrIzq + wallH) ||
-			(pyArrIzq + playerH < wyArrIzq)) {
+		if ((pxArrIzq > wxArrIzq + wallW) &&
+			((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + wallH))) {
 
-			obstacle = false;
+				obstacle = false;
 
 		}
-		else {
-			obstacle = true;
-		}
+		else if ((pxArrIzq > wxArrIzq + wallW) &&
+					((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + wallH)))
+			 {		
+						obstacle = false;
+
+			 }
+		else if ((pxArrIzq <= wxArrIzq + wallW) &&
+					((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH))) { // && (pxArrIzq <= wxArrIzq + )
+
+						obstacle = true;
+			 }
 
 		n++;
+
 	}
+
 
 	return !obstacle;
 }
@@ -235,8 +225,8 @@ bool GameLogic::CanMoveDown(Player* p) {
 			obstacle = false;
 
 		}
-		else if (((pyArrIzq >= wyArrIzq - wallH) &&
-				 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq)) && p->GetRotation() == 180) {
+		else if ((pyArrIzq >= wyArrIzq - wallH) &&
+				 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
 				obstacle = true;
 			 }
@@ -248,40 +238,6 @@ bool GameLogic::CanMoveDown(Player* p) {
 
 	return !obstacle;
 }
-
-
-//void GameLogic::PickupPowerup(PowerUp powerUp)
-//{
-	//if (CheckCollision(*Player, powerUp)) //misma posición
-	//{	
-	//	ActivatePowerUp(powerUp);
-	//	powerUp.setActivated(true);
-
-	//}
-//};
-
-/*void GameLogic::ActivatePowerUp(PowerUp p)
-{
-	//Eliminar del tablero la foto
-
-	string t = p.GetType();
-
-	int indice = 0;
-	
-	for (int i = 0; i < PowerUps.size(); i++)
-	{
-		if (t._Equal(PowerUps[i].GetType()))
-		{
-			indice = i;
-		}
-			
-	}
-
-	//PowerUps.erase(i); Eliminar del array del mapa
-
-	p.Activate(t);
-	
-}; */
 
 void GameLogic::__processKeyboard(unsigned char key, int x, int y)
 {
@@ -404,7 +360,7 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (a == true)
 	{
-		if (true) {
+		if (CanMoveLeft(player1)) {
 			player1->moveLeft(0.034);
 		}
 	}
@@ -437,7 +393,10 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (izq2 == true)
 	{
-		player2->moveLeft(0.034);
+		if (CanMoveLeft(player2))
+		{
+			player2->moveLeft(0.034);
+		}
 	}
 	if (der2 == true)
 	{
