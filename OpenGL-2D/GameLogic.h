@@ -30,6 +30,8 @@ public:
 
 	void ProcessEvents();
 
+	void Kill();
+
 	bool IsGameEnded();
 
 	bool CheckCollision(Sprite& s1, Sprite& s2);
