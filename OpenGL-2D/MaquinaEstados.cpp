@@ -52,5 +52,27 @@ Estado MaquinaEstados::GetEstado()
 void MaquinaEstados::DefinirEstado(Estado e)
 {
 
-    
+    if (e == Inicio)
+
+        estado = Inicio;
+
+    else if (e == Instrucciones)
+
+        estado = Instrucciones;
+
+    else if (e == Juego)
+
+        estado = Juego;
+
+    else if (e == Salir)
+
+        estado = Salir;
+
+    else if (e == Final1)
+
+        estado = Final1;
+
+    else if (e == Final2)
+
+        estado = Final2;
 }

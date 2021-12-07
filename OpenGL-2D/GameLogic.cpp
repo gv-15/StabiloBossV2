@@ -256,14 +256,14 @@ void GameLogic::__processUpKeyboard(unsigned char key, int x, int y) {
 		m_pInstance->ProcessUpKeyboard(key, x, y);
 }
 
-//void GameLogic::__processSpecialFunc(int key, int x, int y) {
-//	if (m_pInstance)
-//		m_pInstance->ProcessSpecialFunc(key, x, y);
-//}
+void GameLogic::__processSpecialFunc(int key, int x, int y) {
+	if (m_pInstance)
+		m_pInstance->ProcessSpecialFunc(key, x, y);
+}
 
 void GameLogic::Initialize()
 {
-	//glutSpecialFunc(__processSpecialFunc);
+	glutSpecialFunc(__processSpecialFunc);
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
 
@@ -276,17 +276,27 @@ void GameLogic::Initialize()
 }
 
 
-//void GameLogic::ProcessSpecialFunc(int key, int x, int y)
-//{
-//
-//	if (key = GLUT_KEY_DOWN)
-//	{
-//		maquina.DefinirEstado(Instrucciones);
-//		cambiarEstado(Instrucciones);
-//	}
-//
-//	
-//}
+void GameLogic::ProcessSpecialFunc(int key, int x, int y)
+{
+
+	if (key = GLUT_KEY_DOWN)
+	{
+		if (maquina.GetEstado() == Inicio)
+		{
+			maquina.DefinirEstado(Instrucciones);
+			cambiarEstado(Instrucciones);
+		}
+		
+		else if (maquina.GetEstado() == Instrucciones)
+		{
+			maquina.DefinirEstado(Salir);
+			cambiarEstado(Salir);
+		}
+
+	}
+
+	
+}
 
 void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 {
@@ -296,14 +306,23 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 13:
 
-		maquina.DefinirEstado(Juego);
-		cambiarEstado(Juego);
-		break;
+		if (maquina.GetEstado() == Inicio)
+		{
+			maquina.DefinirEstado(Juego);
+			cambiarEstado(Juego);
+		}
 
-	case 'c':
+		else if (maquina.GetEstado() == Instrucciones)
+		{
+			maquina.DefinirEstado(Controls);
+			cambiarEstado(Controls);
+		}
 
-		maquina.DefinirEstado(Instrucciones);
-		cambiarEstado(Instrucciones);
+		else if (maquina.GetEstado() == Salir)
+		{
+			exit(0);
+		}
+
 		break;
 
 	}
@@ -471,13 +490,13 @@ void GameLogic::cambiarEstado(Estado e)
 
 	}
 
-	else if (e == Final)
+	/*else if (e == Final)
 	{
 		Sprite* PantallaF = new Sprite("/img/inicio", 0, 0, 10, 10);
 		PantallaF->SetName("PantallaF");
 		m_pRenderer->AddObject(PantallaF);
 
-	}
+	}*/
 
 	else if (e == Instrucciones)
 	{
@@ -486,6 +505,15 @@ void GameLogic::cambiarEstado(Estado e)
 		Sprite* PantallaInst = new Sprite("/img/PantallaInicialControls", 0, 0, 2, 2);
 		PantallaInst->SetName("PantallaInst");
 		m_pRenderer->AddObject(PantallaInst);
+	}
+
+	else if (e == Controls)
+	{
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaInst");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaC = new Sprite("/img/Controls", 0, 0, 2, 2);
+		PantallaC->SetName("PantallaCt");
+		m_pRenderer->AddObject(PantallaC);
 	}
 
 	else if (e == Salir)
