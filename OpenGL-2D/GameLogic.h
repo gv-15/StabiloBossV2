@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "../3rd-party/SoundManager/SoundManager.h" 
 #include "PowerUp.h"
+#include "MaquinaEstados.h"
 
 class Renderer;
 
@@ -9,11 +10,13 @@ class GameLogic
 {
 	static GameLogic* m_pInstance;
 	Renderer* m_pRenderer;
+	MaquinaEstados maquina;
 	 	
 	
 	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	
-
+	void ProcessSpecialFunc(int key, int x, int y);
+	static void __processSpecialFunc(int key, int x, int y);
 	static void __processKeyboard(unsigned char key, int x, int y);
 	static void __processUpKeyboard(unsigned char key, int x, int y);
 	void ProcessKeyboard(unsigned char key, int x, int y);
@@ -34,6 +37,10 @@ public:
 
 	bool IsGameEnded();
 
+	/*float roundoff(float value, unsigned char prec);
+
+	void PantallaFinal();*/
+
 	bool CheckCollision(Sprite& s1, Sprite& s2);
 
 	bool CanMove(Player* p);
@@ -48,9 +55,17 @@ public:
 
 	bool CanMoveLeft(Player* p);
 
+	void cambiarEstado(Estado e);
+
 	
 	//void PickupPowerup(PowerUp p);
 
 	//void ActivatePowerUp(PowerUp pu);
+
+	//void restart();
+
+	//char GetNextPressedKey();
+
+	void Clear();
 };
 

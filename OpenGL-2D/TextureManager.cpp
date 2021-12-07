@@ -172,4 +172,3 @@ unsigned int TextureManager::Create3DTexture(string filename, int numSubImagesX,
 	return textureId;
 }
 
-

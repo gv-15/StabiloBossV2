@@ -111,7 +111,6 @@ void Sprite::Draw(double dt)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-
 	
 	//------------------------------------------------------------------
 	//Split "/img/PLAYER1 ROSA SMALL" into "img/PLAYER1 ROSA SMALL"
