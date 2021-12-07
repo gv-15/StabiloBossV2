@@ -30,6 +30,7 @@ GameLogic::GameLogic(Renderer* pRenderer)
 	m_pRenderer = pRenderer;
 	m_pInstance = this;
 	maquina = MaquinaEstados();
+	maquina.DefinirEstado(Inicio);
 	
 }
 
@@ -255,8 +256,14 @@ void GameLogic::__processUpKeyboard(unsigned char key, int x, int y) {
 		m_pInstance->ProcessUpKeyboard(key, x, y);
 }
 
+void GameLogic::__processSpecialFunc(int key, int x, int y) {
+	if (m_pInstance)
+		m_pInstance->ProcessSpecialFunc(key, x, y);
+}
+
 void GameLogic::Initialize()
 {
+	glutSpecialFunc(__processSpecialFunc);
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
 
@@ -269,18 +276,55 @@ void GameLogic::Initialize()
 }
 
 
+void GameLogic::ProcessSpecialFunc(int key, int x, int y)
+{
+
+	if (key = GLUT_KEY_DOWN)
+	{
+		if (maquina.GetEstado() == Inicio)
+		{
+			maquina.DefinirEstado(Instrucciones);
+			cambiarEstado(Instrucciones);
+		}
+		
+		else if (maquina.GetEstado() == Instrucciones)
+		{
+			maquina.DefinirEstado(Salir);
+			cambiarEstado(Salir);
+		}
+
+	}
+
+	
+}
 
 void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 {
-
+	
 	switch (key)
 	{
 
-	case 'g':
+	case 13:
 
-		maquina.DefinirEstado(Instrucciones);
-		cambiarEstado(Instrucciones);
+		if (maquina.GetEstado() == Inicio)
+		{
+			maquina.DefinirEstado(Juego);
+			cambiarEstado(Juego);
+		}
+
+		else if (maquina.GetEstado() == Instrucciones)
+		{
+			maquina.DefinirEstado(Controls);
+			cambiarEstado(Controls);
+		}
+
+		else if (maquina.GetEstado() == Salir)
+		{
+			exit(0);
+		}
+
 		break;
+
 	}
 
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
@@ -404,44 +448,46 @@ void GameLogic::cambiarEstado(Estado e)
 
 	else if (e == Juego)
 	{
-		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 10, 10);
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 		PantallaJ->SetName("PantallaJ");
 
-		Player player1 = Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
-		player1.SetName("Player1");
-		Player player2 = Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
-		player2.SetName("Player2");
-		Wall wall1 = Wall("/img/wall1", 0, 0, 0.1, 1);
-		wall1.SetName("wall1");
-		Wall wall2 = Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
-		wall2.SetName("wall2");
-		Wall wall3 = Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
-		wall3.SetName("wall3");
+		Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
+		player1->SetName("Player1");
+		Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
+		player2->SetName("Player2");
+		Wall* wall1 = new Wall("/img/wall1", 0, 0, 0.1, 1);
+		wall1->SetName("wall1");
+		Wall* wall2 = new Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
+		wall2->SetName("wall2");
+		Wall* wall3 = new Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
+		wall3->SetName("wall3");
 
 
-		Sprite live1P1 = Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
-		Sprite live2P1 = Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
-		Sprite live3P1 = Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
-		Sprite live1P2 = Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
-		Sprite live2P2 = Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
-		Sprite live3P2 = Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+		Sprite* live1P1 = new Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+		Sprite* live2P1 = new Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+		Sprite* live3P1 = new Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+		Sprite* live1P2 = new Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+		Sprite* live2P2 = new Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+		Sprite* live3P2 = new Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
 
 
+		
+		m_pRenderer->AddObject(player1);
+		m_pRenderer->AddObject(player2);
+		m_pRenderer->AddObject(wall1);
+		m_pRenderer->AddObject(wall2);
+		m_pRenderer->AddObject(wall3);
+		m_pRenderer->AddObject(live1P1);
+		m_pRenderer->AddObject(live2P1);
+		m_pRenderer->AddObject(live3P1);
+		m_pRenderer->AddObject(live1P2);
+		m_pRenderer->AddObject(live2P2);
+		m_pRenderer->AddObject(live3P2);
 		m_pRenderer->AddObject(PantallaJ);
-		m_pRenderer->AddObject(&player1);
-		m_pRenderer->AddObject(&player2);
-		m_pRenderer->AddObject(&wall1);
-		m_pRenderer->AddObject(&wall2);
-		m_pRenderer->AddObject(&wall3);
-		m_pRenderer->AddObject(&live1P1);
-		m_pRenderer->AddObject(&live2P1);
-		m_pRenderer->AddObject(&live3P1);
-		m_pRenderer->AddObject(&live1P2);
-		m_pRenderer->AddObject(&live2P2);
-		m_pRenderer->AddObject(&live3P2);
 
 
-		//timer->Start();
 	}
 
 	/*else if (e == Final)
@@ -459,6 +505,24 @@ void GameLogic::cambiarEstado(Estado e)
 		Sprite* PantallaInst = new Sprite("/img/PantallaInicialControls", 0, 0, 2, 2);
 		PantallaInst->SetName("PantallaInst");
 		m_pRenderer->AddObject(PantallaInst);
+	}
+
+	else if (e == Controls)
+	{
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaInst");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaC = new Sprite("/img/Controls", 0, 0, 2, 2);
+		PantallaC->SetName("PantallaCt");
+		m_pRenderer->AddObject(PantallaC);
+	}
+
+	else if (e == Salir)
+	{
+		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaInst");
+		m_pRenderer->RemoveObject(pantalla);
+		Sprite* PantallaIQuit = new Sprite("/img/PantallaInicialQuitGame", 0, 0, 2, 2);
+		PantallaIQuit->SetName("PantallaIQuit");
+		m_pRenderer->AddObject(PantallaIQuit);
 	}
 }
 
