@@ -76,4 +76,5 @@ int Player::getLives()
 void Player::ReduceLives()
 {
 	m_lives--;
+
 }

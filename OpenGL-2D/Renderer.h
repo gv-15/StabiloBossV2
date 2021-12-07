@@ -23,6 +23,7 @@ public:
 
 	void SetFrameRate(int framesPerSecond);
 	double getFrameDuration() { return m_frameDuration; }
+	//Timer GetFrameTimer() { return m_frameTimer; }
 
 	static Renderer* Get(); //this method returns the only instance to the renderer. Needs to be called after creating an instance
 
