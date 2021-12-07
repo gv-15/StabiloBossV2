@@ -444,13 +444,13 @@ void GameLogic::cambiarEstado(Estado e)
 		//timer->Start();
 	}
 
-	else if (e == Final)
+	/*else if (e == Final)
 	{
 		Sprite* PantallaF = new Sprite("/img/inicio", 0, 0, 10, 10);
 		PantallaF->SetName("PantallaF");
 		m_pRenderer->AddObject(PantallaF);
 
-	}
+	}*/
 
 	else if (e == Instrucciones)
 	{
