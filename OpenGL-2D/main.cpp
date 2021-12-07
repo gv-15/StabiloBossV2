@@ -34,19 +34,14 @@ int main(int argc, char** argv)
 
 	renderer.SetFrameRate(30);
 	GameLogic gameLogic(&renderer);
-	//MaquinaEstados maquina(&renderer);
+	
 
 	renderer.Initialize(argc, argv);
 	
 	gameLogic.Initialize(); 
-	//maquina.Initialize();
-
-	
-	
-	//maquina.DefinirEstado(Estado::Inicio);
 	
 
-	//maquina.DefinirEstado(Estado::Juego);
+	
 
 	while (!gameLogic.IsGameEnded())
 	{
@@ -63,5 +58,5 @@ int main(int argc, char** argv)
 		glutSwapBuffers();
 	}
 
-	//maquina.DefinirEstado(Estado::Final);
+	
 }
