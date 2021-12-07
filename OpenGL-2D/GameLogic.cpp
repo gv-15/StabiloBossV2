@@ -329,7 +329,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		else if (maquina.GetEstado() == Salir)
 		{
-			exit(0);
+			//exit(0);
 		}
 
 		break;
@@ -705,15 +705,16 @@ bool GameLogic::IsGameEnded()
 {
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
-	
-	if (player1 == nullptr || player2 == nullptr) 
+
+	if (player1 == nullptr || player2 == nullptr)
 	{
-			
-			return false;
-		
+
+		return false;
+
 	}
 	else
 	{
+
 		if (player1->getLives() == 0) {
 			Sprite* P1Heart1 = (Sprite*)m_pRenderer->ObjectByName("P1Heart1");
 			m_pRenderer->RemoveObject(P1Heart1);
@@ -725,27 +726,28 @@ bool GameLogic::IsGameEnded()
 			Sprite* P2Heart3 = (Sprite*)m_pRenderer->ObjectByName("P2Heart3");
 			m_pRenderer->RemoveObject(P2Heart3);
 			//return true;
-			
-		}
-		
-		
-	
-	}	
 
-	if (player1->getLives() == 0 || player2->getLives() == 0)
-	{
+		}
 
-		if (cont != 0)
+
+		if (player1->getLives() == 0 || player2->getLives() == 0)
 		{
-			return true;
+
+			if (cont != 0)
+			{
+				return true;
+			}
+			else
+			{
+				cont++;
+				return false;
+
+			}
+
 		}
-		else 
-		{
-	        cont++;
-			return false;
-			
-		}
-		
 	}
+
+	return false;
 }
+
 	

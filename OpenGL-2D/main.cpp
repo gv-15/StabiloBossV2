@@ -41,8 +41,6 @@ int main(int argc, char** argv)
 	gameLogic.Initialize(); 
 	
 
-	
-
 
 	while (!gameLogic.IsGameEnded())
 	{
