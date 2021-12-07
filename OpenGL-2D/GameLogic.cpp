@@ -47,7 +47,55 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 	// collision only if on both axes
 	return collisionX && collisionY;
 }
+bool GameLogic::CanMoveRightPlayer(Player* p) {
 
+	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetXScale() / 2);
+	double playerW = p->GetYScale();
+	double playerH = p->GetXScale();
+
+	bool obstacle = false;
+	int n = 1;
+	//Wall* wall;
+	Player* player;
+	std::string playername;
+
+	while (n < 4 && obstacle == false) {
+		playername = "player";
+		playername += std::to_string(n);
+		player = (Player*)m_pRenderer->ObjectByName(playername);
+
+		double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+		double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+		double playerW = player->GetXScale();
+		double playerH = player->GetYScale();
+
+		if ((pxArrIzq + playerW < wxArrIzq) &&
+			((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH))) {
+
+			obstacle = false;
+
+		}
+		else if ((pxArrIzq + playerW < wxArrIzq) &&
+			((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH)))
+		{
+			obstacle = false;
+
+		}
+		else if ((pxArrIzq + playerW >= wxArrIzq) &&
+			((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH)) && (pxArrIzq < wxArrIzq - playerW)) {
+
+			obstacle = true;
+
+		}
+
+		n++;
+
+	}
+
+
+	return !obstacle;
+}
 bool GameLogic::CanMoveUp(Player* p) {
 
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
@@ -450,7 +498,10 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	if (d == true)
 	{
 		if (CanMoveRight(player1)) {
-			player1->moveRight(0.034);
+	/*		if (CanMoveRightPlayer(player1)) {
+	            player1->moveRight(0.034);
+			}*/
+			
 		}
 	}
 	if (s == true)
