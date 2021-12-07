@@ -463,9 +463,9 @@ void GameLogic::cambiarEstado(Estado e)
 		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 		PantallaJ->SetName("PantallaJ");
 
-		Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
+		Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", 0.9, 0, 0.084, 0.2);
 		player1->SetName("Player1");
-		Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
+		Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", -0.9, 0, 0.084, 0.2);
 		player2->SetName("Player2");
 		Wall* wall1 = new Wall("/img/wall1", 0, 0, 0.1, 1);
 		wall1->SetName("wall1");
