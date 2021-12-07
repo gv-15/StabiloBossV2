@@ -674,7 +674,7 @@ void GameLogic::Kill() {
 	
 
 	}
-	else if (livesJ1 == 2) {
+	else if ( livesJ1 == 2) {
 	
 		 Sprite* P1Heart3 = (Sprite*)m_pRenderer->ObjectByName("P1Heart3");
 		 m_pRenderer->RemoveObject(P1Heart3);
