@@ -33,6 +33,8 @@ public:
 
 	void ProcessEvents();
 
+	void Kill();
+
 	bool IsGameEnded();
 
 	/*float roundoff(float value, unsigned char prec);
