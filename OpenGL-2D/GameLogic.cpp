@@ -508,7 +508,7 @@ void GameLogic::cambiarEstado(Estado e)
 	{
 		Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
 		m_pRenderer->RemoveObject(pantalla);
-		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
+		Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 10, 10);
 		PantallaJ->SetName("PantallaJ");
 
 		Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", 0.9, 0, 0.084, 0.2);
