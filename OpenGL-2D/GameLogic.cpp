@@ -24,6 +24,9 @@ bool ab2 = false;
 bool der2 = false; 
 bool izq2 = false; 
 bool esc = false;
+int cont = 0;
+
+
 
 GameLogic::GameLogic(Renderer* pRenderer)
 {
@@ -31,6 +34,7 @@ GameLogic::GameLogic(Renderer* pRenderer)
 	m_pInstance = this;
 	maquina = MaquinaEstados();
 	maquina.DefinirEstado(Inicio);
+	
 	
 }
 
@@ -89,8 +93,11 @@ bool GameLogic::CanMoveUp(Player* p) {
 		else if ((pyArrIzq >= wyArrIzq - wallH)  &&
 			     ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + wallW)) && (pyArrIzq - playerH < wyArrIzq)) 
 			 {
-			
+			        p->SetPosition(-0.3, -0.3);
 					obstacle = true;
+					
+					p->ReduceLives();
+					Kill();
 			 }
 
 		n++;
@@ -139,6 +146,7 @@ bool GameLogic::CanMoveRight(Player* p) {
 				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - wallH)) && (pxArrIzq < wxArrIzq - wallW )) { 
 
 					obstacle = true;
+					
 			 }
 
 		n++;
@@ -267,6 +275,7 @@ void GameLogic::Initialize()
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
 
+	
 	if (maquina.GetEstado() == Inicio)
 	{
 		Sprite* PantallaI = new Sprite("/img/PantallaInicialStart", 0, 0, 2, 2);
@@ -335,6 +344,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 	case 'w':
 		w = true;
+		
 		if (CanMoveUp(player1)) 
 		{
 			player1->SetRotation(0);
@@ -465,12 +475,52 @@ void GameLogic::cambiarEstado(Estado e)
 		wall3->SetName("wall3");
 
 
-		Sprite* live1P1 = new Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
-		Sprite* live2P1 = new Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
-		Sprite* live3P1 = new Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
-		Sprite* live1P2 = new Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
-		Sprite* live2P2 = new Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
-		Sprite* live3P2 = new Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+		Sprite* live1P1 = new Sprite("/img/heart2", 0.9, 0.9, 0.10, 0.10);
+		live1P1->SetName("live1P1");
+
+		Sprite* live1P2 = new Sprite("/img/heart2", -0.7, 0.9, 0.10, 0.10);
+		live1P2->SetName("live1P2");
+
+		Sprite* live2P2 = new Sprite("/img/heart2", -0.8, 0.9, 0.10, 0.10);
+		live2P2->SetName("live2P2");
+
+		Sprite* live3P2 = new Sprite("/img/heart2", -0.9, 0.9, 0.10, 0.10);
+		live3P2->SetName("live3P2");
+
+		Sprite* live2P1 = new Sprite("/img/heart2", 0.8, 0.9, 0.10, 0.10);
+		live2P1->SetName("live2P1");
+
+		Sprite* live3P1 = new Sprite("/img/heart2", 0.7, 0.9, 0.10, 0.10);
+		live3P1->SetName("live3P1");
+
+
+		Sprite* P1Heart1 = new Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+		P1Heart1->SetName("P1Heart1");
+		Sprite* P1Heart2 = new Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+		P1Heart2->SetName("P1Heart2");
+		Sprite* P1Heart3 = new Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+		P1Heart3->SetName("P1Heart3");
+		Sprite* P2Heart1 = new Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+		P2Heart1->SetName("P2Heart1");
+		Sprite* P2Heart2 = new Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+		P2Heart2->SetName("P2Heart2");
+		Sprite* P2Heart3 = new Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+		P2Heart3->SetName("P2Heart3");
+
+
+		m_pRenderer->AddObject(P1Heart1);
+		m_pRenderer->AddObject(P1Heart2);
+		m_pRenderer->AddObject(P1Heart3);
+		m_pRenderer->AddObject(P2Heart1);
+		m_pRenderer->AddObject(P2Heart2);
+		m_pRenderer->AddObject(P2Heart3);
+
+		m_pRenderer->AddObject(live1P1);
+		m_pRenderer->AddObject(live1P2);
+		m_pRenderer->AddObject(live2P2);
+		m_pRenderer->AddObject(live3P2);
+		m_pRenderer->AddObject(live2P1);
+		m_pRenderer->AddObject(live3P1);
 
 
 		
@@ -479,12 +529,6 @@ void GameLogic::cambiarEstado(Estado e)
 		m_pRenderer->AddObject(wall1);
 		m_pRenderer->AddObject(wall2);
 		m_pRenderer->AddObject(wall3);
-		m_pRenderer->AddObject(live1P1);
-		m_pRenderer->AddObject(live2P1);
-		m_pRenderer->AddObject(live3P1);
-		m_pRenderer->AddObject(live1P2);
-		m_pRenderer->AddObject(live2P2);
-		m_pRenderer->AddObject(live3P2);
 		m_pRenderer->AddObject(PantallaJ);
 
 
@@ -531,11 +575,13 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 
+
+
 	if (w == true)
 	{
 		  if(CanMoveUp(player1))
 		  {
-			player1->moveUp(0.034);
+			  player1->moveUp(0.034);
 		  }
 	}
 	if (a == true)
@@ -594,6 +640,67 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	
 }
 
+void GameLogic::Kill() {
+	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+	
+
+	int livesJ1 = player1->getLives();
+	int livesJ2 = player2->getLives();
+
+
+	 if (livesJ2 == 2) {
+	
+		 Sprite* P2Heart1 = (Sprite*)m_pRenderer->ObjectByName("P2Heart1");
+		 m_pRenderer->RemoveObject(P2Heart1);
+
+
+
+	}
+	else if (livesJ2 == 1) {
+		
+	Sprite* P2Heart2 = (Sprite*)m_pRenderer->ObjectByName("P2Heart2");
+    m_pRenderer->RemoveObject(P2Heart2);
+
+
+
+	}
+	else if ( livesJ2 == 0) {
+	
+		 Sprite* P2Heart3 = (Sprite*)m_pRenderer->ObjectByName("P2Heart3");
+		 m_pRenderer->RemoveObject(P2Heart3);
+		
+	
+
+	}
+	else if ( livesJ1 == 2) {
+	
+		 Sprite* P1Heart3 = (Sprite*)m_pRenderer->ObjectByName("P1Heart3");
+		 m_pRenderer->RemoveObject(P1Heart3);
+
+
+	}
+	else if (livesJ1 == 1) {
+
+
+	Sprite* P1Heart2 = (Sprite*)m_pRenderer->ObjectByName("P1Heart2");
+	m_pRenderer->RemoveObject(P1Heart2);
+
+
+	}
+	else if (livesJ1 == 0) {
+
+	Sprite* P1Heart1 = (Sprite*)m_pRenderer->ObjectByName("P1Heart1");
+	m_pRenderer->RemoveObject(P1Heart1);
+
+
+	}
+	
+
+
+}
+
 bool GameLogic::IsGameEnded()
 {
 	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
@@ -601,97 +708,44 @@ bool GameLogic::IsGameEnded()
 	
 	if (player1 == nullptr || player2 == nullptr) 
 	{
-		return false;
+			
+			return false;
+		
 	}
 	else
 	{
-		if (player1 != nullptr && player1->getLives() == 0 || player2 != nullptr && player2->getLives() == 0)
-		{
-			//	/*Timer t; 
-			//	m_pRenderer->GetFrameTimer().ElapsedSeconds(true);
-			//	t = m_pRenderer->GetFrameTimer();*/
-			//	
+		if (player1->getLives() == 0) {
+			Sprite* P1Heart1 = (Sprite*)m_pRenderer->ObjectByName("P1Heart1");
+			m_pRenderer->RemoveObject(P1Heart1);
+			//return true;
 
-			//	if (player1->getLifes() > player2->getLifes())
-			//	{
-			//		auto rounded = roundoff(100.123456, 3);
-			//		cout << "\n";
-			//		cout << "\n\n" << "El jugador 1 ha ganado con " << player1->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
-			//		cout << "\n";
-			//	}
-			//	else
-			//	{
-			//		cout << "\n";
-			//		cout << "\n\n" << "El jugador 2 ha ganado con " << player2->getLifes() << "vidas restantes" << " en " << roundoff(t.ElapsedSeconds(true), 2) << " seg." << "\n\n";
-			//		cout << "\n";
-			//}
+		}
+		if (player2->getLives() == 0) {
+
+			Sprite* P2Heart3 = (Sprite*)m_pRenderer->ObjectByName("P2Heart3");
+			m_pRenderer->RemoveObject(P2Heart3);
+			//return true;
+			
+		}
+		
+		
+	
+	}	
+
+	if (player1->getLives() == 0 || player2->getLives() == 0)
+	{
+
+		if (cont != 0)
+		{
 			return true;
 		}
-		else
+		else 
 		{
+	        cont++;
 			return false;
+			
 		}
-	}
-	 
-
-}
-
-
-
-//
-//float GameLogic::roundoff(float value, unsigned char prec)
-//{
-//	float pow_10 = pow(10.0f, (float)prec);
-//	return round(value * pow_10) / pow_10;
-//}
-
-
-//char GameLogic::GetNextPressedKey()
-//{
-//	//hold the output screen for some time until the user passes a key from the keyboard to exit the console screen
-//	return _getch(); //
-//}
-//
-void GameLogic::Clear()
-{
-
-	// Get the Win32 handle representing standard output.
-	// This generally only has to be done once, so we make it static.
-	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	COORD topLeft = { 0, 0 };
-
-	// std::cout uses a buffer to batch writes to the underlying console.
-	// We need to flush that to the console because we're circumventing
-	// std::cout entirely; after we clear the console, we don't want
-	// stale buffered text to randomly be written out.
-	std::cout.flush();
-
-	// Figure out the current width and height of the console window
-	if (!GetConsoleScreenBufferInfo(hOut, &csbi))
-	{
-		// TODO: Handle failure!
-		abort();
-	}
-	DWORD length = csbi.dwSize.X * csbi.dwSize.Y;
-
-	DWORD written;
-
-	// Flood-fill the console with spaces to clear it
-	FillConsoleOutputCharacter(hOut, TEXT(' '), length, topLeft, &written);
-
-	// Reset the attributes of every character to the default.
-	// This clears all background colour formatting, if any.
-	FillConsoleOutputAttribute(hOut, csbi.wAttributes, length, topLeft, &written);
-
-	// Move the cursor back to the top left for the next sequence of writes
-	SetConsoleCursorPosition(hOut, topLeft);
-}
-	
-
-
-	
 		
-
-
+	}
+}
+	
