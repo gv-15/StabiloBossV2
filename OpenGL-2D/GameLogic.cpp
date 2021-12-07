@@ -53,6 +53,7 @@ bool CheckCollision(Sprite& one, Sprite& two) // AABB - AABB collision
 	// collision only if on both axes
 	return collisionX && collisionY;
 }
+
 bool GameLogic::CanMoveRightPlayer(Player* p) {
 
 	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
@@ -66,13 +67,13 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 	Player* player;
 	std::string playername;
 
-	while (n < 4 && obstacle == false) {
+	while (n < 3 && obstacle == false) {
 
 		if (p->GetName() == "Player1")
 		{
 
 			playername = "Player2";
-			playername += std::to_string(n);
+			
 			player = (Player*)m_pRenderer->ObjectByName(playername);
 
 			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
@@ -681,11 +682,11 @@ void GameLogic::ProcessEvents() //NO funciona no es ni asi esta puesto para que 
 	}
 	if (d == true)
 	{
-		if (CanMoveRight(player1)) {
-			if (CanMoveRightPlayer(player1)) {
+		if (CanMoveRight(player1) && CanMoveRightPlayer(player1)) {
+			//if (CanMoveRightPlayer(player1)) {
 
 			player1->moveRight(0.034);
-											}
+											//}
 		}
 	}
 	if (s == true)
