@@ -47,11 +47,17 @@ public:
 
 	bool CanMoveRightPlayer(Player* p);
 
+	bool CanMoveUpPlayer(Player* p);
+
 	bool CanMoveUp(Player* p);
 
 	bool CanMoveDown(Player* p);
 
 	bool CanMoveRight(Player* p);
+
+	bool CanMoveLeftPlayer(Player* p);
+
+	bool CanMoveDownPlayer(Player* p);
 
 	bool CanMoveLeft(Player* p);
 

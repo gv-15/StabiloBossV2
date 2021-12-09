@@ -63,7 +63,6 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 
 	bool obstacle = false;
 	int n = 1;
-	//Wall* wall;
 	Player* player;
 	std::string playername;
 
@@ -76,35 +75,57 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 			
 			player = (Player*)m_pRenderer->ObjectByName(playername);
 
-			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-			double playerW = player->GetXScale();
-			double playerH = player->GetYScale();
+			double wxArrIzq = 0;
+			double wyArrIzq = 0;
+			double playerW2 = 0;
+			double playerH2 = 0;
+
+
+			if (player->GetRotation() == 0 || player->GetRotation() == 180) 
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+				wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
+
+			}
+			else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() );
+				wyArrIzq = player->GetY() + (player->GetYScale() );
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
+			}
 
 			if ((pxArrIzq + playerW < wxArrIzq) &&
-				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH))) {
+				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
 
 				obstacle = false;
 
 			}
 			else if ((pxArrIzq + playerW < wxArrIzq) &&
-				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH)))
+				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
 			{
 				obstacle = false;
 
 			}
 			else if ((pxArrIzq + playerW >= wxArrIzq) &&
-				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH)) && (pxArrIzq < wxArrIzq - playerW)) {
+				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2)) {
 
-				/*if (p->GetRotation()=)*/
+			
 				obstacle = true;
+				p->SetPosition(-0.3, -0.3);
+				obstacle = true;
+
+				p->ReduceLives();
+				Kill();
 
 			}
 		}
 		else if (p->GetName() == "Player2") 
 		{
 			playername = "Player1";
-			playername += std::to_string(n);
+
 			player = (Player*)m_pRenderer->ObjectByName(playername);
 
 			//double aa = player->GetX();
@@ -144,6 +165,261 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 
 	return !obstacle;
 }
+
+bool GameLogic::CanMoveLeftPlayer(Player* p) {
+
+	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetXScale() / 2);
+	double playerW = p->GetYScale();
+	double playerH = p->GetXScale();
+
+	bool obstacle = false;
+	int n = 1;
+	Player* player;
+	std::string playername;
+
+	while (n < 4 && obstacle == false) {
+		if (p->GetName() == "Player1") 
+		{
+			playername = "Player2";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pxArrIzq > wxArrIzq + playerW) &&
+				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH))) {
+
+				obstacle = false;
+
+			}
+			else if ((pxArrIzq > wxArrIzq + playerW) &&
+				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pxArrIzq <= wxArrIzq + playerW) &&
+				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH)) && (pxArrIzq > wxArrIzq)) {
+
+				obstacle = true;
+			}
+
+			n++;
+		}
+		else if (p->GetName() == "Player2") {
+			playername = "Player1";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pxArrIzq > wxArrIzq + playerW) &&
+				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH))) {
+
+				obstacle = false;
+
+			}
+			else if ((pxArrIzq > wxArrIzq + playerW) &&
+				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pxArrIzq <= wxArrIzq + playerW) &&
+				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH)) && (pxArrIzq > wxArrIzq)) {
+
+				obstacle = true;
+			}
+
+			n++;
+		}
+
+	}
+
+
+	return !obstacle;
+}
+
+bool GameLogic::CanMoveDownPlayer(Player* p) {
+	
+	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
+	double playerW = p->GetXScale();
+	double playerH = p->GetYScale();
+
+	bool obstacle = false;
+	int n = 1;
+	Player* player;
+	std::string playername;
+
+	while (n < 4 && obstacle == false) {
+
+		if (p->GetName() == "Player1") {
+			playername = "Player2";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pyArrIzq < wyArrIzq - playerH) &&
+				((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW))) {
+
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq < wyArrIzq) &&
+				((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq >= wyArrIzq - playerH) &&
+				((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW)) && (pyArrIzq - playerH <= wyArrIzq)) {
+
+				obstacle = true;
+			}
+
+			n++;
+
+		}
+		else if (p->GetName() == "Player2") 
+		{
+			playername = "Player1";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pyArrIzq < wyArrIzq - playerH) &&
+				((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW))) {
+
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq < wyArrIzq) &&
+				((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq >= wyArrIzq - playerH) &&
+				((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW)) && (pyArrIzq - playerH <= wyArrIzq)) {
+
+				obstacle = true;
+			}
+
+			n++;
+
+		}
+		
+	}
+
+
+	return !obstacle;
+}
+
+
+bool GameLogic::CanMoveUpPlayer(Player* p) {
+
+	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
+	double pyArrIzq = p->GetY() + (p->GetYScale() / 2);
+	double playerW = p->GetXScale();
+	double playerH = p->GetYScale();
+
+	bool obstacle = false;
+	int n = 1;
+	Player* player;
+	std::string playername;
+
+
+	while (n < 4 && obstacle == false) {
+
+		if (p->GetName() == "Player1") 
+		{
+			playername = "Player2";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pyArrIzq < wyArrIzq - playerH) &&
+				((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW))) {
+
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq > wyArrIzq) &&
+				((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq >= wyArrIzq - playerH) &&
+				((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW)) && (pyArrIzq - playerH < wyArrIzq))
+			{
+				p->SetPosition(-0.3, -0.3);
+				obstacle = true;
+
+				p->ReduceLives();
+				Kill();
+			}
+
+			n++;
+		}
+		else if (p->GetName() == "Player2") {
+			playername = "Player1";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
+
+			double wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			double wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			double playerW = player->GetXScale();
+			double playerH = player->GetYScale();
+
+			if ((pyArrIzq < wyArrIzq - playerH) &&
+				((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW))) {
+
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq > wyArrIzq) &&
+				((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW)))
+			{
+				obstacle = false;
+
+			}
+			else if ((pyArrIzq >= wyArrIzq - playerH) &&
+				((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW)) && (pyArrIzq - playerH < wyArrIzq))
+			{
+				p->SetPosition(-0.3, -0.3);
+				obstacle = true;
+
+				p->ReduceLives();
+				Kill();
+			}
+
+			n++;
+		}
+
+	
+
+	}
+
+
+	return !obstacle;
+}
+
+//--------------------------------------------------------------------------------------------
 bool GameLogic::CanMoveUp(Player* p) {
 
 	double pxArrIzq = p->GetX() - (p->GetXScale() / 2);
@@ -437,6 +713,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 		
 		if (CanMoveUp(player1)) 
 		{
+			
 			player1->SetRotation(0);
 		}
 		break;
