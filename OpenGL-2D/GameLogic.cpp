@@ -160,56 +160,56 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 
 			
 		}
-	//	else if (p->GetName() == "Player2")
-	//	{
-	//		playername = "Player1";
-	//		player = (Player*)m_pRenderer->ObjectByName(playername);
+		else if (p->GetName() == "Player2")
+		{
+			playername = "Player1";
+			player = (Player*)m_pRenderer->ObjectByName(playername);
 
-	//		double wxArrIzq = 0;
-	//		double wyArrIzq = 0;
-	//		double playerW2 = 0;
-	//		double playerH2 = 0;
+			double wxArrIzq = 0;
+			double wyArrIzq = 0;
+			double playerW2 = 0;
+			double playerH2 = 0;
 
-	//		if (player->GetRotation() == 0 || player->GetRotation() == 180)
-	//		{
-	//			wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-	//			wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-	//			playerW2 = player->GetXScale();
-	//			playerH2 = player->GetYScale();
+			if (player->GetRotation() == 0 || player->GetRotation() == 180)
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+				wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
 
-	//		}
-	//		else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
-	//		{
-	//			wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-	//			wyArrIzq = player->GetY() + (player->GetYScale() + 0.010);
-	//			playerW2 = player->GetXScale();
-	//			playerH2 = player->GetYScale();
-	//		}
+			}
+			else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
+				wyArrIzq = player->GetY() + (player->GetYScale() + 0.010);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
+			}
 
-	//		if ((pxArrIzq + playerW < wxArrIzq) && ((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) 
-	//		{
+			if ((pxArrIzq + playerW < wxArrIzq) && ((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) 
+			{
 
-	//			obstacle = false;
+				obstacle = false;
 
-	//		}
-	//		else if ((pxArrIzq + playerW < wxArrIzq) && ((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
-	//		{
+			}
+			else if ((pxArrIzq + playerW < wxArrIzq) && ((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
+			{
 
-	//			obstacle = false;
+				obstacle = false;
 
-	//		}
-	//		else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
-	//		{
+			}
+			else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
+			{
 
-	//			p->SetPosition(0.85, 0);
-	//			p->SetRotation(90);
-	//			obstacle = true;
+				p->SetPosition(0.85, 0);
+				p->SetRotation(90);
+				obstacle = true;
 
-	//			player->ReduceLives();
-	//			Kill();
-	//		}
+				player->ReduceLives();
+				Kill();
+			}
 
-	//	}
+		}
 
 	n++;
 
@@ -352,127 +352,127 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 
 			n++;
 		}
-	//	else if (p->GetName() == "Player2") 
-	//{
+		else if (p->GetName() == "Player2") 
+	{
 
-	//	playername = "Player1";
-	//	player = (Player*)m_pRenderer->ObjectByName(playername);
+		playername = "Player1";
+		player = (Player*)m_pRenderer->ObjectByName(playername);
 
-	//	double wxArrIzq = 0;
-	//	double wyArrIzq = 0;
-	//	double playerW2 = 0;
-	//	double playerH2 = 0;
+		double wxArrIzq = 0;
+		double wyArrIzq = 0;
+		double playerW2 = 0;
+		double playerH2 = 0;
 
-	//	if (player->GetRotation() == 0 || player->GetRotation() == 180)
-	//	{
-	//		wxArrIzq = player->GetX() - (player->GetYScale() / 2);
-	//		wyArrIzq = player->GetY() + (player->GetXScale() / 2);
-	//		playerW2 = player->GetYScale();
-	//		playerH2 = player->GetXScale();
+		if (player->GetRotation() == 0 || player->GetRotation() == 180)
+		{
+			wxArrIzq = player->GetX() - (player->GetYScale() / 2);
+			wyArrIzq = player->GetY() + (player->GetXScale() / 2);
+			playerW2 = player->GetYScale();
+			playerH2 = player->GetXScale();
 
-	//		//-------
-	//		if ((pxArrIzq > wxArrIzq + playerW2) &&
-	//			((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
+			//-------
+			if ((pxArrIzq > wxArrIzq + playerW2) &&
+				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
 
-	//			obstacle = false;
+				obstacle = false;
 
-	//		}
-	//		else if ((pxArrIzq > wxArrIzq + playerW) &&
-	//			((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
-	//		{
-	//			obstacle = false;
+			}
+			else if ((pxArrIzq > wxArrIzq + playerW) &&
+				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
+			{
+				obstacle = false;
 
-	//		}
-	//		else if ((pxArrIzq <= wxArrIzq + playerW2) &&
-	//			((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
+			}
+			else if ((pxArrIzq <= wxArrIzq + playerW2) &&
+				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
 
-	//			p->SetPosition(0.85, 0);
-	//			p->SetRotation(0);
+				p->SetPosition(0.85, 0);
+				p->SetRotation(0);
 
-	//			player->SetPosition(-0.85, 0);
-	//			player->SetRotation(0);
-	//			obstacle = true;
+				player->SetPosition(-0.85, 0);
+				player->SetRotation(0);
+				obstacle = true;
 
-	//			player->ReduceLives();
-	//			Kill();
-	//		}
+				player->ReduceLives();
+				Kill();
+			}
 
-	//	}
-	//	else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
-	//	{
+		}
+		else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
+		{
 
-	//		if (player->GetRotation() == 90) {
+			if (player->GetRotation() == 90) {
 
-	//			wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
-	//			wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-	//			playerW2 = player->GetXScale();
-	//			playerH2 = player->GetYScale();
+				wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
+				wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
 
-	//			//---------
-	//			if ((pxArrIzq > wxArrIzq + playerW2) &&
-	//				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
+				//---------
+				if ((pxArrIzq > wxArrIzq + playerW2) &&
+					((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
 
-	//				obstacle = false;
+					obstacle = false;
 
-	//			}
-	//			else if ((pxArrIzq > wxArrIzq + playerW) &&
-	//				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
-	//			{
-	//				obstacle = false;
+				}
+				else if ((pxArrIzq > wxArrIzq + playerW) &&
+					((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
+				{
+					obstacle = false;
 
-	//			}
-	//			else if ((pxArrIzq <= wxArrIzq + playerW2) &&
-	//				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
+				}
+				else if ((pxArrIzq <= wxArrIzq + playerW2) &&
+					((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
 
-	//				p->SetPosition(0.85, 0);
-	//				p->SetRotation(0);
+					p->SetPosition(0.85, 0);
+					p->SetRotation(0);
 
-	//				player->SetPosition(-0.85, 0);
-	//				player->SetRotation(0);
-	//				obstacle = true;
+					player->SetPosition(-0.85, 0);
+					player->SetRotation(0);
+					obstacle = true;
 
-	//				player->ReduceLives();
-	//				Kill();
-	//			}
-	//		}
-	//		else
-	//		{
-	//			wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
-	//			wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-	//			playerW2 = player->GetXScale();
-	//			playerH2 = player->GetYScale();
-	//			//--------------
-	//			if ((pxArrIzq > wxArrIzq + playerW2) &&
-	//				((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
+					player->ReduceLives();
+					Kill();
+				}
+			}
+			else
+			{
+				wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
+				wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetYScale();
+				//--------------
+				if ((pxArrIzq > wxArrIzq + playerW2) &&
+					((pyArrIzq + playerH < wyArrIzq) || (pyArrIzq > wyArrIzq + playerH2))) {
 
-	//				obstacle = false;
+					obstacle = false;
 
-	//			}
-	//			else if ((pxArrIzq > wxArrIzq + playerW) &&
-	//				((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
-	//			{
-	//				obstacle = false;
+				}
+				else if ((pxArrIzq > wxArrIzq + playerW) &&
+					((pyArrIzq + playerH > wyArrIzq) || (pyArrIzq < wyArrIzq + playerH2)))
+				{
+					obstacle = false;
 
-	//			}
-	//			else if ((pxArrIzq <= wxArrIzq + playerW2) &&
-	//				((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
+				}
+				else if ((pxArrIzq <= wxArrIzq + playerW2) &&
+					((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq)) {
 
-	//				p->SetPosition(0.85, 0);
-	//				p->SetRotation(0);
+					p->SetPosition(0.85, 0);
+					p->SetRotation(0);
 
-	//				player->SetPosition(-0.85, 0);
-	//				player->SetRotation(0);
-	//				obstacle = true;
+					player->SetPosition(-0.85, 0);
+					player->SetRotation(0);
+					obstacle = true;
 
-	//				player->ReduceLives();
-	//				Kill();
-	//			}
-	//		}
+					player->ReduceLives();
+					Kill();
+				}
+			}
 
-	//	}
+		}
 
-	//	n++;
-	//	}
+		n++;
+		}
 
 	}
 
@@ -604,116 +604,116 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 			n++;
 
 		}
-		//else if (p->GetName() == "Player2") 
-		//{
-		//playername = "Player1";
-		//player = (Player*)m_pRenderer->ObjectByName(playername);
+		else if (p->GetName() == "Player2") 
+		{
+		playername = "Player1";
+		player = (Player*)m_pRenderer->ObjectByName(playername);
 
-		//double wxArrIzq = 0;
-		//double wyArrIzq = 0;
-		//double playerW2 = 0;
-		//double playerH2 = 0;
+		double wxArrIzq = 0;
+		double wyArrIzq = 0;
+		double playerW2 = 0;
+		double playerH2 = 0;
 
 
-		//if (player->GetRotation() == 0 || player->GetRotation() == 180)
-		//{
-		//	wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//	wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-		//	playerW2 = player->GetXScale();
-		//	playerH2 = player->GetYScale();
-		//	//---------------------------
-		//	if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//		((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+		if (player->GetRotation() == 0 || player->GetRotation() == 180)
+		{
+			wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+			wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+			playerW2 = player->GetXScale();
+			playerH2 = player->GetYScale();
+			//---------------------------
+			if ((pyArrIzq < wyArrIzq - playerH2) &&
+				((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//		obstacle = false;
+				obstacle = false;
 
-		//	}
-		//	else if ((pyArrIzq < wyArrIzq) &&
-		//		((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
-		//	{
-		//		obstacle = false;
+			}
+			else if ((pyArrIzq < wyArrIzq) &&
+				((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
+			{
+				obstacle = false;
 
-		//	}
-		//	else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//		((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
+			}
+			else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+				((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
-		//		p->SetPosition(-0.85, 0);
-		//		p->SetRotation(90);
-		//		obstacle = true;
+				p->SetPosition(-0.85, 0);
+				p->SetRotation(90);
+				obstacle = true;
 
-		//		player->ReduceLives();
-		//		Kill();
-		//	}
+				player->ReduceLives();
+				Kill();
+			}
 
-		//}
-		//else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
-		//{
-		//	if (player->GetRotation() == 90)
-		//	{
-		//		wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//		wyArrIzq = player->GetY() + (player->GetXScale() / 2);
-		//		playerW2 = player->GetXScale();
-		//		playerH2 = player->GetXScale();
-		//		//-----------------------------
-		//		if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+		}
+		else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
+		{
+			if (player->GetRotation() == 90)
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+				wyArrIzq = player->GetY() + (player->GetXScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetXScale();
+				//-----------------------------
+				if ((pyArrIzq < wyArrIzq - playerH2) &&
+					((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//			obstacle = false;
+					obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq < wyArrIzq) &&
-		//			((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
-		//		{
-		//			obstacle = false;
+				}
+				else if ((pyArrIzq < wyArrIzq) &&
+					((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
+				{
+					obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
+				}
+				else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+					((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
-		//			p->SetPosition(-0.85, 0);
-		//			p->SetRotation(90);
-		//			obstacle = true;
+					p->SetPosition(-0.85, 0);
+					p->SetRotation(90);
+					obstacle = true;
 
-		//			player->ReduceLives();
-		//			Kill();
-		//		}
-		//	}
-		//	else
-		//	{
-		//		wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//		wyArrIzq = player->GetY() + (player->GetXScale() / 2);
-		//		playerW2 = player->GetXScale();
-		//		playerH2 = player->GetXScale();
-		//		//-----------------------------------
-		//		if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+					player->ReduceLives();
+					Kill();
+				}
+			}
+			else
+			{
+				wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+				wyArrIzq = player->GetY() + (player->GetXScale() / 2);
+				playerW2 = player->GetXScale();
+				playerH2 = player->GetXScale();
+				//-----------------------------------
+				if ((pyArrIzq < wyArrIzq - playerH2) &&
+					((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//			obstacle = false;
+					obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq < wyArrIzq) &&
-		//			((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
-		//		{
-		//			obstacle = false;
+				}
+				else if ((pyArrIzq < wyArrIzq) &&
+					((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerH2)))
+				{
+					obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
+				}
+				else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+					((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
-		//			p->SetPosition(-0.85, 0);
-		//			p->SetRotation(90);
-		//			obstacle = true;
+					p->SetPosition(-0.85, 0);
+					p->SetRotation(90);
+					obstacle = true;
 
-		//			player->ReduceLives();
-		//			Kill();
-		//		}
+					player->ReduceLives();
+					Kill();
+				}
 
-		//	}
+			}
 
-		//}
+		}
 
-		//n++;
-		//}
+		n++;
+		}
 		
 	}
 
@@ -734,7 +734,7 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 	std::string playername;
 
 
-	while (n < 4 && obstacle == false) {
+	while (n < 3 && obstacle == false) {
 
 		if (p->GetName() == "Player1") 
 		{
@@ -845,113 +845,114 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 
 			n++;
 		}
-		//else if (p->GetName() == "Player2") {
-		//playername = "Player2";
-		//player = (Player*)m_pRenderer->ObjectByName(playername);
+		 if (p->GetName() == "Player2") {
+			 playername = "Player1";
+			 player = (Player*)m_pRenderer->ObjectByName(playername);
 
-		//double wxArrIzq = 0;
-		//double wyArrIzq = 0;
-		//double playerW2 = 0;
-		//double playerH2 = 0;
+			 double wxArrIzq = 0;
+			 double wyArrIzq = 0;
+			 double playerW2 = 0;
+			 double playerH2 = 0;
 
 
-		//if (player->GetRotation() == 0 || player->GetRotation() == 180)
-		//{
-		//	wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//	wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-		//	playerW2 = player->GetXScale();
-		//	playerH2 = player->GetYScale();
-		//	//------------------
-		//	if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//		((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+			 if (player->GetRotation() == 0 || player->GetRotation() == 180)
+			 {
+				 wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+				 wyArrIzq = player->GetY() + (player->GetYScale() / 2);
+				 playerW2 = player->GetXScale();
+				 playerH2 = player->GetYScale();
+				 //------------------
+				 if ((pyArrIzq < wyArrIzq - playerH2) &&
+					 ((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//		obstacle = false;
+					 obstacle = false;
 
-		//	}
-		//	else if ((pyArrIzq > wyArrIzq) &&
-		//		((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
-		//	{
-		//		obstacle = false;
+				 }
+				 else if ((pyArrIzq > wyArrIzq) &&
+					 ((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
+				 {
+					 obstacle = false;
 
-		//	}
-		//	else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//		((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
-		//	{
-		//		p->SetPosition(-0.85, 0);
-		//		p->SetRotation(90);
-		//		obstacle = true;
+				 }
+				 else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+					 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
+				 {
+					 p->SetPosition(-0.85, 0);
+					 p->SetRotation(90);
+					 obstacle = true;
 
-		//		player->ReduceLives();
-		//		Kill();
-		//	}
+					 player->ReduceLives();
+					 Kill();
+				 }
 
-		//}
-		//else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
-		//{
-		//	if (player->GetRotation() == 90)
-		//	{
-		//		wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//		wyArrIzq = player->GetY() + (player->GetXScale() / 2);
-		//		playerW2 = player->GetXScale();
-		//		playerH2 = player->GetXScale();
-		//		//--------------
-		//		if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+			 }
+			 else //if (player->GetRotation() == 90 || player->GetRotation() == 270)
+			 {
+				 if (player->GetRotation() == 90)
+				 {
+					 wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+					 wyArrIzq = player->GetY() + (player->GetXScale() / 2);
+					 playerW2 = player->GetXScale();
+					 playerH2 = player->GetXScale();
+					 //--------------
+					 if ((pyArrIzq < wyArrIzq - playerH2) &&
+						 ((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//			obstacle = false;
+						 obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq > wyArrIzq) &&
-		//			((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
-		//		{
-		//			obstacle = false;
+					 }
+					 else if ((pyArrIzq > wyArrIzq) &&
+						 ((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
+					 {
+						 obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
-		//		{
-		//			p->SetPosition(-0.85, 0);
-		//			p->SetRotation(90);
-		//			obstacle = true;
+					 }
+					 else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+						 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
+					 {
+						 p->SetPosition(-0.85, 0);
+						 p->SetRotation(90);
+						 obstacle = true;
 
-		//			player->ReduceLives();
-		//			Kill();
-		//		}
-		//	}
-		//	else
-		//	{
-		//		wxArrIzq = player->GetX() - (player->GetXScale() / 2);
-		//		wyArrIzq = player->GetY() + (player->GetXScale() / 2);
-		//		playerW2 = player->GetXScale();
-		//		playerH2 = player->GetXScale();
-		//		//----------------------
-		//		if ((pyArrIzq < wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
+						 player->ReduceLives();
+						 Kill();
+					 }
+				 }
+				 else
+				 {
+					 wxArrIzq = player->GetX() - (player->GetXScale() / 2);
+					 wyArrIzq = player->GetY() + (player->GetXScale() / 2);
+					 playerW2 = player->GetXScale();
+					 playerH2 = player->GetXScale();
+					 //----------------------
+					 if ((pyArrIzq < wyArrIzq - playerH2) &&
+						 ((pxArrIzq + playerW < wxArrIzq) || (pxArrIzq > wxArrIzq + playerW2))) {
 
-		//			obstacle = false;
+						 obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq > wyArrIzq) &&
-		//			((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
-		//		{
-		//			obstacle = false;
+					 }
+					 else if ((pyArrIzq > wyArrIzq) &&
+						 ((pxArrIzq + playerW > wxArrIzq) || (pxArrIzq < wxArrIzq + playerW2)))
+					 {
+						 obstacle = false;
 
-		//		}
-		//		else if ((pyArrIzq >= wyArrIzq - playerH2) &&
-		//			((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
-		//		{
-		//			p->SetPosition(-0.85, 0);
-		//			p->SetRotation(90);
-		//			obstacle = true;
+					 }
+					 else if ((pyArrIzq >= wyArrIzq - playerH2) &&
+						 ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
+					 {
+						 p->SetPosition(-0.85, 0);
+						 p->SetRotation(90);
+						 obstacle = true;
 
-		//			player->ReduceLives();
-		//			Kill();
-		//		}
-		//	}
+						 player->ReduceLives();
+						 Kill();
+					 }
+				 }
 
-		//}
-		//n++;
-		//}
+			 }
+
+			 n++;
+		}
 	}
 	return !obstacle;
 }
