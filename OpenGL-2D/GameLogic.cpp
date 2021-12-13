@@ -1641,42 +1641,42 @@ void GameLogic::cambiarEstado(Estado e)
 		wall3->SetName("wall3");
 
 
-		Sprite* live1P1 = new Sprite("/img/heart2", -0.9, 0.9, 0.10, 0.10);
+		Sprite* live1P1 = new Sprite("/img/heart2", -0.6, 0.9, 0.10, 0.10);
 		live1P1->SetName("live1P1");
 
-		Sprite* live2P1 = new Sprite("/img/heart2", -0.8, 0.9, 0.10, 0.10);
+		Sprite* live2P1 = new Sprite("/img/heart2", -0.5, 0.9, 0.10, 0.10);
 		live2P1->SetName("live2P1");
 
-		Sprite* live3P1 = new Sprite("/img/heart2", -0.7, 0.9, 0.10, 0.10);
+		Sprite* live3P1 = new Sprite("/img/heart2", -0.4, 0.9, 0.10, 0.10);
 		live3P1->SetName("live3P1");
 
-		Sprite* live1P2 = new Sprite("/img/heart2", 0.7, 0.9, 0.10, 0.10);
+		Sprite* live1P2 = new Sprite("/img/heart2", 0.6, 0.9, 0.10, 0.10);
 		live1P2->SetName("live1P2");
 
-		Sprite* live2P2 = new Sprite("/img/heart2", 0.8, 0.9, 0.10, 0.10);
+		Sprite* live2P2 = new Sprite("/img/heart2", 0.5, 0.9, 0.10, 0.10);
 		live2P2->SetName("live2P2");
 
-		Sprite* live3P2 = new Sprite("/img/heart2", 0.9, 0.9, 0.10, 0.10);
+		Sprite* live3P2 = new Sprite("/img/heart2", 0.4, 0.9, 0.10, 0.10);
 		live3P2->SetName("live3P2");
 
 		
 	
-		Sprite* P2Heart1 = new Sprite("/img/heart1", 0.7, 0.9, 0.10, 0.10);
+		Sprite* P2Heart1 = new Sprite("/img/heart1", 0.4, 0.9, 0.10, 0.10);
 		P2Heart1->SetName("P2Heart1");
-		Sprite* P2Heart2 = new Sprite("/img/heart1", 0.8, 0.9, 0.10, 0.10);
+		Sprite* P2Heart2 = new Sprite("/img/heart1", 0.5, 0.9, 0.10, 0.10);
 		P2Heart2->SetName("P2Heart2");
-		Sprite* P2Heart3 = new Sprite("/img/heart1", 0.9, 0.9, 0.10, 0.10);
+		Sprite* P2Heart3 = new Sprite("/img/heart1", 0.6, 0.9, 0.10, 0.10);
 		P2Heart3->SetName("P2Heart3");
-		Sprite* P1Heart1 = new Sprite("/img/heart1", -0.7, 0.9, 0.10, 0.10);
+		Sprite* P1Heart1 = new Sprite("/img/heart1", -0.4, 0.9, 0.10, 0.10);
 		P1Heart1->SetName("P1Heart1");
-		Sprite* P1Heart2 = new Sprite("/img/heart1", -0.8, 0.9, 0.10, 0.10);
+		Sprite* P1Heart2 = new Sprite("/img/heart1", -0.5, 0.9, 0.10, 0.10);
 		P1Heart2->SetName("P1Heart2");
-		Sprite* P1Heart3 = new Sprite("/img/heart1", -0.9, 0.9, 0.10, 0.10);
+		Sprite* P1Heart3 = new Sprite("/img/heart1", -0.6, 0.9, 0.10, 0.10);
 		P1Heart3->SetName("P1Heart3");
 
-		Sprite* LogoPlayer1 = new Sprite("/img/p1", -0.6, 0.9, 0.10, 0.10);
+		Sprite* LogoPlayer1 = new Sprite("/img/p1", -0.8, 0.9, 0.10, 0.10);
 		P1Heart3->SetName("P1Heart3");
-		Sprite* LogoPlayer2 = new Sprite("/img/p2", 0.6, 0.9, 0.10, 0.10);
+		Sprite* LogoPlayer2 = new Sprite("/img/p2", 0.8, 0.9, 0.10, 0.10);
 		P1Heart3->SetName("P1Heart3");
 
 		m_pRenderer->AddObject(P1Heart1);
