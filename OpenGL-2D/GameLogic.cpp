@@ -101,7 +101,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 				if (player->GetRotation() == 90) 
 				{
 					wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-					wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010);
+					wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 					playerW2 = player->GetXScale();
 					playerH2 = player->GetXScale();
 					//------------
@@ -131,7 +131,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 				else 
 				{
 					wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-					wyArrIzq = player->GetY() + (player->GetXScale()/2 + 0.010);
+					wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 					playerW2 = player->GetXScale();
 					playerH2 = player->GetXScale();
 					//--------------
@@ -216,7 +216,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 			if (player->GetRotation() == 90)
 			{
 				wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-				wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010);
+				wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 				playerW2 = player->GetXScale();
 				playerH2 = player->GetXScale();
 				//------------
@@ -246,7 +246,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 			else
 			{
 				wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-				wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010);
+				wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 				playerW2 = player->GetXScale();
 				playerH2 = player->GetXScale();
 				//--------------
@@ -352,9 +352,7 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 				if (player->GetRotation() == 90) {
 
 					wxArrIzq = player->GetX() + (player->GetXScale()/2 - 0.03);
-					wyArrIzq = player->GetY() + (player->GetYScale()/2);
-					/*wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-					wyArrIzq = player->GetY() + (player->GetYScale() / 2 + 0.020);*/
+					wyArrIzq = player->GetY() + (player->GetXScale()/2 );
 					playerW2 = player->GetXScale();
 					playerH2 = player->GetXScale();
 
@@ -388,11 +386,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 				else 
 				{
 					
-					/*wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-					wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010);*/
 					wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
-					wyArrIzq = player->GetY() + (player->GetYScale() / 2);
-
+					wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 					playerW2 = player->GetXScale();
 					playerH2 = player->GetXScale();
 					//--------------
@@ -474,10 +469,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 
 		if (player->GetRotation() == 90) {
 
-			wxArrIzq = player->GetX() + (player->GetXScale()/2 - 0.03);
-			wyArrIzq = player->GetY() + (player->GetYScale()/2);
-			//wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-			//wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010);
+			wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
+			wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 			playerW2 = player->GetXScale();
 			playerH2 = player->GetXScale();
 
@@ -510,10 +503,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 		}
 		else
 		{
-			wxArrIzq = player->GetX() + (player->GetXScale()/2 - 0.03);
-			wyArrIzq = player->GetY() + (player->GetYScale()/2);
-/*			wxArrIzq = player->GetX() - (player->GetXScale() + 0.010);
-			wyArrIzq = player->GetY() + (player->GetXScale() / 2 + 0.010)*/;
+			wxArrIzq = player->GetX() + (player->GetXScale() / 2 - 0.03);
+			wyArrIzq = player->GetY() + (player->GetXScale() / 2);
 			playerW2 = player->GetXScale();
 			playerH2 = player->GetXScale();
 			//--------------
