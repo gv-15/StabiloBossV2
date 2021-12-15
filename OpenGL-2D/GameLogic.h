@@ -22,8 +22,6 @@ class GameLogic
 	void ProcessKeyboard(unsigned char key, int x, int y);
 	void ProcessUpKeyboard(unsigned char key, int x, int y);
 
-	vector<PowerUp>  PowerUps;
-
 public:
 
 	GameLogic(Renderer* pRenderer);
@@ -36,10 +34,6 @@ public:
 	void Kill();
 
 	bool IsGameEnded();
-
-	/*float roundoff(float value, unsigned char prec);
-
-	void PantallaFinal();*/
 
 	bool CheckCollision(Sprite& s1, Sprite& s2);
 
@@ -61,11 +55,6 @@ public:
 
 	void cambiarEstado(Estado e);
 
-
-	//void restart();
-
-	//char GetNextPressedKey();
-
-	void Clear();
+	void MostrarGanador();
 };
 

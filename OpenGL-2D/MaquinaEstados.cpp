@@ -12,7 +12,7 @@ MaquinaEstados* MaquinaEstados::m_pInstance = nullptr;
 MaquinaEstados::MaquinaEstados()
 {
     estado = Inicio;
-   // m_pInstance = this;
+    // m_pInstance = this;
 }
 
 
@@ -36,12 +36,12 @@ void MaquinaEstados::__processUpKeyboard(unsigned char key, int x, int y) {
 
 void MaquinaEstados::ProcessKeyboard(unsigned char key, int x, int y)
 {
-	
+
 }
 
 void MaquinaEstados::ProcessUpKeyboard(unsigned char key, int x, int y)
 {
-	
+
 }
 
 Estado MaquinaEstados::GetEstado()
@@ -60,6 +60,11 @@ void MaquinaEstados::DefinirEstado(Estado e)
 
         estado = Instrucciones;
 
+    else if (e == Controls)
+
+        estado = Controls;
+
+
     else if (e == Juego)
 
         estado = Juego;
@@ -68,11 +73,23 @@ void MaquinaEstados::DefinirEstado(Estado e)
 
         estado = Salir;
 
-    else if (e == Final1)
+    else if (e == GanadorP2)
 
-        estado = Final1;
+        estado = GanadorP2;
 
-    else if (e == Final2)
+    else if (e == GanadorP1)
 
-        estado = Final2;
+        estado = GanadorP1;
+
+    else if (e == FinalRestart)
+
+        estado = FinalRestart;
+
+    else if (e == Restart)
+
+        estado = Restart;
+
+    else if (e == FinalQuit)
+
+        estado = FinalQuit;
 }

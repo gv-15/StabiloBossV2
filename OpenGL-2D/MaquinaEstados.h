@@ -1,6 +1,6 @@
 #pragma once
 
-enum Estado { Inicio, Juego, Final1, Final2, Instrucciones, Controls, Salir };
+enum Estado { Inicio, Juego, FinalRestart, Instrucciones, Controls, Salir, GanadorP2, GanadorP1, Restart, FinalQuit };
 
 class Renderer;
 
@@ -17,7 +17,7 @@ class MaquinaEstados
 
     Estado estado;
 
-    public:
+public:
 
     MaquinaEstados();
 
@@ -26,6 +26,5 @@ class MaquinaEstados
     void DefinirEstado(Estado estado);
 
     Estado GetEstado();
-   
-};
 
+};
