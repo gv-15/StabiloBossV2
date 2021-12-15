@@ -12,8 +12,9 @@
 #include <iostream>
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "AnimatedSprite.h"
-#include "../3rd-party/SoundManager/SoundManager.h" //relative path to the main header
 #include "MaquinaEstados.h"
+#include "playsoundapi.h" 
+#include "../3rd-party/SoundManager/SoundManager.h"
 
 using namespace std;
 
@@ -39,6 +40,8 @@ int main(int argc, char** argv)
 	renderer.Initialize(argc, argv);
 	
 	gameLogic.Initialize(); 
+	PlaySound(NULL, NULL, 0);
+	PlaySound(TEXT("snd/sonic.wav"), NULL, SND_LOOP | SND_ASYNC);
 	
 
 

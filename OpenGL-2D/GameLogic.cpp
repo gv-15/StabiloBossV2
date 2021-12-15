@@ -10,6 +10,8 @@
 #include <stdio.h>   
 #include <conio.h> 
 #include "Wall.h" 
+#include "playsoundapi.h" 
+#include "../3rd-party/SoundManager/SoundManager.h" //relative path to the main header
 
 using namespace std;
 
@@ -36,6 +38,8 @@ GameLogic::GameLogic(Renderer* pRenderer)
 GameLogic::~GameLogic()
 {
 }
+
+
 
 bool GameLogic::CanMoveRightPlayer(Player* p) {
 
@@ -90,6 +94,9 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					player->SetRotation(90);
 					obstacle = true;
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+					
 					player->ReduceLives();
 					Kill();
 
@@ -156,6 +163,8 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 						player->SetRotation(90);
 						obstacle = true;
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 						player->ReduceLives();
 						Kill();
 
@@ -205,6 +214,8 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					player->SetRotation(270);
 					obstacle = true;
 
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 					player->ReduceLives();
 					Kill();
 
@@ -270,6 +281,9 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 						player->SetPosition(-0.85, 0);
 						player->SetRotation(270);
 						obstacle = true;
+
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						player->ReduceLives();
 						Kill();
@@ -341,6 +355,9 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					player->SetRotation(90);
 					obstacle = true;
 
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					player->ReduceLives();
 					Kill();
 				}
@@ -378,6 +395,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 						player->SetRotation(90);
 						obstacle = true;
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 						player->ReduceLives();
 						Kill();
 
@@ -459,6 +478,9 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					player->SetRotation(270);
 					obstacle = true;
 
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					player->ReduceLives();
 					Kill();
 				}
@@ -495,6 +517,9 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 						player->SetPosition(-0.85, 0);
 						player->SetRotation(270);
 						obstacle = true;
+
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						player->ReduceLives();
 						Kill();
@@ -2165,12 +2190,16 @@ void GameLogic::cambiarEstado(Estado e)
 
 		if (player1->getLives() == 0)
 		{
+			PlaySound(NULL, NULL, 0);
+			PlaySound(TEXT("snd/win1.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP2);
 			cambiarEstado(GanadorP2);
 		}
 
 		else if (player2->getLives() == 0)
 		{
+			PlaySound(NULL, NULL, 0);
+			PlaySound(TEXT("snd/win2.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP1);
 			cambiarEstado(GanadorP1);
 		}
