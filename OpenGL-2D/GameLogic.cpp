@@ -10,6 +10,8 @@
 #include <stdio.h>   
 #include <conio.h> 
 #include "Wall.h" 
+#include "playsoundapi.h" 
+#include "../3rd-party/SoundManager/SoundManager.h" //relative path to the main header
 
 using namespace std;
 
@@ -125,13 +127,17 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 				}
 				else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 				{
+
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					p->SetPosition(-0.85, 0);
 					p->SetRotation(270);
 
 					player->SetPosition(0.85, 0);
 					player->SetRotation(90);
 					obstacle = true;
-
+					
 					player->ReduceLives();
 					Kill();
 
@@ -161,6 +167,8 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 						Knockback();
 						obstacle = true;
 
@@ -187,13 +195,16 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
 						player->SetPosition(0.85, 0);
 						player->SetRotation(90);
 						obstacle = true;
-
+				
 						player->ReduceLives();
 						Kill();
 
@@ -236,6 +247,10 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 				}
 				else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 				{
+
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					p->SetPosition(0.85, 0);
 					p->SetRotation(90);
 
@@ -272,6 +287,8 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 						Knockback();
 						obstacle = true;
 
@@ -298,6 +315,9 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+						
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -368,6 +388,9 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 				else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 				{
 
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					p->SetPosition(-0.85, 0);
 					p->SetRotation(270);
 
@@ -405,6 +428,9 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
@@ -438,6 +464,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					}
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						Knockback();
 						obstacle = true;
@@ -482,12 +510,17 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 				else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 				{
 
+
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 					p->SetPosition(0.85, 0);
 					p->SetRotation(90);
 
 					player->SetPosition(-0.85, 0);
 					player->SetRotation(270);
 					obstacle = true;
+
 
 					player->ReduceLives();
 					Kill();
@@ -518,6 +551,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					}
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
@@ -551,6 +586,8 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					}
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						Knockback();
 						obstacle = true;
@@ -615,6 +652,8 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					}
 					else if ((pyArrIzq >= wyArrIzq - playerH2) && ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
@@ -649,6 +688,8 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					}
 					else if ((pyArrIzq >= wyArrIzq - playerH2) && ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						Knockback();
 						obstacle = true;
@@ -682,6 +723,9 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
@@ -714,6 +758,9 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					}
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
+
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
@@ -770,6 +817,9 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -803,6 +853,8 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					}
 					else if ((pyArrIzq >= wyArrIzq - playerH2) && ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						Knockback();
 						obstacle = true;
@@ -840,6 +892,10 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
 
+
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -872,6 +928,9 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					}
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq)) {
+
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
@@ -948,6 +1007,8 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
 						Knockback();
 						obstacle = true;
 
@@ -975,6 +1036,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
@@ -1013,6 +1077,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
@@ -1046,6 +1113,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(-0.85, 0);
 						p->SetRotation(270);
 
@@ -1099,6 +1169,8 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 						Knockback();
 						obstacle = true;
 
@@ -1129,6 +1201,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -1168,6 +1243,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -1201,6 +1279,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
+						PlaySound(NULL, NULL, 0);
+						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
@@ -2174,12 +2255,16 @@ void GameLogic::cambiarEstado(Estado e)
 
 		if (player1->getLives() == 0)
 		{
+			PlaySound(NULL, NULL, 0);
+			PlaySound(TEXT("snd/win1.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP2);
 			cambiarEstado(GanadorP2);
 		}
 
 		else if (player2->getLives() == 0)
 		{
+			PlaySound(NULL, NULL, 0);
+			PlaySound(TEXT("snd/win2.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP1);
 			cambiarEstado(GanadorP1);
 		}
