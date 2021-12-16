@@ -20,7 +20,7 @@ Player::~Player()
 {
 }
 
-#define PLAYER_SPEED 0.2
+#define PLAYER_SPEED 0.28
 
 void Player::moveUp(double dt)
 {
