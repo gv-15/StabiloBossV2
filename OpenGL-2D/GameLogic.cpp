@@ -37,6 +37,48 @@ GameLogic::~GameLogic()
 {
 }
 
+void GameLogic::Knockback() {
+
+	Player* p1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* p2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+	
+	if (p1->GetRotation() == 0 && CanMoveDown(p1))
+	{
+		p1->moveDown(0.40);
+	}
+	else if ((p1->GetRotation() == 90) && CanMoveRight(p1)) 
+	{
+		p1->moveRight(0.40);		
+	}
+	else if ((p1->GetRotation() == 180) && CanMoveUp(p1)) 
+	{
+		p1->moveUp(0.40);
+	}
+	else if ((p1->GetRotation() == 270) && CanMoveLeft(p1))
+	{
+		p1->moveLeft(0.40);	
+	}
+
+	if (p2->GetRotation() == 0 && CanMoveDown(p2))
+	{
+		p2->moveDown(0.40);
+	}
+	else if ((p2->GetRotation() == 90) && CanMoveRight(p2))
+	{
+		p2->moveRight(0.40);
+	}
+	else if ((p2->GetRotation() == 180) && CanMoveUp(p2))
+	{
+		p2->moveUp(0.40);
+	}
+	else if ((p2->GetRotation() == 270) && CanMoveLeft(p2))
+	{
+		p2->moveLeft(0.40);
+	}
+	
+}
+
 bool GameLogic::CanMoveRightPlayer(Player* p) {
 
 	double pxArrIzq = p->GetX() - (p->GetYScale() / 2);
@@ -119,11 +161,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -234,11 +272,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					}
 					else if ((pxArrIzq + playerW >= wxArrIzq) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq < wxArrIzq - playerW2))
 					{
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -405,11 +439,7 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -522,11 +552,7 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 					else if ((pxArrIzq <= wxArrIzq + playerW2) && ((pyArrIzq - playerH <= wyArrIzq) && (pyArrIzq >= wyArrIzq - playerH2)) && (pxArrIzq > wxArrIzq))
 					{
 
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -624,11 +650,7 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) && ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq))
 					{
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 
@@ -782,11 +804,7 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) && ((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH <= wyArrIzq))
 					{
 
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 
@@ -825,8 +843,8 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
+						player->SetPosition(-0.85, 0);
+						player->SetRotation(270);
 						obstacle = true;
 
 						player->ReduceLives();
@@ -930,14 +948,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
-					
 					}
 				}
 				else
@@ -1086,11 +1099,7 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					else if ((pyArrIzq >= wyArrIzq - playerH2) &&
 						((pxArrIzq + playerW >= wxArrIzq) && (pxArrIzq <= wxArrIzq + playerW2)) && (pyArrIzq - playerH < wyArrIzq))
 					{
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 
@@ -1580,7 +1589,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 			d = true;
 			if (CanMoveRight(player1))
 			{
-				player1->SetRotation(-90);
+				player1->SetRotation(270);
 			}
 			break;
 		case 's':
@@ -1618,7 +1627,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 			der2 = true;
 			if (CanMoveRight(player2))
 			{
-				player2->SetRotation(-90);
+				player2->SetRotation(270);
 			}
 			break;
 		case 27:

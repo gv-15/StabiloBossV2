@@ -33,6 +33,8 @@ public:
 
 	void Kill();
 
+	void Knockback();
+
 	bool IsGameEnded();
 
 	bool CheckCollision(Sprite& s1, Sprite& s2);
