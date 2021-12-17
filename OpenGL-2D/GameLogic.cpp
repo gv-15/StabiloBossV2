@@ -1831,6 +1831,90 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 			exit(0);
 		}
 
+		else if (maquina.GetEstado() == P1Elige1)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige2)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige3)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige4)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige5)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige6)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P1Elige7)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige1)
+		{
+			maquina.DefinirEstado(Cuenta1);
+			cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige2)
+		{
+			maquina.DefinirEstado(Cuenta1);
+			cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige3)
+		{
+			maquina.DefinirEstado(Cuenta1);
+			cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige4)
+		{
+		maquina.DefinirEstado(Cuenta1);
+		cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige5)
+		{
+		maquina.DefinirEstado(Cuenta1);
+		cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige6)
+		{
+		maquina.DefinirEstado(Cuenta1);
+		cambiarEstado(Cuenta1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige7)
+		{
+		maquina.DefinirEstado(Cuenta1);
+		cambiarEstado(Cuenta1);
+		}
+
 		break;
 
 	}
@@ -2142,6 +2226,12 @@ void GameLogic::cambiarEstado(Estado e)
 		{
 			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose7");
 		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose2") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose2");
+		}
+
 		m_pRenderer->RemoveObject(pantalla);
 
 		Sprite* P2Choose1 = new Sprite("/img/player2choose1", 0, 0, 2, 2);
