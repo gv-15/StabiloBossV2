@@ -76,7 +76,6 @@ void MaquinaEstados::DefinirEstado(Estado e)
 
         estado = Controls;
 
-
     else if (e == Juego)
 
         estado = Juego;
@@ -104,4 +103,32 @@ void MaquinaEstados::DefinirEstado(Estado e)
     else if (e == FinalQuit)
 
         estado = FinalQuit;
+
+    else if (e == P1Elige1)
+
+        estado = P1Elige1;
+
+    else if (e == P1Elige2)
+
+        estado = P1Elige2;
+
+    else if (e == P1Elige3)
+
+        estado = P1Elige3;
+
+    else if (e == P1Elige4)
+
+        estado = P1Elige4;
+
+    else if (e == P1Elige5)
+
+        estado = P1Elige5;
+
+    else if (e == P1Elige6)
+
+        estado = P1Elige6;
+
+    else if (e == P1Elige7)
+
+        estado = P1Elige7;
 }

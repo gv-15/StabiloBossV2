@@ -1622,6 +1622,43 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 		}
 
 		break;
+
+		case GLUT_KEY_RIGHT:
+		if (maquina.GetEstado() == P1Elige1)
+		{
+			maquina.DefinirEstado(P1Elige2);
+			cambiarEstado(P1Elige2);
+		}
+
+		else if (maquina.GetEstado() == P1Elige2)
+		{
+			maquina.DefinirEstado(P1Elige3);
+			cambiarEstado(P1Elige3);
+		}
+
+		else if (maquina.GetEstado() == P1Elige3)
+		{
+			maquina.DefinirEstado(P1Elige4);
+			cambiarEstado(P1Elige4);
+		}
+
+		else if (maquina.GetEstado() == P1Elige4)
+		{
+			maquina.DefinirEstado(P1Elige5);
+			cambiarEstado(P1Elige5);
+		}
+
+		else if (maquina.GetEstado() == P1Elige5)
+		{
+			maquina.DefinirEstado(P1Elige6);
+			cambiarEstado(P1Elige6);
+		}
+
+		else if (maquina.GetEstado() == P1Elige6)
+		{
+			maquina.DefinirEstado(P1Elige7);
+			cambiarEstado(P1Elige7);
+		}
 	}
 
 	
@@ -1637,8 +1674,8 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		if (maquina.GetEstado() == Inicio)
 		{
-			maquina.DefinirEstado(Cuenta1);
-			cambiarEstado(Cuenta1);
+			maquina.DefinirEstado(P1Elige1);
+			cambiarEstado(P1Elige1);
 		}
 
 		else if (maquina.GetEstado() == Instrucciones)
@@ -1821,10 +1858,32 @@ void GameLogic::cambiarEstado(Estado e)
 			m_pRenderer->AddObject(PantallaI);
 		}
 
+		else if (e == P1Elige1)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose1 = new Sprite("/img/player1choose1", 0, 0, 2, 2);
+			P1Choose1->SetName("P1Choose11");
+			m_pRenderer->AddObject(P1Choose1);
+
+		}
+
+		else if (e == P1Elige2)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("ElegirColor1");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* ElegirColor2 = new Sprite("/img/...", 0, 0, 2, 2);
+			ElegirColor2->SetName("ElegirColor2");
+			m_pRenderer->AddObject(ElegirColor2);
+
+		}
+
 		else if (e == Cuenta1)
 		{
 			
-				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("ElegirColor2");
 				m_pRenderer->RemoveObject(pantalla);
 
 				Sprite* PantallaCuenta3 = new Sprite("/img/pantalla3", 0, 0, 2, 2);
