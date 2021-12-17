@@ -33,14 +33,96 @@ GameLogic::GameLogic(Renderer* pRenderer)
 	m_pInstance = this;
 	maquina = MaquinaEstados();
 	maquina.DefinirEstado(Inicio);
-	timer = Timer();
+	
 }
 
 GameLogic::~GameLogic()
 {
 }
 
+void GameLogic::KnockbackDown(Player* p1, Player* p2)
+{
+	
+	for (int i = 0; i < 25; i++) {
 
+		p1->moveDown(0.02);
+		p2->moveUp(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+void GameLogic::KnockbackUp(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+
+		p1->moveUp(0.02);
+		p2->moveDown(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+
+void GameLogic::KnockbackRight(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+
+		p1->moveRight(0.02);
+		p2->moveLeft(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+
+}
+
+void GameLogic::KnockbackLeft(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+		
+		p1->moveLeft(0.02);
+		p2->moveRight(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+
+void GameLogic::Knockback() {
+
+	Player* p1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* p2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+	
+	if (p1->GetRotation() == 0 && CanMoveDown(p1))
+	{
+		KnockbackDown(p1, p2);	
+	}
+	else if ((p1->GetRotation() == 90) && CanMoveRight(p1)) 
+	{
+		KnockbackRight(p1, p2);
+	}
+	else if ((p1->GetRotation() == 180) && CanMoveUp(p1)) 
+	{
+		KnockbackUp(p1, p2);
+	}
+	else if ((p1->GetRotation() == 270) && CanMoveLeft(p1))
+	{
+		KnockbackLeft(p1, p2);
+	}
+	
+}
 
 bool GameLogic::CanMoveRightPlayer(Player* p) {
 
@@ -130,12 +212,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					{
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
-
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -255,12 +332,7 @@ bool GameLogic::CanMoveRightPlayer(Player* p) {
 					{
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
-
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -438,11 +510,7 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -564,11 +632,7 @@ bool GameLogic::CanMoveLeftPlayer(Player* p) {
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 					}
@@ -670,11 +734,7 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
 
@@ -839,11 +899,7 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
 
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 
@@ -886,8 +942,8 @@ bool GameLogic::CanMoveDownPlayer(Player* p) {
 						p->SetPosition(0.85, 0);
 						p->SetRotation(90);
 
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
+						player->SetPosition(-0.85, 0);
+						player->SetRotation(270);
 						obstacle = true;
 
 						player->ReduceLives();
@@ -996,15 +1052,9 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					{
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/kill.wav"), NULL, SND_LOOP | SND_ASYNC);
-
-						p->SetPosition(-0.85, 0);
-						p->SetRotation(270);
-
-						player->SetPosition(0.85, 0);
-						player->SetRotation(90);
+						Knockback();
 						obstacle = true;
 
-					
 					}
 				}
 				else
@@ -1164,12 +1214,7 @@ bool GameLogic::CanMoveUpPlayer(Player* p) {
 					{
 						PlaySound(NULL, NULL, 0);
 						PlaySound(TEXT("snd/empate.wav"), NULL, SND_LOOP | SND_ASYNC);
-
-						p->SetPosition(0.85, 0);
-						p->SetRotation(90);
-
-						player->SetPosition(-0.85, 0);
-						player->SetRotation(270);
+						Knockback();
 						obstacle = true;
 
 
@@ -1670,7 +1715,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 			d = true;
 			if (CanMoveRight(player1))
 			{
-				player1->SetRotation(-90);
+				player1->SetRotation(270);
 			}
 			break;
 		case 's':
@@ -1708,7 +1753,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 			der2 = true;
 			if (CanMoveRight(player2))
 			{
-				player2->SetRotation(-90);
+				player2->SetRotation(270);
 			}
 			break;
 		case 27:

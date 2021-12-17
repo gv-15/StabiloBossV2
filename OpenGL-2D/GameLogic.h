@@ -35,6 +35,16 @@ public:
 
 	void Kill();
 
+	void Knockback();
+
+	void KnockbackDown(Player* p1, Player* p2);
+
+	void KnockbackUp(Player* p1, Player* p2);
+
+	void KnockbackRight(Player* p1, Player* p2);
+
+	void KnockbackLeft(Player* p1, Player* p2);
+
 	bool IsGameEnded();
 
 	bool CheckCollision(Sprite& s1, Sprite& s2);
