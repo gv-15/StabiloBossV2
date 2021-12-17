@@ -1899,11 +1899,12 @@ void GameLogic::cambiarEstado(Estado e)
 		else if (e == Juego)
 		{
 
-			//PlaySound(NULL, 0, 0);
-			PlaySound(TEXT("snd/sonic.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 			Sleep(1000);
 				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaCuenta1");
 				m_pRenderer->RemoveObject(pantalla);
+				//PlaySound(NULL, 0, 0);
+				PlaySound(TEXT("snd/sonic.wav"), NULL, SND_LOOP | SND_ASYNC);
 				Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 				PantallaJ->SetName("PantallaJ");
 
