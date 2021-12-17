@@ -1660,6 +1660,42 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 			cambiarEstado(P1Elige7);
 		}
 
+		else if (maquina.GetEstado() == P2Elige1)
+		{
+			maquina.DefinirEstado(P2Elige2);
+			cambiarEstado(P2Elige2);
+		}
+
+		else if (maquina.GetEstado() == P2Elige2)
+		{
+			maquina.DefinirEstado(P2Elige3);
+			cambiarEstado(P2Elige3);
+		}
+
+		else if (maquina.GetEstado() == P2Elige3)
+		{
+			maquina.DefinirEstado(P2Elige4);
+			cambiarEstado(P2Elige4);
+		}
+
+		else if (maquina.GetEstado() == P2Elige4)
+		{
+			maquina.DefinirEstado(P2Elige5);
+			cambiarEstado(P2Elige5);
+		}
+
+		else if (maquina.GetEstado() == P2Elige5)
+		{
+			maquina.DefinirEstado(P2Elige6);
+			cambiarEstado(P2Elige6);
+		}
+
+		else if (maquina.GetEstado() == P2Elige6)
+		{
+			maquina.DefinirEstado(P2Elige7);
+			cambiarEstado(P2Elige7);
+		}
+
 		break;
 
 		case GLUT_KEY_LEFT:
@@ -1698,6 +1734,42 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 		{
 			maquina.DefinirEstado(P1Elige1);
 			cambiarEstado(P1Elige1);
+		}
+
+		else if (maquina.GetEstado() == P2Elige7)
+		{
+			maquina.DefinirEstado(P2Elige6);
+			cambiarEstado(P2Elige6);
+		}
+
+		else if (maquina.GetEstado() == P2Elige6)
+		{
+			maquina.DefinirEstado(P2Elige5);
+			cambiarEstado(P2Elige5);
+		}
+
+		else if (maquina.GetEstado() == P2Elige5)
+		{
+			maquina.DefinirEstado(P2Elige4);
+			cambiarEstado(P2Elige4);
+		}
+
+		else if (maquina.GetEstado() == P2Elige4)
+		{
+			maquina.DefinirEstado(P2Elige3);
+			cambiarEstado(P2Elige3);
+		}
+
+		else if (maquina.GetEstado() == P2Elige3)
+		{
+			maquina.DefinirEstado(P2Elige2);
+			cambiarEstado(P2Elige2);
+		}
+
+		else if (maquina.GetEstado() == P2Elige2)
+		{
+			maquina.DefinirEstado(P2Elige1);
+			cambiarEstado(P2Elige1);
 		}
 
 		break;

@@ -131,4 +131,32 @@ void MaquinaEstados::DefinirEstado(Estado e)
     else if (e == P1Elige7)
 
         estado = P1Elige7;
+
+    else if (e == P2Elige1)
+
+        estado = P2Elige1;
+
+    else if (e == P2Elige2)
+
+        estado = P2Elige2;
+
+    else if (e == P2Elige3)
+
+        estado = P2Elige3;
+
+    else if (e == P2Elige4)
+
+        estado = P2Elige4;
+
+    else if (e == P2Elige5)
+
+        estado = P2Elige5;
+
+    else if (e == P2Elige6)
+
+        estado = P2Elige6;
+    
+    else if (e == P2Elige7)
+
+        estado = P2Elige7;
 }
