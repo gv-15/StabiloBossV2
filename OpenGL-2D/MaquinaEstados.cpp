@@ -56,6 +56,18 @@ void MaquinaEstados::DefinirEstado(Estado e)
 
         estado = Inicio;
 
+    else if (e == Cuenta1)
+
+        estado = Cuenta1;
+
+    else if (e == Cuenta2)
+
+        estado = Cuenta2;
+
+    else if (e == Cuenta3)
+
+        estado = Cuenta3;
+
     else if (e == Instrucciones)
 
         estado = Instrucciones;

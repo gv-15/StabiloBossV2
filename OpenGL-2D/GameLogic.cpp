@@ -32,7 +32,8 @@ GameLogic::GameLogic(Renderer* pRenderer)
 	m_pRenderer = pRenderer;
 	m_pInstance = this;
 	maquina = MaquinaEstados();
-	maquina.DefinirEstado(Inicio);	
+	maquina.DefinirEstado(Inicio);
+	timer = Timer();
 }
 
 GameLogic::~GameLogic()
@@ -1522,6 +1523,8 @@ void GameLogic::Initialize()
 	Sprite* PantallaI = new Sprite("/img/PantallaInicialStart", 0, 0, 2, 2);
 	PantallaI->SetName("PantallaI");
 	m_pRenderer->AddObject(PantallaI);
+
+	
 }
 
 
@@ -1589,8 +1592,8 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		if (maquina.GetEstado() == Inicio)
 		{
-			maquina.DefinirEstado(Juego);
-			cambiarEstado(Juego);
+			maquina.DefinirEstado(Cuenta1);
+			cambiarEstado(Cuenta1);
 		}
 
 		else if (maquina.GetEstado() == Instrucciones)
@@ -1773,89 +1776,160 @@ void GameLogic::cambiarEstado(Estado e)
 			m_pRenderer->AddObject(PantallaI);
 		}
 
+		else if (e == Cuenta1)
+		{
+			
+				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
+				m_pRenderer->RemoveObject(pantalla);
+
+				Sprite* PantallaCuenta3 = new Sprite("/img/pantalla3", 0, 0, 2, 2);
+				PantallaCuenta3->SetName("PantallaCuenta3");
+				m_pRenderer->AddObject(PantallaCuenta3);
+			
+				glutMainLoopEvent();
+				
+
+				glutPostRedisplay();
+				glutSwapBuffers();
+
+				maquina.DefinirEstado(Cuenta2);
+				cambiarEstado(Cuenta2);
+				
+			
+
+			
+			
+
+			
+		}
+
+		else if (e == Cuenta2)
+		{
+			Sleep(1000);
+
+				m_pRenderer->RemoveObject(m_pRenderer->ObjectByName("PantallaCuenta3"));
+				Sprite* PantallaCuenta2 = new Sprite("/img/pantalla2", 0, 0, 2, 2);
+				PantallaCuenta2->SetName("PantallaCuenta2");
+				m_pRenderer->AddObject(PantallaCuenta2);
+			
+				glutMainLoopEvent();
+
+
+				glutPostRedisplay();
+				glutSwapBuffers();
+
+				
+	
+			maquina.DefinirEstado(Cuenta3);
+			cambiarEstado(Cuenta3);
+		}
+
+
+		else if (e == Cuenta3)
+		{
+			
+			Sleep(1000);
+				m_pRenderer->RemoveObject(m_pRenderer->ObjectByName("PantallaCuenta2"));
+				Sprite* PantallaCuenta1 = new Sprite("/img/pantalla1", 0, 0, 2, 2);
+				PantallaCuenta1->SetName("PantallaCuenta1");
+				m_pRenderer->AddObject(PantallaCuenta1);
+			
+				glutMainLoopEvent();
+
+
+				glutPostRedisplay();
+				glutSwapBuffers();
+
+			maquina.DefinirEstado(Juego);
+			cambiarEstado(Juego);
+		}
+
 		else if (e == Juego)
 		{
-			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaI");
-			m_pRenderer->RemoveObject(pantalla);
-			Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
-			PantallaJ->SetName("PantallaJ");
+			Sleep(1000);
+				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaCuenta1");
+				m_pRenderer->RemoveObject(pantalla);
+				Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
+				PantallaJ->SetName("PantallaJ");
 
-			Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
-			player1->SetName("Player1");
-			Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
-			player2->SetName("Player2");
-			Wall* wall1 = new Wall("/img/wall1", 0, 0, 0.1, 1);
-			wall1->SetName("wall1");
-			Wall* wall2 = new Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
-			wall2->SetName("wall2");
-			Wall* wall3 = new Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
-			wall3->SetName("wall3");
-
-
-			Sprite* live1P1 = new Sprite("/img/heart2", -0.6, 0.9, 0.10, 0.10);
-			live1P1->SetName("live1P1");
-
-			Sprite* live2P1 = new Sprite("/img/heart2", -0.5, 0.9, 0.10, 0.10);
-			live2P1->SetName("live2P1");
-
-			Sprite* live3P1 = new Sprite("/img/heart2", -0.4, 0.9, 0.10, 0.10);
-			live3P1->SetName("live3P1");
-
-			Sprite* live1P2 = new Sprite("/img/heart2", 0.6, 0.9, 0.10, 0.10);
-			live1P2->SetName("live1P2");
-
-			Sprite* live2P2 = new Sprite("/img/heart2", 0.5, 0.9, 0.10, 0.10);
-			live2P2->SetName("live2P2");
-
-			Sprite* live3P2 = new Sprite("/img/heart2", 0.4, 0.9, 0.10, 0.10);
-			live3P2->SetName("live3P2");
+				Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
+				player1->SetName("Player1");
+				Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
+				player2->SetName("Player2");
+				Wall* wall1 = new Wall("/img/wall1", 0, 0, 0.1, 1);
+				wall1->SetName("wall1");
+				Wall* wall2 = new Wall("/img/wall2", -0.6, 0.3, 0.5, 0.05);
+				wall2->SetName("wall2");
+				Wall* wall3 = new Wall("/img/wall2", 0.6, -0.3, 0.5, 0.05);
+				wall3->SetName("wall3");
 
 
+				Sprite* live1P1 = new Sprite("/img/heart2", -0.6, 0.9, 0.10, 0.10);
+				live1P1->SetName("live1P1");
 
-			Sprite* P2Heart1 = new Sprite("/img/heart1", 0.4, 0.9, 0.10, 0.10);
-			P2Heart1->SetName("P2Heart1");
-			Sprite* P2Heart2 = new Sprite("/img/heart1", 0.5, 0.9, 0.10, 0.10);
-			P2Heart2->SetName("P2Heart2");
-			Sprite* P2Heart3 = new Sprite("/img/heart1", 0.6, 0.9, 0.10, 0.10);
-			P2Heart3->SetName("P2Heart3");
-			Sprite* P1Heart1 = new Sprite("/img/heart1", -0.4, 0.9, 0.10, 0.10);
-			P1Heart1->SetName("P1Heart1");
-			Sprite* P1Heart2 = new Sprite("/img/heart1", -0.5, 0.9, 0.10, 0.10);
-			P1Heart2->SetName("P1Heart2");
-			Sprite* P1Heart3 = new Sprite("/img/heart1", -0.6, 0.9, 0.10, 0.10);
-			P1Heart3->SetName("P1Heart3");
+				Sprite* live2P1 = new Sprite("/img/heart2", -0.5, 0.9, 0.10, 0.10);
+				live2P1->SetName("live2P1");
 
-			Sprite* LogoPlayer1 = new Sprite("/img/p1", -0.8, 0.9, 0.10, 0.10);
+				Sprite* live3P1 = new Sprite("/img/heart2", -0.4, 0.9, 0.10, 0.10);
+				live3P1->SetName("live3P1");
 
-			LogoPlayer1->SetName("LogoPlayer1");
-			Sprite* LogoPlayer2 = new Sprite("/img/p2", 0.8, 0.9, 0.10, 0.10);
-			LogoPlayer2->SetName("LogoPlayer2");
+				Sprite* live1P2 = new Sprite("/img/heart2", 0.6, 0.9, 0.10, 0.10);
+				live1P2->SetName("live1P2");
 
-			m_pRenderer->AddObject(P1Heart1);
-			m_pRenderer->AddObject(P1Heart2);
-			m_pRenderer->AddObject(P1Heart3);
-			m_pRenderer->AddObject(P2Heart1);
-			m_pRenderer->AddObject(P2Heart2);
-			m_pRenderer->AddObject(P2Heart3);
+				Sprite* live2P2 = new Sprite("/img/heart2", 0.5, 0.9, 0.10, 0.10);
+				live2P2->SetName("live2P2");
 
-			m_pRenderer->AddObject(LogoPlayer1);
-			m_pRenderer->AddObject(LogoPlayer2);
-
-			m_pRenderer->AddObject(live1P1);
-			m_pRenderer->AddObject(live1P2);
-			m_pRenderer->AddObject(live2P2);
-			m_pRenderer->AddObject(live3P2);
-			m_pRenderer->AddObject(live2P1);
-			m_pRenderer->AddObject(live3P1);
+				Sprite* live3P2 = new Sprite("/img/heart2", 0.4, 0.9, 0.10, 0.10);
+				live3P2->SetName("live3P2");
 
 
 
-			m_pRenderer->AddObject(player1);
-			m_pRenderer->AddObject(player2);
-			m_pRenderer->AddObject(wall1);
-			m_pRenderer->AddObject(wall2);
-			m_pRenderer->AddObject(wall3);
-			m_pRenderer->AddObject(PantallaJ);
+				Sprite* P2Heart1 = new Sprite("/img/heart1", 0.4, 0.9, 0.10, 0.10);
+				P2Heart1->SetName("P2Heart1");
+				Sprite* P2Heart2 = new Sprite("/img/heart1", 0.5, 0.9, 0.10, 0.10);
+				P2Heart2->SetName("P2Heart2");
+				Sprite* P2Heart3 = new Sprite("/img/heart1", 0.6, 0.9, 0.10, 0.10);
+				P2Heart3->SetName("P2Heart3");
+				Sprite* P1Heart1 = new Sprite("/img/heart1", -0.4, 0.9, 0.10, 0.10);
+				P1Heart1->SetName("P1Heart1");
+				Sprite* P1Heart2 = new Sprite("/img/heart1", -0.5, 0.9, 0.10, 0.10);
+				P1Heart2->SetName("P1Heart2");
+				Sprite* P1Heart3 = new Sprite("/img/heart1", -0.6, 0.9, 0.10, 0.10);
+				P1Heart3->SetName("P1Heart3");
+
+				Sprite* LogoPlayer1 = new Sprite("/img/p1", -0.8, 0.9, 0.10, 0.10);
+
+				LogoPlayer1->SetName("LogoPlayer1");
+				Sprite* LogoPlayer2 = new Sprite("/img/p2", 0.8, 0.9, 0.10, 0.10);
+				LogoPlayer2->SetName("LogoPlayer2");
+
+				m_pRenderer->AddObject(P1Heart1);
+				m_pRenderer->AddObject(P1Heart2);
+				m_pRenderer->AddObject(P1Heart3);
+				m_pRenderer->AddObject(P2Heart1);
+				m_pRenderer->AddObject(P2Heart2);
+				m_pRenderer->AddObject(P2Heart3);
+
+				m_pRenderer->AddObject(LogoPlayer1);
+				m_pRenderer->AddObject(LogoPlayer2);
+
+				m_pRenderer->AddObject(live1P1);
+				m_pRenderer->AddObject(live1P2);
+				m_pRenderer->AddObject(live2P2);
+				m_pRenderer->AddObject(live3P2);
+				m_pRenderer->AddObject(live2P1);
+				m_pRenderer->AddObject(live3P1);
+
+
+
+				m_pRenderer->AddObject(player1);
+				m_pRenderer->AddObject(player2);
+				m_pRenderer->AddObject(wall1);
+				m_pRenderer->AddObject(wall2);
+				m_pRenderer->AddObject(wall3);
+				m_pRenderer->AddObject(PantallaJ);
+			
+			
 
 
 		}

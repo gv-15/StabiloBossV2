@@ -1,6 +1,7 @@
 #pragma once
 
-enum Estado { Inicio, Juego, FinalRestart, Instrucciones, Controls, Salir, GanadorP2, GanadorP1, Restart, FinalQuit };
+enum Estado { Inicio, Juego, FinalRestart, Instrucciones, Controls, Salir, GanadorP2, GanadorP1, Restart, FinalQuit,
+    Cuenta1 ,Cuenta2, Cuenta3 };
 
 class Renderer;
 

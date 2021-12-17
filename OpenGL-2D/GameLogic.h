@@ -3,6 +3,7 @@
 #include "../3rd-party/SoundManager/SoundManager.h" 
 #include "PowerUp.h"
 #include "MaquinaEstados.h"
+#include "Timer.h"
 
 class Renderer;
 
@@ -11,6 +12,7 @@ class GameLogic
 	static GameLogic* m_pInstance;
 	Renderer* m_pRenderer;
 	MaquinaEstados maquina;
+	Timer timer;
 	 	
 	
 	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
