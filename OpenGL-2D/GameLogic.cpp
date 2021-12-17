@@ -1782,6 +1782,7 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 	
 	switch (key)
 	{
+	
 
 	case 13:
 
@@ -1917,13 +1918,19 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		break;
 
+		
+	
 	}
+
 
 	if ((Player*)m_pRenderer->ObjectByName("Player1") != nullptr || (Player*)m_pRenderer->ObjectByName("Player2") != nullptr)
 	{
+
+		
 		Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
 		Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 
+	
 		switch (key)
 		{
 
@@ -2450,9 +2457,13 @@ void GameLogic::cambiarEstado(Estado e)
 
 		else if (e == Juego)
 		{
+
+
 			Sleep(1000);
 				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("PantallaCuenta1");
 				m_pRenderer->RemoveObject(pantalla);
+				//PlaySound(NULL, 0, 0);
+				PlaySound(TEXT("snd/sonic.wav"), NULL, SND_LOOP | SND_ASYNC);
 				Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 				PantallaJ->SetName("PantallaJ");
 
@@ -2931,7 +2942,7 @@ void GameLogic::cambiarEstado(Estado e)
 		if (player1->getLives() == 0)
 		{
 			PlaySound(NULL, NULL, 0);
-			PlaySound(TEXT("snd/win1.wav"), NULL, SND_LOOP | SND_ASYNC);
+			PlaySound(TEXT("snd/victoria.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP2);
 			cambiarEstado(GanadorP2);
 		}
@@ -2939,7 +2950,7 @@ void GameLogic::cambiarEstado(Estado e)
 		else if (player2->getLives() == 0)
 		{
 			PlaySound(NULL, NULL, 0);
-			PlaySound(TEXT("snd/win2.wav"), NULL, SND_LOOP | SND_ASYNC);
+			PlaySound(TEXT("snd/victoria.wav"), NULL, SND_LOOP | SND_ASYNC);
 			maquina.DefinirEstado(GanadorP1);
 			cambiarEstado(GanadorP1);
 		}
