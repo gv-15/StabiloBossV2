@@ -39,6 +39,65 @@ GameLogic::~GameLogic()
 {
 }
 
+void GameLogic::KnockbackDown(Player* p1, Player* p2)
+{
+	
+	for (int i = 0; i < 25; i++) {
+
+		p1->moveDown(0.02);
+		p2->moveUp(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+void GameLogic::KnockbackUp(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+
+		p1->moveUp(0.02);
+		p2->moveDown(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+
+void GameLogic::KnockbackRight(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+
+		p1->moveRight(0.02);
+		p2->moveLeft(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+
+}
+
+void GameLogic::KnockbackLeft(Player* p1, Player* p2)
+{
+	for (int i = 0; i < 25; i++) {
+		
+		p1->moveLeft(0.02);
+		p2->moveRight(0.02);
+		glutMainLoopEvent();
+		glutPostRedisplay();
+		glutSwapBuffers();
+
+	}
+	
+}
+
+
 void GameLogic::Knockback() {
 
 	Player* p1 = (Player*)m_pRenderer->ObjectByName("Player1");
@@ -47,36 +106,19 @@ void GameLogic::Knockback() {
 	
 	if (p1->GetRotation() == 0 && CanMoveDown(p1))
 	{
-		p1->moveDown(0.6);
+		KnockbackDown(p1, p2);	
 	}
 	else if ((p1->GetRotation() == 90) && CanMoveRight(p1)) 
 	{
-		p1->moveRight(0.6);
+		KnockbackRight(p1, p2);
 	}
 	else if ((p1->GetRotation() == 180) && CanMoveUp(p1)) 
 	{
-		p1->moveUp(0.6);
+		KnockbackUp(p1, p2);
 	}
 	else if ((p1->GetRotation() == 270) && CanMoveLeft(p1))
 	{
-		p1->moveLeft(0.6);
-	}
-
-	if (p2->GetRotation() == 0 && CanMoveDown(p2))
-	{
-		p2->moveDown(0.6);
-	}
-	else if ((p2->GetRotation() == 90) && CanMoveRight(p2))
-	{
-		p2->moveRight(0.6);
-	}
-	else if ((p2->GetRotation() == 180) && CanMoveUp(p2))
-	{
-		p2->moveUp(0.6);
-	}
-	else if ((p2->GetRotation() == 270) && CanMoveLeft(p2))
-	{
-		p2->moveLeft(0.6);
+		KnockbackLeft(p1, p2);
 	}
 	
 }
