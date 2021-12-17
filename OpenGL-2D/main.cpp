@@ -40,13 +40,16 @@ int main(int argc, char** argv)
 	renderer.Initialize(argc, argv);
 	
 	gameLogic.Initialize(); 
-	PlaySound(NULL, NULL, 0);
-	PlaySound(TEXT("snd/sonic.wav"), NULL, SND_LOOP | SND_ASYNC);
+
+	PlaySound(NULL, 0, 0);
+	PlaySound(TEXT("snd/menu-final.wav"), NULL, SND_LOOP | SND_ASYNC);
 	
 
 
 	while (!gameLogic.IsGameEnded())
 	{
+	
+
 		//UPDATE////////////////////
 		////////////////////////////
 		//process queued events
