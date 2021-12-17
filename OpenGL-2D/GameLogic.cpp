@@ -1659,8 +1659,49 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 			maquina.DefinirEstado(P1Elige7);
 			cambiarEstado(P1Elige7);
 		}
-	}
 
+		break;
+
+		case GLUT_KEY_LEFT:
+
+		if (maquina.GetEstado() == P1Elige7)
+		{
+			maquina.DefinirEstado(P1Elige6);
+			cambiarEstado(P1Elige6);
+		}
+
+		else if (maquina.GetEstado() == P1Elige6)
+		{
+			maquina.DefinirEstado(P1Elige5);
+			cambiarEstado(P1Elige5);
+		}
+
+		else if (maquina.GetEstado() == P1Elige5)
+		{
+			maquina.DefinirEstado(P1Elige4);
+			cambiarEstado(P1Elige4);
+		}
+
+		else if (maquina.GetEstado() == P1Elige4)
+		{
+			maquina.DefinirEstado(P1Elige3);
+			cambiarEstado(P1Elige3);
+		}
+
+		else if (maquina.GetEstado() == P1Elige3)
+		{
+			maquina.DefinirEstado(P1Elige2);
+			cambiarEstado(P1Elige2);
+		}
+
+		else if (maquina.GetEstado() == P1Elige2)
+		{
+			maquina.DefinirEstado(P1Elige1);
+			cambiarEstado(P1Elige1);
+		}
+
+		break;
+	}
 	
 }
 
