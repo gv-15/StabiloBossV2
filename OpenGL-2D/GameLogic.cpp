@@ -1864,20 +1864,71 @@ void GameLogic::cambiarEstado(Estado e)
 			m_pRenderer->RemoveObject(pantalla);
 
 			Sprite* P1Choose1 = new Sprite("/img/player1choose1", 0, 0, 2, 2);
-			P1Choose1->SetName("P1Choose11");
+			P1Choose1->SetName("P1Choose1");
 			m_pRenderer->AddObject(P1Choose1);
 
 		}
 
 		else if (e == P1Elige2)
 		{
-			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("ElegirColor1");
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose1");
 			m_pRenderer->RemoveObject(pantalla);
 
-			Sprite* ElegirColor2 = new Sprite("/img/...", 0, 0, 2, 2);
-			ElegirColor2->SetName("ElegirColor2");
-			m_pRenderer->AddObject(ElegirColor2);
+			Sprite* P1Choose2 = new Sprite("/img/player1choose2", 0, 0, 2, 2);
+			P1Choose2->SetName("P1Choose2");
+			m_pRenderer->AddObject(P1Choose2);
 
+		}
+
+		else if (e == P1Elige3)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose2");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose3 = new Sprite("/img/player1choose3", 0, 0, 2, 2);
+			P1Choose3->SetName("P1Choose3");
+			m_pRenderer->AddObject(P1Choose3);
+
+		}
+
+		else if (e == P1Elige4)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose3");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose4 = new Sprite("/img/player1choose4", 0, 0, 2, 2);
+			P1Choose4->SetName("P1Choose4");
+			m_pRenderer->AddObject(P1Choose4);
+		}
+
+		else if (e == P1Elige5)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose4");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose5 = new Sprite("/img/player1choose5", 0, 0, 2, 2);
+			P1Choose5->SetName("P1Choose5");
+			m_pRenderer->AddObject(P1Choose5);
+		}
+
+		else if (e == P1Elige6)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose5");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose6 = new Sprite("/img/player1choose6", 0, 0, 2, 2);
+			P1Choose6->SetName("P1Choose6");
+			m_pRenderer->AddObject(P1Choose6);
+		}
+
+		else if (e == P1Elige7)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose6");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P1Choose7 = new Sprite("/img/player1choose7", 0, 0, 2, 2);
+			P1Choose7->SetName("P1Choose7");
+			m_pRenderer->AddObject(P1Choose7);
 		}
 
 		else if (e == Cuenta1)
