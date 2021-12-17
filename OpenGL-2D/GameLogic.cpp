@@ -2104,30 +2104,216 @@ void GameLogic::cambiarEstado(Estado e)
 			m_pRenderer->AddObject(P1Choose7);
 		}
 
+		else if (e == P2Elige1)
+		{
+		Sprite* pantalla = nullptr;
+
+		if ((Sprite*)m_pRenderer->ObjectByName("P1Choose1") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose1");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose2") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose2");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose3") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose3");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose4") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose4");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose5") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose5");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose6") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose6");
+		}
+
+		else if ((Sprite*)m_pRenderer->ObjectByName("P1Choose7") != nullptr)
+		{
+			pantalla = (Sprite*)m_pRenderer->ObjectByName("P1Choose7");
+		}
+		m_pRenderer->RemoveObject(pantalla);
+
+		Sprite* P2Choose1 = new Sprite("/img/player2choose1", 0, 0, 2, 2);
+		P2Choose1->SetName("P2Choose1");
+		m_pRenderer->AddObject(P2Choose1);
+
+		}
+
+		else if (e == P2Elige2)
+		{
+			Sprite* pantalla = nullptr;
+
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose1") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose1");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose3") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose3");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose2 = new Sprite("/img/player2choose2", 0, 0, 2, 2);
+			P2Choose2->SetName("P2Choose2");
+			m_pRenderer->AddObject(P2Choose2);
+
+		}
+
+		else if (e == P2Elige3)
+		{
+			Sprite* pantalla = nullptr;
+
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose2") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose2");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose4") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose4");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose3 = new Sprite("/img/player2choose3", 0, 0, 2, 2);
+			P2Choose3->SetName("P2Choose3");
+			m_pRenderer->AddObject(P2Choose3);
+		}
+
+		else if (e == P2Elige4)
+		{
+			Sprite* pantalla = nullptr;
+
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose3") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose3");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose5") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose5");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose4 = new Sprite("/img/player2choose4", 0, 0, 2, 2);
+			P2Choose4->SetName("P2Choose4");
+			m_pRenderer->AddObject(P2Choose4);
+		}
+
+		else if (e == P2Elige5)
+		{
+			Sprite* pantalla = nullptr;
+
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose4") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose4");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose6") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose6");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose5 = new Sprite("/img/player2choose5", 0, 0, 2, 2);
+			P2Choose5->SetName("P2Choose5");
+			m_pRenderer->AddObject(P2Choose5);
+		}
+
+		else if (e == P2Elige6)
+		{
+			Sprite* pantalla = nullptr;
+
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose5") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose5");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose7") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose7");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose6 = new Sprite("/img/player2choose6", 0, 0, 2, 2);
+			P2Choose6->SetName("P2Choose6");
+			m_pRenderer->AddObject(P2Choose6);
+		}
+
+		else if (e == P2Elige7)
+		{
+			Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose6");
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* P2Choose7 = new Sprite("/img/player2choose7", 0, 0, 2, 2);
+			P2Choose7->SetName("P2Choose7");
+			m_pRenderer->AddObject(P2Choose7);
+		}
+
 		else if (e == Cuenta1)
 		{
 			
-				Sprite* pantalla = (Sprite*)m_pRenderer->ObjectByName("ElegirColor2");
-				m_pRenderer->RemoveObject(pantalla);
+			Sprite* pantalla = nullptr;
 
-				Sprite* PantallaCuenta3 = new Sprite("/img/pantalla3", 0, 0, 2, 2);
-				PantallaCuenta3->SetName("PantallaCuenta3");
-				m_pRenderer->AddObject(PantallaCuenta3);
-			
-				glutMainLoopEvent();
-				
+			if ((Sprite*)m_pRenderer->ObjectByName("P2Choose1") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose1");
+			}
 
-				glutPostRedisplay();
-				glutSwapBuffers();
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose2") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose2");
+			}
 
-				maquina.DefinirEstado(Cuenta2);
-				cambiarEstado(Cuenta2);
-				
-			
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose3") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose3");
+			}
 
-			
-			
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose4") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose4");
+			}
 
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose5") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose5");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose6") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose6");
+			}
+
+			else if ((Sprite*)m_pRenderer->ObjectByName("P2Choose7") != nullptr)
+			{
+				pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose7");
+			}
+			m_pRenderer->RemoveObject(pantalla);
+
+			Sprite* PantallaCuenta3 = new Sprite("/img/pantalla3", 0, 0, 2, 2);
+			PantallaCuenta3->SetName("PantallaCuenta3");
+			m_pRenderer->AddObject(PantallaCuenta3);
+
+			glutMainLoopEvent();
+
+
+			glutPostRedisplay();
+			glutSwapBuffers();
+
+			maquina.DefinirEstado(Cuenta2);
+			cambiarEstado(Cuenta2);
 			
 		}
 
