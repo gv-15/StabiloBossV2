@@ -47,36 +47,36 @@ void GameLogic::Knockback() {
 	
 	if (p1->GetRotation() == 0 && CanMoveDown(p1))
 	{
-		p1->moveDown(0.40);
+		p1->moveDown(0.6);
 	}
 	else if ((p1->GetRotation() == 90) && CanMoveRight(p1)) 
 	{
-		p1->moveRight(0.40);		
+		p1->moveRight(0.6);
 	}
 	else if ((p1->GetRotation() == 180) && CanMoveUp(p1)) 
 	{
-		p1->moveUp(0.40);
+		p1->moveUp(0.6);
 	}
 	else if ((p1->GetRotation() == 270) && CanMoveLeft(p1))
 	{
-		p1->moveLeft(0.40);	
+		p1->moveLeft(0.6);
 	}
 
 	if (p2->GetRotation() == 0 && CanMoveDown(p2))
 	{
-		p2->moveDown(0.40);
+		p2->moveDown(0.6);
 	}
 	else if ((p2->GetRotation() == 90) && CanMoveRight(p2))
 	{
-		p2->moveRight(0.40);
+		p2->moveRight(0.6);
 	}
 	else if ((p2->GetRotation() == 180) && CanMoveUp(p2))
 	{
-		p2->moveUp(0.40);
+		p2->moveUp(0.6);
 	}
 	else if ((p2->GetRotation() == 270) && CanMoveLeft(p2))
 	{
-		p2->moveLeft(0.40);
+		p2->moveLeft(0.6);
 	}
 	
 }
