@@ -39,7 +39,7 @@ void Renderer::Initialize(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
 	glutCreateWindow(argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
 	
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);

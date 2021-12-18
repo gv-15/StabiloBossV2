@@ -1553,6 +1553,11 @@ void GameLogic::__processUpKeyboard(unsigned char key, int x, int y) {
 		m_pInstance->ProcessUpKeyboard(key, x, y);
 }
 
+void GameLogic::__processSpecialUpKeyboard(int key, int x, int y) {
+	if (m_pInstance)
+		m_pInstance->ProcessSpecialUpKeyboard(key, x, y);
+}
+
 void GameLogic::__processSpecialFunc(int key, int x, int y) {
 	if (m_pInstance)
 		m_pInstance->ProcessSpecialFunc(key, x, y);
@@ -1563,6 +1568,7 @@ void GameLogic::Initialize()
 	glutSpecialFunc(__processSpecialFunc);
 	glutKeyboardFunc(__processKeyboard);
 	glutKeyboardUpFunc(__processUpKeyboard);
+	glutSpecialUpFunc(__processSpecialUpKeyboard);
 
 	
 	Sprite* PantallaI = new Sprite("/img/PantallaInicialStart", 0, 0, 2, 2);
@@ -1599,6 +1605,17 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 			cambiarEstado(FinalQuit);
 		}
 
+
+		else if (maquina.GetEstado() == Juego)
+		{
+			ab2 = true;
+			Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+			if (CanMoveDown(player2))
+			{
+				player2->SetRotation(180);
+			}
+		}
 		break;
 
 	case GLUT_KEY_UP:
@@ -1621,6 +1638,17 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 			cambiarEstado(FinalRestart);
 		}
 
+
+		else if (maquina.GetEstado() == Juego)
+		{
+			ar2 = true;
+			Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+			if (CanMoveUp(player2))
+			{
+				player2->SetRotation(0);
+			}
+			
+		}
 		break;
 
 		case GLUT_KEY_RIGHT:
@@ -1694,6 +1722,18 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 		{
 			maquina.DefinirEstado(P2Elige7);
 			cambiarEstado(P2Elige7);
+		}
+
+		else if (maquina.GetEstado() == Juego)
+		{
+			der2 = true;
+			Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+			if (CanMoveRight(player2))
+			{
+				player2->SetRotation(270);
+			}
+			break;
 		}
 
 		break;
@@ -1772,6 +1812,18 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 			cambiarEstado(P2Elige1);
 		}
 
+		else if (maquina.GetEstado() == Juego)
+		{
+			izq2 = true;
+			Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+			if (CanMoveLeft(player2))
+			{
+				player2->SetRotation(90);
+			}
+			break;
+		}
+
 		break;
 	}
 	
@@ -1779,156 +1831,155 @@ void GameLogic::ProcessSpecialFunc(int key, int x, int y)
 
 void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 {
+
+		switch (key)
+		{
+
+
+		case 13:
+
+			if (maquina.GetEstado() == Inicio)
+			{
+				maquina.DefinirEstado(P1Elige1);
+				cambiarEstado(P1Elige1);
+			}
+
+			else if (maquina.GetEstado() == Instrucciones)
+			{
+				maquina.DefinirEstado(Controls);
+				cambiarEstado(Controls);
+			}
+
+			else if (maquina.GetEstado() == Salir)
+			{
+				exit(0);
+			}
+
+			else if (maquina.GetEstado() == Controls)
+			{
+				maquina.DefinirEstado(Instrucciones);
+				cambiarEstado(Instrucciones);
+			}
+
+			else if (maquina.GetEstado() == GanadorP1)
+			{
+				maquina.DefinirEstado(FinalRestart);
+				cambiarEstado(FinalRestart);
+			}
+
+			else if (maquina.GetEstado() == GanadorP2)
+			{
+				maquina.DefinirEstado(FinalRestart);
+				cambiarEstado(FinalRestart);
+			}
+
+			else if (maquina.GetEstado() == FinalRestart)
+			{
+				maquina.DefinirEstado(Restart);
+				cambiarEstado(Restart);
+			}
+
+			else if (maquina.GetEstado() == FinalQuit)
+			{
+				exit(0);
+			}
+
+			else if (maquina.GetEstado() == P1Elige1)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige2)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige3)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige4)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige5)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige6)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P1Elige7)
+			{
+				maquina.DefinirEstado(P2Elige1);
+				cambiarEstado(P2Elige1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige1)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige2)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige3)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige4)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige5)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige6)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			else if (maquina.GetEstado() == P2Elige7)
+			{
+				maquina.DefinirEstado(Cuenta1);
+				cambiarEstado(Cuenta1);
+			}
+
+			break;
+
+
+
+		}
 	
-	switch (key)
-	{
-	
-
-	case 13:
-
-		if (maquina.GetEstado() == Inicio)
-		{
-			maquina.DefinirEstado(P1Elige1);
-			cambiarEstado(P1Elige1);
-		}
-
-		else if (maquina.GetEstado() == Instrucciones)
-		{
-			maquina.DefinirEstado(Controls);
-			cambiarEstado(Controls);
-		}
-
-		else if (maquina.GetEstado() == Salir)
-		{
-			exit(0);
-		}
-
-		else if (maquina.GetEstado() == Controls)
-		{
-			maquina.DefinirEstado(Instrucciones);
-			cambiarEstado(Instrucciones);
-		}
-
-		else if (maquina.GetEstado() == GanadorP1)
-		{
-			maquina.DefinirEstado(FinalRestart);
-			cambiarEstado(FinalRestart);
-		}
-
-		else if (maquina.GetEstado() == GanadorP2)
-		{
-			maquina.DefinirEstado(FinalRestart);
-			cambiarEstado(FinalRestart);
-		}
-
-		else if (maquina.GetEstado() == FinalRestart)
-		{
-			maquina.DefinirEstado(Restart);
-			cambiarEstado(Restart);
-		}
-
-		else if (maquina.GetEstado() == FinalQuit)
-		{
-			exit(0);
-		}
-
-		else if (maquina.GetEstado() == P1Elige1)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige2)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige3)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige4)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige5)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige6)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P1Elige7)
-		{
-			maquina.DefinirEstado(P2Elige1);
-			cambiarEstado(P2Elige1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige1)
-		{
-			maquina.DefinirEstado(Cuenta1);
-			cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige2)
-		{
-			maquina.DefinirEstado(Cuenta1);
-			cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige3)
-		{
-			maquina.DefinirEstado(Cuenta1);
-			cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige4)
-		{
-		maquina.DefinirEstado(Cuenta1);
-		cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige5)
-		{
-		maquina.DefinirEstado(Cuenta1);
-		cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige6)
-		{
-		maquina.DefinirEstado(Cuenta1);
-		cambiarEstado(Cuenta1);
-		}
-
-		else if (maquina.GetEstado() == P2Elige7)
-		{
-		maquina.DefinirEstado(Cuenta1);
-		cambiarEstado(Cuenta1);
-		}
-
-		break;
-
-		
-	
-	}
-
 
 	if ((Player*)m_pRenderer->ObjectByName("Player1") != nullptr || (Player*)m_pRenderer->ObjectByName("Player2") != nullptr)
 	{
 
 		
 		Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
-		Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
 
 	
 		switch (key)
@@ -1936,7 +1987,6 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		case 'w':
 			w = true;
-
 
 			if (CanMoveUp(player1) )
 			{
@@ -1947,56 +1997,31 @@ void GameLogic::ProcessKeyboard(unsigned char key, int x, int y)
 
 		case 'a':
 			a = true;
+
 			if (CanMoveLeft(player1))
 			{
 				player1->SetRotation(90);
 			}
 			break;
+
 		case 'd':
 			d = true;
+
 			if (CanMoveRight(player1))
 			{
 				player1->SetRotation(270);
 			}
 			break;
+
 		case 's':
 			s = true;
+
 			if (CanMoveDown(player1))
 			{
 				player1->SetRotation(180);
 			}
 			break;
-		case 'i':
-			ar2 = true;
-			if (CanMoveUp(player2))
-			{
-				player2->SetRotation(0);
-			}
-			break;
 
-		case 'k':
-			ab2 = true;
-			if (CanMoveDown(player2))
-			{
-				player2->SetRotation(180);
-			}
-			break;
-
-		case 'j':
-			izq2 = true;
-			if (CanMoveLeft(player2))
-			{
-				player2->SetRotation(90);
-			}
-			break;
-
-		case 'l':
-			der2 = true;
-			if (CanMoveRight(player2))
-			{
-				player2->SetRotation(270);
-			}
-			break;
 		case 27:
 			esc = true;
 		}
@@ -2015,34 +2040,50 @@ void GameLogic::ProcessUpKeyboard(unsigned char key, int x, int y)
 	case 'w':
 		w = false;
 		break;
+
 	case 'a':
 		a = false;
 		break;
+
 	case 'd':
 		d = false;
 		break;
+
 	case 's':
 		s = false;
 		break;
-	case 'i':
+
+	case 27:
+		esc = false;
+	
+	}
+}
+
+void GameLogic::ProcessSpecialUpKeyboard(int key, int x, int y)
+{
+	Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	Player* player2 = (Player*)m_pRenderer->ObjectByName("Player2");
+
+	switch (key)
+	{
+	case GLUT_KEY_UP:
 		ar2 = false;
 		break;
 
-	case 'k':
+	case GLUT_KEY_DOWN:
 		ab2 = false;
 		break;
 
-	case 'j':
+	case GLUT_KEY_LEFT:
 		izq2 = false;
 		break;
 
-	case 'l':
+	case GLUT_KEY_RIGHT:
 		der2 = false;
 		break;
-	case 27:
-		esc = false;
 	}
 }
+
 
 void GameLogic::cambiarEstado(Estado e)
 {
