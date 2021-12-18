@@ -17,12 +17,15 @@ class GameLogic
 	string color2 = "";
 
 	
-	void ProcessSpecialFunc(int key, int x, int y);
+	
 	static void __processSpecialFunc(int key, int x, int y);
 	static void __processKeyboard(unsigned char key, int x, int y);
 	static void __processUpKeyboard(unsigned char key, int x, int y);
+	static void __processSpecialUpKeyboard(int key, int x, int y);
+	void ProcessSpecialFunc(int key, int x, int y);
 	void ProcessKeyboard(unsigned char key, int x, int y);
 	void ProcessUpKeyboard(unsigned char key, int x, int y);
+	void ProcessSpecialUpKeyboard(int key, int x, int y);
 
 public:
 
