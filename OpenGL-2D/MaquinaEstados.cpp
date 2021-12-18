@@ -159,4 +159,8 @@ void MaquinaEstados::DefinirEstado(Estado e)
     else if (e == P2Elige7)
 
         estado = P2Elige7;
+
+    else if (e == Pausa)
+
+    estado = Pausa;
 }
