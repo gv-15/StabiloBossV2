@@ -2080,6 +2080,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose1 = new Sprite("/img/player1choose1", 0, 0, 2, 2);
 			P1Choose1->SetName("P1Choose1");
 			m_pRenderer->AddObject(P1Choose1);
+			color1 = "/img/PLAYER1 NARANJA SMALL";
 
 		}
 
@@ -2101,6 +2102,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose2 = new Sprite("/img/player1choose2", 0, 0, 2, 2);
 			P1Choose2->SetName("P1Choose2");
 			m_pRenderer->AddObject(P1Choose2);
+			color1 = "/img/PLAYER1 AMARILLO SMALL";
 
 		}
 
@@ -2122,7 +2124,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose3 = new Sprite("/img/player1choose3", 0, 0, 2, 2);
 			P1Choose3->SetName("P1Choose3");
 			m_pRenderer->AddObject(P1Choose3);
-
+			color1 = "/img/PLAYER1 AZUL SMALL";
 		}
 
 		else if (e == P1Elige4)
@@ -2143,6 +2145,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose4 = new Sprite("/img/player1choose4", 0, 0, 2, 2);
 			P1Choose4->SetName("P1Choose4");
 			m_pRenderer->AddObject(P1Choose4);
+			color1 = "/img/PLAYER1 LILA SMALL";
 		}
 
 		else if (e == P1Elige5)
@@ -2163,6 +2166,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose5 = new Sprite("/img/player1choose5", 0, 0, 2, 2);
 			P1Choose5->SetName("P1Choose5");
 			m_pRenderer->AddObject(P1Choose5);
+			color1 = "/img/PLAYER1 ROSA SMALL";
 		}
 
 		else if (e == P1Elige6)
@@ -2183,6 +2187,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose6 = new Sprite("/img/player1choose6", 0, 0, 2, 2);
 			P1Choose6->SetName("P1Choose6");
 			m_pRenderer->AddObject(P1Choose6);
+			color1 = "/img/PLAYER1 VERDE SMALL";
 		}
 
 		else if (e == P1Elige7)
@@ -2193,6 +2198,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P1Choose7 = new Sprite("/img/player1choose7", 0, 0, 2, 2);
 			P1Choose7->SetName("P1Choose7");
 			m_pRenderer->AddObject(P1Choose7);
+			color1 = "/img/PLAYER1 VERDEAZUL SMALL";
 		}
 
 		else if (e == P2Elige1)
@@ -2244,6 +2250,7 @@ void GameLogic::cambiarEstado(Estado e)
 		Sprite* P2Choose1 = new Sprite("/img/player2choose1", 0, 0, 2, 2);
 		P2Choose1->SetName("P2Choose1");
 		m_pRenderer->AddObject(P2Choose1);
+		color2 = "/img/PLAYER2 NARANJA SMALL";
 
 		}
 
@@ -2265,6 +2272,7 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose2 = new Sprite("/img/player2choose2", 0, 0, 2, 2);
 			P2Choose2->SetName("P2Choose2");
 			m_pRenderer->AddObject(P2Choose2);
+			color2 = "/img/PLAYER2 AMARILLO SMALL";
 
 		}
 
@@ -2286,6 +2294,8 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose3 = new Sprite("/img/player2choose3", 0, 0, 2, 2);
 			P2Choose3->SetName("P2Choose3");
 			m_pRenderer->AddObject(P2Choose3);
+			color2 = "/img/PLAYER2 AZUL SMALL";
+
 		}
 
 		else if (e == P2Elige4)
@@ -2306,6 +2316,8 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose4 = new Sprite("/img/player2choose4", 0, 0, 2, 2);
 			P2Choose4->SetName("P2Choose4");
 			m_pRenderer->AddObject(P2Choose4);
+			color2 = "/img/PLAYER2 LILA SMALL";
+
 		}
 
 		else if (e == P2Elige5)
@@ -2326,6 +2338,8 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose5 = new Sprite("/img/player2choose5", 0, 0, 2, 2);
 			P2Choose5->SetName("P2Choose5");
 			m_pRenderer->AddObject(P2Choose5);
+			color2 = "/img/PLAYER2 ROSA SMALL";
+
 		}
 
 		else if (e == P2Elige6)
@@ -2346,6 +2360,8 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose6 = new Sprite("/img/player2choose6", 0, 0, 2, 2);
 			P2Choose6->SetName("P2Choose6");
 			m_pRenderer->AddObject(P2Choose6);
+			color2 = "/img/PLAYER2 VERDE SMALL";
+
 		}
 
 		else if (e == P2Elige7)
@@ -2356,6 +2372,8 @@ void GameLogic::cambiarEstado(Estado e)
 			Sprite* P2Choose7 = new Sprite("/img/player2choose7", 0, 0, 2, 2);
 			P2Choose7->SetName("P2Choose7");
 			m_pRenderer->AddObject(P2Choose7);
+			color2 = "/img/PLAYER2 VERDEAZUL SMALL";
+
 		}
 
 		else if (e == Cuenta1)
@@ -2467,9 +2485,9 @@ void GameLogic::cambiarEstado(Estado e)
 				Sprite* PantallaJ = new Sprite("/img/notebook", 0, 0, 2, 2);
 				PantallaJ->SetName("PantallaJ");
 
-				Player* player1 = new Player("/img/PLAYER1 ROSA SMALL", -0.9, 0, 0.084, 0.2);
+				Player* player1 = new Player(color1, -0.9, 0, 0.084, 0.2);
 				player1->SetName("Player1");
-				Player* player2 = new Player("/img/PLAYER2 VERDEAZUL SMALL", 0.9, 0, 0.084, 0.2);
+				Player* player2 = new Player(color2, 0.9, 0, 0.084, 0.2);
 				player2->SetName("Player2");
 				Wall* wall1 = new Wall("/img/wall1", 0, 0, 0.1, 1);
 				wall1->SetName("wall1");

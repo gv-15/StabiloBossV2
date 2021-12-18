@@ -13,9 +13,9 @@ class GameLogic
 	Renderer* m_pRenderer;
 	MaquinaEstados maquina;
 	Timer timer;
-	 	
-	
-	//Player* player1 = (Player*)m_pRenderer->ObjectByName("Player1");
+	string color1 = "";
+	string color2 = "";
+
 	
 	void ProcessSpecialFunc(int key, int x, int y);
 	static void __processSpecialFunc(int key, int x, int y);
@@ -27,6 +27,7 @@ class GameLogic
 public:
 
 	GameLogic(Renderer* pRenderer);
+
 	~GameLogic();
 	
 	void Initialize();
