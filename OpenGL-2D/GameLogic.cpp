@@ -2064,6 +2064,7 @@ void GameLogic::cambiarEstado(Estado e)
 
 		else if (e == P1Elige1)
 		{
+			
 			Sprite* pantalla = nullptr;
 
 			if ((Sprite*)m_pRenderer->ObjectByName("PantallaI") != nullptr)
@@ -2081,6 +2082,8 @@ void GameLogic::cambiarEstado(Estado e)
 			P1Choose1->SetName("P1Choose1");
 			m_pRenderer->AddObject(P1Choose1);
 			color1 = "/img/PLAYER1 NARANJA SMALL";
+			
+			
 
 		}
 
@@ -2244,6 +2247,8 @@ void GameLogic::cambiarEstado(Estado e)
 		{
 			pantalla = (Sprite*)m_pRenderer->ObjectByName("P2Choose2");
 		}
+		PlaySound(TEXT("snd/player.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 
 		m_pRenderer->RemoveObject(pantalla);
 
@@ -2253,7 +2258,6 @@ void GameLogic::cambiarEstado(Estado e)
 		color2 = "/img/PLAYER2 NARANJA SMALL";
 
 		}
-
 		else if (e == P2Elige2)
 		{
 			Sprite* pantalla = nullptr;
@@ -2378,6 +2382,8 @@ void GameLogic::cambiarEstado(Estado e)
 
 		else if (e == Cuenta1)
 		{
+		PlaySound(TEXT("snd/player.wav"), NULL, SND_LOOP | SND_ASYNC);
+
 			
 			Sprite* pantalla = nullptr;
 
